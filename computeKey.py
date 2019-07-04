@@ -3,29 +3,25 @@
 computeKey
 
 computes the musical key of an input audio file
+  Args:
+      afAudioData: array with floating point audio data.
+      f_s: sample rate
+      afWindow: FFT window of length iBlockLength (default: hann)
+      iBlockLength: internal block length (default: 4096 samples)
+      iHopLength: internal hop length (default: 2048 samples)
+
+  Returns:
+      key string
 """
 
 import numpy as np
 from scipy.signal import spectrogram
 
 from ToolComputeHann import ToolComputeHann
-from ToolReadAudio import ToolReadAudio 
 from FeatureSpectralPitchChroma import FeatureSpectralPitchChroma 
        
        
 def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
-#  """ compute the key of input audio.
-#
-#  Args:
-#      afAudioData: array with floating point audio data.
-#      f_s: sample rate
-#      afWindow: FFT window of length iBlockLength (default: hann)
-#      iBlockLength: internal block length (default: 4096 samples)
-#      iHopLength: internal hop length (default: 2048 samples)
-#
-#  Returns:
-#      key string
-#  """
 
     # compute window function for FFT
     if afWindow is None:
@@ -87,7 +83,8 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
     
     
 def computeKeyCl(cPath):
-    
+    from ToolReadAudio import ToolReadAudio
+
     [f_s,afAudioData] = ToolReadAudio(cPath)
     #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
  

@@ -13,6 +13,24 @@ computes the pitch chroma from the magnitude spectrum
 import numpy as np
 import math
   
+    
+def FeatureSpectralPitchChroma(X,f_s):    
+
+    # allocate memory
+    v_pc = np.zeros ([12, X.shape[1]])
+
+    # generate filter matrix
+    H = generatePcFilters(X.shape[0], f_s)
+ 
+    # compute pitch chroma
+    v_pc = np.dot(H, X**2)
+    
+    # norm pitch chroma to a sum of 1 but avoid div by zero
+    norm = v_pc.sum(axis=0,keepdims=True)
+    norm[norm == 0] = 1
+    v_pc = v_pc/norm
+    
+    return (v_pc)
  
 def generatePcFilters(iSpecLength, f_s):
     
@@ -38,21 +56,3 @@ def generatePcFilters(iSpecLength, f_s):
         f_mid = f_mid*2**(1/iNumPitchesPerOctave);
     
     return (H)
-    
-def FeatureSpectralPitchChroma(X,f_s):    
-
-    # allocate memory
-    v_pc = np.zeros ([12, X.shape[1]])
-
-    # generate filter matrix
-    H = generatePcFilters(X.shape[0], f_s)
- 
-    # compute pitch chroma
-    v_pc = np.dot(H, X**2)
-    
-    # norm pitch chroma to a sum of 1 but avoid div by zero
-    norm = v_pc.sum(axis=0,keepdims=True)
-    norm[norm == 0] = 1
-    v_pc = v_pc/norm
-    
-    return (v_pc)
