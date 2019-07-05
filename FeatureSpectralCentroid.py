@@ -7,7 +7,7 @@ computes the spectral centroid from the (squared) magnitude spectrum
     f_s: sample rate of audio data
 
   Returns:
-    v spectral centroid (in Hz)
+    vsc spectral centroid (in Hz)
 """
 
 import numpy as np

@@ -21,14 +21,13 @@ supported features are:
 
 import numpy as np
 from scipy.signal import spectrogram
-
+import matplotlib.pyplot as plt 
        
        
 def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     from ToolComputeHann import ToolComputeHann
 
     mypackage = __import__('Feature' + cFeatureName)
-    #mymodule = getattr(mypackage, 'mymodule')
     hFeatureFunc = getattr(mypackage, 'Feature' + cFeatureName)
 
     if isSpectral(cFeatureName):
@@ -55,7 +54,7 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
                                 iBlockLength,
                                 iBlockLength - iHopLength,
                                 iBlockLength,
-                                'constant',
+                                False,
                                 True,
                                 'spectrum')
     
@@ -84,14 +83,17 @@ def isTemporal(cName):
         
     return (bResult)
     
-def computeFeatureCl(cPath, cFeatureName):
+def computeFeatureCl(cPath, cFeatureName, bPlotOutput):
     from ToolReadAudio import ToolReadAudio
     
     [f_s,afAudioData] = ToolReadAudio(cPath)
     #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
  
     [v,t] = computeFeature(cFeatureName, afAudioData, f_s)
-    
+
+    if bPlotOutput:
+        plt.plot(t,v)
+        
     return (v,t)
     
 if __name__ == "__main__":
@@ -102,16 +104,21 @@ if __name__ == "__main__":
                         help='path to input audio file')
     parser.add_argument('--featurename', metavar='string', required=False,
                         help='feature name in the format SpectralPitchChroma')
+    parser.add_argument('--plotoutput', metavar='bool', required=False,
+                        help='option to plot the output')
     
     cPath = parser.parse_args().infile
     cFeatureName = parser.parse_args().featurename
+    bPlotOutput  = parser.parse_args().plotoutput
     
     #only for debugging
     if not cPath:
         cPath = "c:/temp/test.wav"
     #only for debugging
     if not cFeatureName:
-        cFeatureName = "SpectralCentroid" #"SpectralPitchChroma"
+        cFeatureName = "SpectralDecrease"
+    if not bPlotOutput:
+        bPlotOutput = True
     
     # call the function
-    computeFeatureCl(cPath, cFeatureName)
+    computeFeatureCl(cPath, cFeatureName, bPlotOutput)
