@@ -130,7 +130,7 @@ if __name__ == "__main__":
         if not cPath:
             cPath = "c:/temp/test.wav"
         if not cFeatureName:
-            cFeatureName = "TimeAcfCoeff"
+            cFeatureName = "TimeMaxAcf"
         if not bPlotOutput:
             bPlotOutput = True
     
