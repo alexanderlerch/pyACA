@@ -10,6 +10,7 @@ computes the ACF coefficients of a time domain signal
     eta: index (or vector of indices) of coeff result
 
   Returns:
+    vacf autocorrelation coefficient
     t time stamp
     
 """
