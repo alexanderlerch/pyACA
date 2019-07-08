@@ -35,25 +35,3 @@ def FeatureSpectralTonalPowerRatio(X,f_s, G_T=5e-4):
         vtpr[n] = X[afPeaks[0],n].sum()/fSum[n]
     
     return (vtpr)
-
-
-#    % allocate memory
-#    vtpr    = zeros(1,size(X,2));
-#
-#    X       = X.^2;
-#    fSum    = sum(X,1);
-# 
-#    for (n = 1:size(X,2))
-#        if (fSum(n) == 0)
-#            % do nothing for 0-blocks
-#            continue;
-#        end
-#        % find local maxima
-#        [afPeaks]   = findpeaks(X(:,n));
-#        
-#        % find peaks above the threshold
-#        k_peak      = find(afPeaks > G_T);
-#        
-#        % calculate the ratio
-#        vtpr(n)     = sum(afPeaks(k_peak))/fSum(n);
-#    end
