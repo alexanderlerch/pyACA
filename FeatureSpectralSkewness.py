@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-computes the spectral kurtosis from the magnitude spectrum
+computes the spectral skewness from the magnitude spectrum
 
   Args:
     X: spectrogram (dimension FFTLength X Observations)
     f_s: sample rate of audio data
 
   Returns:
-    vsk spectral kurtosis
+    vssk spectral skewness
 """
 
 import numpy as np
@@ -15,7 +15,7 @@ from FeatureSpectralCentroid import FeatureSpectralCentroid
 from FeatureSpectralSpread import FeatureSpectralSpread
   
     
-def FeatureSpectralKurtosis(X, f_s, UseBookDefinition = False):   
+def FeatureSpectralSkewness(X, f_s, UseBookDefinition = False):   
  
     if UseBookDefinition: #not recommended
         # compute mean and standard deviation
@@ -26,7 +26,7 @@ def FeatureSpectralKurtosis(X, f_s, UseBookDefinition = False):
         X = X - mu_x
     
         # compute kurtosis
-        vsk = np.sum(X**4,axis = 0) / (std_x**4 * X.shape[0])
+        vssk = np.sum(X**3,axis = 0) / (std_x**3 * X.shape[0])
     else:
         f   = np.arange(0,X.shape[0])/(X.shape[0]-1)*f_s/2
         # get spectral centroid and spread (mean and std of dist)
@@ -38,8 +38,8 @@ def FeatureSpectralKurtosis(X, f_s, UseBookDefinition = False):
         vss[vss == 0] = 1
     
         # compute spread
-        vsk = np.zeros(X.shape[1])
+        vssk = np.zeros(X.shape[1])
         for n in range(0,X.shape[1]):
-            vsk[n] = np.dot((f-vsc[0,n])**4, X[:,n]) / (vss[n]**4 * norm[n] * X.shape[0])
+            vssk[n] = np.dot((f-vsc[0,n])**3, X[:,n]) / (vss[n]**3 * norm[n] * X.shape[0])
     
-    return (vsk-3)
+    return (vssk)
