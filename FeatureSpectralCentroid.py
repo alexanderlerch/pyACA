@@ -15,7 +15,7 @@ import numpy as np
     
 def FeatureSpectralCentroid(X,f_s):   
     
-    X = X**2
+    #X = X**2 removed for consistency with book
  
     norm = X.sum(axis=0,keepdims=True)
     norm[norm == 0] = 1
