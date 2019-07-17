@@ -64,7 +64,7 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
                             iBlockLength,
                             iBlockLength - iHopLength,
                             iBlockLength,
-                            'constant',
+                            False,
                             True,
                             'spectrum')
 
