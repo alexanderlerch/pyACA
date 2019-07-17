@@ -55,7 +55,7 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
                             iBlockLength,
                             iBlockLength - iHopLength,
                             iBlockLength,
-                            'constant',
+                            False,
                             True,
                             'spectrum')
 
