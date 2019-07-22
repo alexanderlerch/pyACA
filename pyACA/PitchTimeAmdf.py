@@ -21,7 +21,6 @@ def PitchTimeAmdf(x, iBlockLength, iHopLength, f_s):
     # initialize
     f_max = 2000
     f_min = 50
-    fMinThresh = .35
     iNumOfBlocks = math.ceil (x.size/iHopLength)
     
     # compute time stamps
@@ -37,10 +36,7 @@ def PitchTimeAmdf(x, iBlockLength, iHopLength, f_s):
               
         i_start = n*iHopLength
         i_stop  = np.min([x.size-1, i_start + iBlockLength - 1])
- 
-        if n == 153:
-            alex=0
-            
+             
         # calculate the acf
         if not x[np.arange(i_start, i_stop+1)].sum():
             continue
