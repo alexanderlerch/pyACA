@@ -18,7 +18,7 @@ import numpy as np
 import math
 
     
-def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):   
+def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):   
     
     # initialize
     f_max = 2000
@@ -29,11 +29,11 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):
     t = (np.arange(0,iNumOfBlocks) * iHopLength + (iBlockLength/2))/f_s
     
     # allocate memory
-    vacf = np.zeros(iNumOfBlocks)
+    f = np.zeros(iNumOfBlocks)
     
     for n in range(0,iNumOfBlocks):
-        eta_min = math.floor (f_s/f_max);
-        
+        eta_min = int(round (f_s/f_max))-1
+              
         i_start = n*iHopLength
         i_stop  = np.min([x.size-1, i_start + iBlockLength - 1])
         
@@ -55,6 +55,9 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):
         eta_min = np.max([eta_min, eta_tmp])
  
         # find the coefficients specified in eta
-        vacf[n] = np.max(afCorr[np.arange(eta_min+1, afCorr.size)])
-    
-    return (vacf,t)
+        f[n] = np.argmax(afCorr[np.arange(eta_min+1, afCorr.size)])+1
+        
+        # convert to Hz
+        f[n] = f_s / (f[n] + eta_min +1)
+
+    return (f,t)
