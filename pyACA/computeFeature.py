@@ -5,7 +5,25 @@ computeFeature
 computes a feature from the audio data
 supported features are:
     'SpectralCentroid',
+    'SpectralCrestFactor',
+    'SpectralDecrease',
+    'SpectralFlatness',
+    'SpectralFlux',
+    'SpectralKurtosis',
+    'SpectralMfccs',
     'SpectralPitchChroma',
+    'SpectralRolloff',
+    'SpectralSkewness',
+    'SpectralSlope',
+    'SpectralSpread',
+    'SpectralTonalPowerRatio',
+    'TimeAcfCoeff',
+    'TimeMaxAcf',
+    'TimePeakEnvelope',
+    'TimePredictivityRatio',
+    'TimeRms',
+    'TimeStd',
+    'TimeZeroCrossingRate',
   Args:
       cFeatureName: feature to compute, e.g. 'SpectralSkewness'
       afAudioData: array with floating point audio data.
