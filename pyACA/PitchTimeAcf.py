@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-computes the ACF maxima of a time domain signal
+computes the lag of the autocorrelation function
 
   Args:
     x: audio signal
@@ -9,9 +9,8 @@ computes the ACF maxima of a time domain signal
     f_s: sample rate of audio data (unused)
 
   Returns:
-    vta autocorrelation maximum
-    t time stamp
-    
+      f frequency
+      t time stamp for the frequency value
 """
 
 import numpy as np
@@ -60,4 +59,4 @@ def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):
         # convert to Hz
         f[n] = f_s / (f[n] + eta_min +1)
 
-    return (f,t)
+    return (f,t)    
