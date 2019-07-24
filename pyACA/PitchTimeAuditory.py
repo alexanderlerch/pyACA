@@ -46,8 +46,6 @@ def PitchTimeAuditory(x, iBlockLength, iHopLength, f_s):
     
     for n in range(0, iNumOfBlocks):
  
-        if n == 647:
-            alex = 0
         eta_min = int(round(f_s/f_max))
         afSumCorr = np.zeros(iBlockLength-1)
         x_tmp = np.zeros(iBlockLength)
