@@ -23,6 +23,6 @@ def FeatureSpectralCentroid(X,f_s):
     vsc = np.dot(np.arange(0,X.shape[0]), X)/norm
 
     # convert from index to Hz
-    vsc = vsc / (X.shape[0]-1) * f_s/2;
+    vsc = vsc / (X.shape[0]-1) * f_s/2
     
     return (vsc)

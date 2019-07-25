@@ -27,8 +27,6 @@ def PitchSpectralAcf(X, f_s):
     # compute the ACF
     for n in range(0, X.shape[1]):
 
-        if n==88:
-            laex = 0
         if X[:,n].sum() < 1e-20:
             continue
 
