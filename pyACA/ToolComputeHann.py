@@ -13,5 +13,6 @@ helper function: computer periodic von-Hann window
 
 import numpy as np
 
+
 def ToolComputeHann(iWindowLength):
-  return 0.5 - (0.5 * np.cos(2 * np.pi / iWindowLength * np.arange(iWindowLength))) 
+    return 0.5 - (0.5 * np.cos(2 * np.pi / iWindowLength * np.arange(iWindowLength)))

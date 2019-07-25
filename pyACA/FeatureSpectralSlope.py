@@ -11,18 +11,18 @@ computes the spectral slope from the magnitude spectrum
 """
 
 import numpy as np
-  
-    
-def FeatureSpectralSlope(X,f_s):   
-    
+
+
+def FeatureSpectralSlope(X, f_s):
+
     # compute mean
-    mu_x = X.mean(axis=0,keepdims=True)
+    mu_x = X.mean(axis=0, keepdims=True)
 
     # compute index vector
-    kmu = np.arange(0, X.shape[0]) - X.shape[0]/2
- 
+    kmu = np.arange(0, X.shape[0]) - X.shape[0] / 2
+
     # compute slope
     X = X - mu_x
-    vssl = np.dot(kmu, X)/np.dot(kmu,kmu)
+    vssl = np.dot(kmu, X) / np.dot(kmu, kmu)
 
     return (vssl)

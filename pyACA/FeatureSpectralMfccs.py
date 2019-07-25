@@ -12,32 +12,32 @@ computes the MFCCs from the magnitude spectrum (see Slaney)
 
 import numpy as np
 from ToolMfccFb import ToolMfccFb
- 
-    
-def FeatureSpectralMfccs(X,f_s, iNumCoeffs = 13):    
+
+
+def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
 
     # allocate memory
-    v_mfcc = np.zeros ([iNumCoeffs, X.shape[1]])
+    v_mfcc = np.zeros([iNumCoeffs, X.shape[1]])
 
     # generate filter matrix
     H = ToolMfccFb(X.shape[0], f_s)
-    T = generateDctMatrix (H.shape[0], iNumCoeffs)
- 
-    for n in range(0,X.shape[1]):
+    T = generateDctMatrix(H.shape[0], iNumCoeffs)
+
+    for n in range(0, X.shape[1]):
         # compute the mel spectrum
-        X_Mel = np.log10(np.dot(H, X[:,n] + 1e-20))
-        
+        X_Mel = np.log10(np.dot(H, X[:, n] + 1e-20))
+
         # calculate the mfccs
-        v_mfcc[:,n] = np.dot(T, X_Mel)
-    
+        v_mfcc[:, n] = np.dot(T, X_Mel)
+
     return (v_mfcc)
 
 
 # see function mfcc.m from Slaneys Auditory Toolbox
-def generateDctMatrix (iNumBands, iNumCepstralCoeffs):
-    T = np.cos(np.outer(np.arange(0,iNumCepstralCoeffs), (2*np.arange(0,iNumBands)+1)) * np.pi/2/iNumBands)
-            
-    T = T / np.sqrt(iNumBands/2)
-    T[0,:] = T[0,:] / np.sqrt(2)
-    
+def generateDctMatrix(iNumBands, iNumCepstralCoeffs):
+    T = np.cos(np.outer(np.arange(0, iNumCepstralCoeffs), (2 * np.arange(0, iNumBands) + 1)) * np.pi / 2 / iNumBands)
+
+    T = T / np.sqrt(iNumBands / 2)
+    T[0, :] = T[0, :] / np.sqrt(2)
+
     return (T)

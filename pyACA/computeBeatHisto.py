@@ -17,8 +17,8 @@ computes a simple beat histogram
 import numpy as np
 from computeNoveltyFunction import computeNoveltyFunction
 from ToolComputeHann import ToolComputeHann
-    
-       
+
+
 def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLength=8):
 
     # compute window function for FFT
@@ -28,49 +28,47 @@ def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLen
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # novelty function
-    [d,t,peaks] = computeNoveltyFunction ('Flux', afAudioData, f_s, afWindow, iBlockLength, iHopLength)
- 
+    [d, t, peaks] = computeNoveltyFunction('Flux', afAudioData, f_s, afWindow, iBlockLength, iHopLength)
+
     # compute autocorrelation of result
-    afCorr = np.correlate(d, d, "full")/np.dot(d,d)
+    afCorr = np.correlate(d, d, "full") / np.dot(d, d)
     afCorr = afCorr[np.arange(d.shape[0], afCorr.size)]
-    
-    Bpm = np.flip(60/t[np.arange(1, t.shape[0])])
-    T   = np.flip(afCorr)
-    
-    return (T,Bpm)
-    
-    
+
+    Bpm = np.flip(60 / t[np.arange(1, t.shape[0])])
+    T = np.flip(afCorr)
+
+    return (T, Bpm)
 
 
 def computeBeatHistoCl(cInPath, cOutPath):
     from ToolReadAudio import ToolReadAudio
 
-    [f_s,afAudioData] = ToolReadAudio(cInPath)
- 
-    [T,Bpm] = computeBeatHisto(afAudioData, f_s)
-    
-    result = np.vstack((T,Bpm))
-    
+    [f_s, afAudioData] = ToolReadAudio(cInPath)
+
+    [T, Bpm] = computeBeatHisto(afAudioData, f_s)
+
+    result = np.vstack((T, Bpm))
+
     np.savetxt(cOutPath, result)
-    
+
+
 if __name__ == "__main__":
     import argparse
-    
+
     parser = argparse.ArgumentParser(description='Compute simple beat histogram of wav file')
     parser.add_argument('--infile', metavar='path', required=False,
                         help='path to input audio file')
     parser.add_argument('--outfile', metavar='path', required=False,
                         help='path to output file')
-    
+
     cInPath = parser.parse_args().infile
     cOutPath = parser.parse_args().infile
-    
-    #only for debugging
+
+    # only for debugging
     if not cInPath:
         cInPath = "c:/temp/test.wav"
     if not cOutPath:
         cOutPath = "c:/temp/out.txt"
-    
+
     # call the function
     computeBeatHistoCl(cInPath, cOutPath)
-        

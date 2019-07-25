@@ -11,12 +11,13 @@ computes the novelty measure per Spectral Flux
 
   Returns:
       d_flux novelty measure
-      
+
 """
 
 from FeatureSpectralFlux import FeatureSpectralFlux
 
+
 def NoveltyFlux(X, f_s):
     d_flux = FeatureSpectralFlux(X, f_s)
-    
+
     return (d_flux)

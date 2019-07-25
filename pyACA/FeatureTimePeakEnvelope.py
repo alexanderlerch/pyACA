@@ -11,48 +11,50 @@ computes two peak envelope measures for a time domain signal
   Returns:
     vppm peak envelope (1: max, 2: PPM)
     t time stamp
-    
+
 """
 
 import numpy as np
 import math
-    
-def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):   
-    
-    # number of results
-    iNumOfBlocks = math.ceil (x.size/iHopLength)
-    
-    # compute time stamps
-    t = (np.arange(0,iNumOfBlocks) * iHopLength + (iBlockLength/2))/f_s
 
-    alpha = 1 - np.array([np.exp(-2.2 / (f_s * 0.01)), np.exp(-2.2 / (f_s * 1.5))]    )
-    
+
+def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):
+
+    # number of results
+    iNumOfBlocks = math.ceil(x.size / iHopLength)
+
+    # compute time stamps
+    t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
+
+    alpha = 1 - np.array([np.exp(-2.2 / (f_s * 0.01)), np.exp(-2.2 / (f_s * 1.5))])
+
     # allocate memory
-    vppm = np.zeros([2,iNumOfBlocks])
+    vppm = np.zeros([2, iNumOfBlocks])
     v_tmp = np.zeros(iBlockLength)
-   
-    for n in range(0,iNumOfBlocks):
-        
-        i_start = n*iHopLength
-        i_stop  = np.min([x.size-1, i_start + iBlockLength - 1])
- 
-        x_block = np.abs(x[np.arange(i_start,i_stop+1)])
-        
+
+    for n in range(0, iNumOfBlocks):
+
+        i_start = n * iHopLength
+        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
+
+        x_block = np.abs(x[np.arange(i_start, i_stop + 1)])
+
         # detect the maximum per block
-        vppm[0,n] = np.max(x_block)
-        
+        vppm[0, n] = np.max(x_block)
+
         # calculate the PPM value - take into account block overlaps
         # and discard concerns wrt efficiency
-        v_tmp     = ppm(x_block, v_tmp[iHopLength-1], alpha)
-        vppm[1,n] = np.max(v_tmp)
+        v_tmp = ppm(x_block, v_tmp[iHopLength - 1], alpha)
+        vppm[1, n] = np.max(v_tmp)
 
     # convert to dB
-    epsilon = 1e-5 # -100dB
-    
+    epsilon = 1e-5  # -100dB
+
     vppm[vppm < epsilon] = epsilon
     vppm = 20 * np.log10(vppm)
-      
-    return (vppm,t)
+
+    return (vppm, t)
+
 
 def ppm(x, filterbuf, alpha):
 
@@ -61,14 +63,14 @@ def ppm(x, filterbuf, alpha):
 
     alpha_AT = alpha[0]
     alpha_RT = alpha[1]
- 
-    for i in range(0,x.shape[0]):
+
+    for i in range(0, x.shape[0]):
         if filterbuf > x[i]:
             # release state
-            ppmout[i] = (1-alpha_RT) * filterbuf
+            ppmout[i] = (1 - alpha_RT) * filterbuf
         else:
             # attack state
-            ppmout[i] = alpha_AT * x[i] + (1-alpha_AT) * filterbuf
+            ppmout[i] = alpha_AT * x[i] + (1 - alpha_AT) * filterbuf
 
         filterbuf = ppmout[i]
 
