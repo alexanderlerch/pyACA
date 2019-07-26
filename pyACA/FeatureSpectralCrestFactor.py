@@ -9,13 +9,13 @@ computes the spectral crest from the magnitude spectrum
   Returns:
     v spectral crest factor
 """
-  
-    
-def FeatureSpectralCrestFactor(X,f_s):   
-    
+
+
+def FeatureSpectralCrestFactor(X, f_s):
+
     norm = X.sum(axis=0)
     norm[norm == 0] = 1
 
-    vtsc = X.max(axis = 0)/norm;
-    
+    vtsc = X.max(axis=0) / norm
+
     return (vtsc)
