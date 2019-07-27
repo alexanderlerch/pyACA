@@ -19,6 +19,7 @@ from scipy.signal import spectrogram
 
 from ToolComputeHann import ToolComputeHann
 from FeatureSpectralPitchChroma import FeatureSpectralPitchChroma
+from ToolPreprocAudio import ToolPreprocAudio
 
 
 def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
@@ -38,14 +39,8 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
                     [6.33, 2.68, 3.52, 5.38, 2.60, 3.53, 2.54, 4.75, 3.98, 2.69, 3.34, 3.17]])
     t_pc = t_pc / t_pc.sum(axis=1, keepdims=True)
 
-    # pre-processing: downmixing
-    if afAudioData.ndim > 1:
-        afAudioData = afAudioData.mean(axis=1)
-
-    # pre-processing: normalization
-    fNorm = np.max(np.abs(afAudioData))
-    if fNorm != 0:
-        afAudioData = afAudioData / fNorm
+    # pre-processing
+    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     # in the real world, we would do this block by block...
     [f, t, X] = spectrogram(afAudioData,

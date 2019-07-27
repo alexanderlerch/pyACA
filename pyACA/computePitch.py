@@ -27,6 +27,8 @@ import numpy as np
 from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
+from ToolPreprocAudio import ToolPreprocAudio
+
 
 def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     from ToolComputeHann import ToolComputeHann
@@ -34,17 +36,8 @@ def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=
     mypackage = __import__('Pitch' + cPitchTrackName)
     hPitchFunc = getattr(mypackage, 'Pitch' + cPitchTrackName)
 
-    # pre-processing: downmixing
-    if afAudioData.ndim > 1:
-        afAudioData = afAudioData.mean(axis=1)
-
-    # pre-processing: normalization
-    fNorm = np.max(np.abs(afAudioData))
-    if fNorm != 0:
-        afAudioData = afAudioData / fNorm
-
-    # pad with block length zeros just to make sure it runs for weird inputs, too
-    afAudioData = np.concatenate((afAudioData, np.zeros([iBlockLength, ])), axis=0)
+    # pre-processing
+    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     if isSpectral(cPitchTrackName):
         # compute window function for FFT

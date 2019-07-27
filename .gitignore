@@ -1,2 +1,5 @@
 /__pycache__
 /*.bak
+/pyACA/__pycache__
+/.spyproject
+/.vs/pyACA/v16/*.suo

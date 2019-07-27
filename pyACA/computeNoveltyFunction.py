@@ -29,6 +29,7 @@ from scipy.signal import spectrogram
 from scipy.signal import filtfilt
 from scipy.signal import find_peaks
 
+from ToolPreprocAudio import ToolPreprocAudio
 from ToolComputeHann import ToolComputeHann
 
 
@@ -47,14 +48,8 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
     fLengthLpInS = 0.3
     iLengthLp = np.max([2, math.ceil(fLengthLpInS * f_s / iHopLength)])
 
-    # pre-processing: downmixing
-    if afAudioData.ndim > 1:
-        afAudioData = afAudioData.mean(axis=1)
-
-    # pre-processing: normalization
-    fNorm = np.max(np.abs(afAudioData))
-    if fNorm != 0:
-        afAudioData = afAudioData / fNorm
+    # pre-processing
+    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     # in the real world, we would do this block by block...
     [f, t, X] = spectrogram(afAudioData,
