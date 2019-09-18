@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-helper function: computer periodic von-Hann window
+helper function: compute periodic von-Hann window
 
   from https://www.programcreek.com/python/example/15589/numpy.hanning
 
