@@ -74,7 +74,7 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
         # we just want the magnitude spectrum...
         X = np.sqrt(X / 2)
 
-        # compute instantaneous pitch chroma
+        # compute instantaneous feature
         v = hFeatureFunc(X, f_s)
 
     if isTemporal(cFeatureName):
@@ -107,10 +107,10 @@ def computeFeatureCl(cPath, cFeatureName, bPlotOutput = False):
 
     # read audio file
     [f_s, afAudioData] = ToolReadAudio(cPath)
-    # afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
+    afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
 
     # compute feature
-    [v, t] = computeFeature(cFeatureName, afAudioData, f_s)
+    [v, t] = computeFeature(cFeatureName, afAudioData, f_s, None, 1024, 256)
 
     # plot feature output
     if bPlotOutput:
