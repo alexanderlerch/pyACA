@@ -4,6 +4,9 @@
 Python scripts accompanying the book "An Introduction to Audio Content 
 Analysis" (www.AudioContentAnlysis.org)
 
+This package comprises implementations of simple algorithms and features for 
+audio content analysis.
+
 Please note that the provided code examples are only intended to showcase 
 algorithmic principles – they are not suited to be used without 
 parameter optimization and additional algorithmic tuning. More specifically,
