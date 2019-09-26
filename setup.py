@@ -1,6 +1,10 @@
+import pathlib
 from setuptools import setup
 
-with open("README.md", "r") as fh:
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
+
+with open(HERE / "README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="pyACA",
