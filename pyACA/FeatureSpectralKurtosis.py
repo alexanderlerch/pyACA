@@ -11,8 +11,8 @@ computes the spectral kurtosis from the magnitude spectrum
 """
 
 import numpy as np
-from FeatureSpectralCentroid import FeatureSpectralCentroid
-from FeatureSpectralSpread import FeatureSpectralSpread
+from .FeatureSpectralCentroid import FeatureSpectralCentroid
+from .FeatureSpectralSpread import FeatureSpectralSpread
 
 
 def FeatureSpectralKurtosis(X, f_s, UseBookDefinition=False):

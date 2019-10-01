@@ -11,8 +11,8 @@ computes the spectral skewness from the magnitude spectrum
 """
 
 import numpy as np
-from FeatureSpectralCentroid import FeatureSpectralCentroid
-from FeatureSpectralSpread import FeatureSpectralSpread
+from .FeatureSpectralCentroid import FeatureSpectralCentroid
+from .FeatureSpectralSpread import FeatureSpectralSpread
 
 
 def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):

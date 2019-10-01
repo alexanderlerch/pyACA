@@ -11,7 +11,7 @@ computes the spectral spread from the magnitude spectrum
 """
 
 import numpy as np
-from FeatureSpectralCentroid import FeatureSpectralCentroid
+from .FeatureSpectralCentroid import FeatureSpectralCentroid
 
 
 def FeatureSpectralSpread(X, f_s):

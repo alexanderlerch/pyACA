@@ -40,19 +40,30 @@ conversion, dynamic time warping, gammatone filterbank, ...
 Example: Computation and plot of the Spectral Centroid
 
 ```python
-    import numpy as np
+    #import numpy as np
     import matplotlib.pyplot as plt 
-    from ToolReadAudio import ToolReadAudio
-  
-    # read audio file
-    [f_s,afAudioData] = ToolReadAudio(cPath)
-    #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
- 
-    # compute feature
-    [v,t] = computeFeature(cFeatureName, afAudioData, f_s)
+	import pyACA
+	
+	# file to analyze
+	cPath = "c:/temp/test.wav"
+	
+	# extract feature
+	[v,t] = pyACA.computeFeatureCl(cPath, "SpectralCentroid")
 
     # plot feature output
     plt.plot(t,v)
+
+	#####################################################
+	# example 2: for extracting multiple features
+    # read audio file
+	cPath = "c:/temp/test.wav"
+    [f_s,afAudioData] = pyACA.ToolReadAudio(cPath)
+    #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
+ 
+    # compute feature
+    [vsc,t] = pyACA.computeFeature("SpectralCentroid", afAudioData, f_s)
+    [vsf,t] = pyACA.computeFeature("SpectralFlux", afAudioData, f_s)
+
 ```
 
 

@@ -15,9 +15,10 @@ computes a simple beat histogram
 """
 
 import numpy as np
-from computeNoveltyFunction import computeNoveltyFunction
-from ToolComputeHann import ToolComputeHann
 
+from .computeNoveltyFunction import computeNoveltyFunction
+from .ToolComputeHann import ToolComputeHann
+from .ToolReadAudio import ToolReadAudio
 
 def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLength=8):
 
@@ -41,8 +42,7 @@ def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLen
 
 
 def computeBeatHistoCl(cInPath, cOutPath):
-    from ToolReadAudio import ToolReadAudio
-
+    
     [f_s, afAudioData] = ToolReadAudio(cInPath)
 
     [T, Bpm] = computeBeatHisto(afAudioData, f_s)

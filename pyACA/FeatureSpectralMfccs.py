@@ -11,7 +11,7 @@ computes the MFCCs from the magnitude spectrum (see Slaney)
 """
 
 import numpy as np
-from ToolMfccFb import ToolMfccFb
+from .ToolMfccFb import ToolMfccFb
 
 
 def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):

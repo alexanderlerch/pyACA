@@ -58,6 +58,7 @@
     <Compile Include="ToolComputeHann.py" />
     <Compile Include="ToolGammatoneFb.py" />
     <Compile Include="ToolMfccFb.py" />
+    <Compile Include="ToolPreprocAudio.py" />
     <Compile Include="ToolReadAudio.py" />
     <Compile Include="ToolSimpleDtw.py" />
     <Compile Include="__init__.py" />

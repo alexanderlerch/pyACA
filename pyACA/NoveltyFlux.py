@@ -14,7 +14,7 @@ computes the novelty measure per Spectral Flux
 
 """
 
-from FeatureSpectralFlux import FeatureSpectralFlux
+from .FeatureSpectralFlux import FeatureSpectralFlux
 
 
 def NoveltyFlux(X, f_s):

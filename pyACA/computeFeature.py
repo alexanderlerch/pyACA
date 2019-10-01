@@ -41,13 +41,15 @@ import numpy as np
 from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
-from ToolPreprocAudio import ToolPreprocAudio
+from .ToolPreprocAudio import ToolPreprocAudio
+from .ToolComputeHann import ToolComputeHann
+from .ToolReadAudio import ToolReadAudio
 
 
 def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
-    from ToolComputeHann import ToolComputeHann
-
-    mypackage = __import__('Feature' + cFeatureName)
+ 
+    hFeatureFunc = globals()["Feature" + cFeatureName]()
+    mypackage = __import__('.Feature' + cFeatureName)
     hFeatureFunc = getattr(mypackage, 'Feature' + cFeatureName)
 
     # pre-processing
@@ -103,7 +105,6 @@ def isTemporal(cName):
 
 
 def computeFeatureCl(cPath, cFeatureName, bPlotOutput = False):
-    from ToolReadAudio import ToolReadAudio
 
     # read audio file
     [f_s, afAudioData] = ToolReadAudio(cPath)

@@ -29,8 +29,9 @@ from scipy.signal import spectrogram
 from scipy.signal import filtfilt
 from scipy.signal import find_peaks
 
-from ToolPreprocAudio import ToolPreprocAudio
-from ToolComputeHann import ToolComputeHann
+from .ToolPreprocAudio import ToolPreprocAudio
+from .ToolComputeHann import ToolComputeHann
+from .ToolReadAudio import ToolReadAudio
 
 
 def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=512):
@@ -41,7 +42,7 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
 
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
-    mypackage = __import__('Novelty' + cNoveltyName)
+    mypackage = __import__('.Novelty' + cNoveltyName)
     hNoveltyFunc = getattr(mypackage, 'Novelty' + cNoveltyName)
 
     # initialization
@@ -84,8 +85,7 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
 
 
 def computeNoveltyFunctionCl(cPath, cNoveltyName):
-    from ToolReadAudio import ToolReadAudio
-
+    
     [f_s, afAudioData] = ToolReadAudio(cPath)
     # afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
     [d, t, iPeaks] = computeNoveltyFunction(cNoveltyName, afAudioData, f_s)

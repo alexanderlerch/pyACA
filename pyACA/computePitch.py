@@ -27,13 +27,14 @@ import numpy as np
 from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
-from ToolPreprocAudio import ToolPreprocAudio
+from .ToolPreprocAudio import ToolPreprocAudio
+from .ToolComputeHann import ToolComputeHann
+from .ToolReadAudio import ToolReadAudio
 
 
 def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
-    from ToolComputeHann import ToolComputeHann
-
-    mypackage = __import__('Pitch' + cPitchTrackName)
+    
+    mypackage = __import__('.Pitch' + cPitchTrackName)
     hPitchFunc = getattr(mypackage, 'Pitch' + cPitchTrackName)
 
     # pre-processing
@@ -88,8 +89,7 @@ def isTemporal(cName):
 
 
 def computePitchCl(cPath, cPitchTrackName, bPlotOutput=False):
-    from ToolReadAudio import ToolReadAudio
-
+    
     # read audio file
     [f_s, afAudioData] = ToolReadAudio(cPath)
     # afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)

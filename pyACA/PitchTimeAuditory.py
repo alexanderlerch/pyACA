@@ -18,7 +18,7 @@ import math
 from scipy.signal import filtfilt
 from scipy.signal import find_peaks
 
-from ToolGammatoneFb import ToolGammatoneFb
+from .ToolGammatoneFb import ToolGammatoneFb
 
 
 def PitchTimeAuditory(x, iBlockLength, iHopLength, f_s):
