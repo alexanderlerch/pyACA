@@ -51,7 +51,7 @@ Example: Computation and plot of the Spectral Centroid
 	[v,t] = pyACA.computeFeatureCl(cPath, "SpectralCentroid")
 
     # plot feature output
-    plt.plot(t,v)
+    plt.plot(t,np.squeeze(v))
 
 	#####################################################
 	# example 2: for extracting multiple features

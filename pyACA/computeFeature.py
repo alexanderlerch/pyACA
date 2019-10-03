@@ -41,6 +41,7 @@ import numpy as np
 from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
+import pyACA
 from .ToolPreprocAudio import ToolPreprocAudio
 from .ToolComputeHann import ToolComputeHann
 from .ToolReadAudio import ToolReadAudio
@@ -48,9 +49,8 @@ from .ToolReadAudio import ToolReadAudio
 
 def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
  
-    hFeatureFunc = globals()["Feature" + cFeatureName]()
-    mypackage = __import__('.Feature' + cFeatureName)
-    hFeatureFunc = getattr(mypackage, 'Feature' + cFeatureName)
+    #mypackage = __import__(".Feature" + cFeatureName, package="pyACA")
+    hFeatureFunc = getattr(pyACA, "Feature" + cFeatureName)
 
     # pre-processing
     afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)

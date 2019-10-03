@@ -8,7 +8,7 @@ with open(HERE / "README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="pyACA",
-      version="0.1.4",
+      version="0.1.6",
       description="scripts accompanying the book An Introduction to Audio Content Analysis by Alexander Lerch",
       long_description=long_description,
       long_description_content_type="text/markdown",

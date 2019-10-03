@@ -27,6 +27,7 @@ import numpy as np
 from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
+import pyACA
 from .ToolPreprocAudio import ToolPreprocAudio
 from .ToolComputeHann import ToolComputeHann
 from .ToolReadAudio import ToolReadAudio
@@ -34,8 +35,8 @@ from .ToolReadAudio import ToolReadAudio
 
 def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     
-    mypackage = __import__('.Pitch' + cPitchTrackName)
-    hPitchFunc = getattr(mypackage, 'Pitch' + cPitchTrackName)
+    #mypackage = __import__(".Pitch" + cPitchTrackName, package="pyACA")
+    hPitchFunc = getattr(pyACA, "Pitch" + cPitchTrackName)
 
     # pre-processing
     afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)

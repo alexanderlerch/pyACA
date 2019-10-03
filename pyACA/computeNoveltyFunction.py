@@ -29,6 +29,7 @@ from scipy.signal import spectrogram
 from scipy.signal import filtfilt
 from scipy.signal import find_peaks
 
+import pyACA
 from .ToolPreprocAudio import ToolPreprocAudio
 from .ToolComputeHann import ToolComputeHann
 from .ToolReadAudio import ToolReadAudio
@@ -42,8 +43,8 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
 
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
-    mypackage = __import__('.Novelty' + cNoveltyName)
-    hNoveltyFunc = getattr(mypackage, 'Novelty' + cNoveltyName)
+    #mypackage = __import__(".Novelty" + cNoveltyName, package="pyACA")
+    hNoveltyFunc = getattr(pyACA, "Novelty" + cNoveltyName)
 
     # initialization
     fLengthLpInS = 0.3
