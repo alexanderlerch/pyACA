@@ -6,3 +6,4 @@
 /build/lib/pyACA
 /dist
 /pyACA.egg-info
+/pyACA/*.bak
