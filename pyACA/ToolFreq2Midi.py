@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-helper function: compute periodic von-Hann window
+helper function: convert Midi pitch (floating point) from frequency
 
   Args:
     fInHz: The frequency to be converted, can be scalar or vector

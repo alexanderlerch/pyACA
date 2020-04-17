@@ -4,8 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bde0068b-42b7-4ee2-ac46-63598af50a90</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>ToolFreq2Mel.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -57,10 +56,11 @@
     <Compile Include="PitchTimeAuditory.py" />
     <Compile Include="PitchTimeZeroCrossings.py" />
     <Compile Include="ToolComputeHann.py" />
+    <Compile Include="ToolFreq2Bark.py" />
     <Compile Include="ToolFreq2Midi.py" />
     <Compile Include="ToolGammatoneFb.py" />
     <Compile Include="ToolMfccFb.py" />
-    <Compile Include="ToolMidi2Freq.py" />
+    <Compile Include="ToolFreq2Mel.py" />
     <Compile Include="ToolPreprocAudio.py" />
     <Compile Include="ToolReadAudio.py" />
     <Compile Include="ToolSimpleDtw.py" />
