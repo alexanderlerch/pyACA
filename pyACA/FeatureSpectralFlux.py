@@ -17,7 +17,7 @@ def FeatureSpectralFlux(X, f_s):
 
     # difference spectrum (set first diff to zero)
     X = np.c_[X[:, 0], X]
-    # X = np.concatenate(X[:,0],X, axis=1)
+
     afDeltaX = np.diff(X, 1, axis=1)
 
     # flux

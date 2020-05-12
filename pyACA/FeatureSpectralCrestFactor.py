@@ -13,12 +13,8 @@ computes the spectral crest from the magnitude spectrum
 
 def FeatureSpectralCrestFactor(X, f_s):
 
-    norm = X.sum(axis=0)
-    if X.dim[1] ==1:
-        if norm == 0:
-            norm = 1
-    else:
-        norm[norm == 0] = 1
+    norm = X.sum(axis=0, keepdims=True)
+    norm[norm == 0] = 1
 
     vtsc = X.max(axis=0) / norm
 

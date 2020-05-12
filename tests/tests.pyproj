@@ -12,6 +12,7 @@
     <Name>tests</Name>
     <RootNamespace>tests</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
