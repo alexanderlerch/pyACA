@@ -30,8 +30,8 @@ def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):
     else:
         f = np.arange(0, X.shape[0]) / (X.shape[0] - 1) * f_s / 2
         # get spectral centroid and spread (mean and std of dist)
-        vsc = FeatureSpectralCentroid(X, f_s)  # *2/f_s * (X.shape[0]-1)
-        vss = FeatureSpectralSpread(X, f_s)   # *2/f_s * (X.shape[0]-1)
+        vsc = FeatureSpectralCentroid(X, f_s) 
+        vss = FeatureSpectralSpread(X, f_s)   
 
         norm = X.sum(axis=0)
         norm[norm == 0] = 1
