@@ -108,7 +108,9 @@ def computeFeatureCl(cPath, cFeatureName, bPlotOutput = False):
 
     # read audio file
     [f_s, afAudioData] = ToolReadAudio(cPath)
-    afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
+    
+    # for debugging
+    #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
 
     # compute feature
     [v, t] = computeFeature(cFeatureName, afAudioData, f_s, None, 1024, 256)
