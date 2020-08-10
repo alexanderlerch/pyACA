@@ -135,9 +135,10 @@ if __name__ == "__main__":
                         help='option to plot the output')
 
     # retrieve command line args
-    cPath = parser.parse_args().infile
-    cFeatureName = parser.parse_args().featurename
-    bPlotOutput = parser.parse_args().plotoutput
+    args = parser.parse_args()
+    cPath = args.infile
+    cFeatureName = args.featurename
+    bPlotOutput = args.plotoutput
 
     # only for debugging
     if __debug__:

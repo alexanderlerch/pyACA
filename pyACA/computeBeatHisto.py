@@ -61,8 +61,9 @@ if __name__ == "__main__":
     parser.add_argument('--outfile', metavar='path', required=False,
                         help='path to output file')
 
-    cInPath = parser.parse_args().infile
-    cOutPath = parser.parse_args().infile
+    args = parser.parse_args()
+    cInPath = args.infile
+    cOutPath = args.outfile
 
     # only for debugging
     if not cInPath:

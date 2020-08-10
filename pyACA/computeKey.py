@@ -91,7 +91,8 @@ if __name__ == "__main__":
     parser.add_argument('--infile', metavar='path', required=False,
                         help='path to input audio file')
 
-    cPath = parser.parse_args().infile
+    args = parser.parse_args()
+    cPath = args.infile
 
     # only for debugging
     if not cPath:
