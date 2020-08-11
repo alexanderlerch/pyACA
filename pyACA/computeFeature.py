@@ -42,9 +42,9 @@ from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
 import pyACA
-from .ToolPreprocAudio import ToolPreprocAudio
-from .ToolComputeHann import ToolComputeHann
-from .ToolReadAudio import ToolReadAudio
+from pyACA.ToolPreprocAudio import ToolPreprocAudio
+from pyACA.ToolComputeHann import ToolComputeHann
+from pyACA.ToolReadAudio import ToolReadAudio
 
 
 def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
