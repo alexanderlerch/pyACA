@@ -16,9 +16,9 @@ computes a simple beat histogram
 
 import numpy as np
 
-from .computeNoveltyFunction import computeNoveltyFunction
-from .ToolComputeHann import ToolComputeHann
-from .ToolReadAudio import ToolReadAudio
+from pyACA.computeNoveltyFunction import computeNoveltyFunction
+from pyACA.ToolComputeHann import ToolComputeHann
+from pyACA.ToolReadAudio import ToolReadAudio
 
 def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLength=8):
 

@@ -15,6 +15,7 @@ from .ToolReadAudio import ToolReadAudio
 from .ToolPreprocAudio import ToolPreprocAudio
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor
+from .FeatureSpectralDecrease import FeatureSpectralDecrease
 from .FeatureSpectralFlatness import FeatureSpectralFlatness
 from .FeatureSpectralFlux import FeatureSpectralFlux
 from .FeatureSpectralKurtosis import FeatureSpectralKurtosis

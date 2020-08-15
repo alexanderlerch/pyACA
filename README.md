@@ -2,7 +2,7 @@
 **IN WORK: Currently untested**
 
 Python scripts accompanying the book "An Introduction to Audio Content 
-Analysis" (www.AudioContentAnlysis.org)
+Analysis" (www.AudioContentAnalysis.org)
 
 This package comprises implementations of simple algorithms and features for 
 audio content analysis.
