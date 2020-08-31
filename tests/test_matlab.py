@@ -12,9 +12,17 @@ More info:
 
 """
 
+
+from importlib import util as imputil
+matlab_spec = imputil.find_spec("matlab")  # importlib.util.find_spec works for python3 >= v3.4
+if matlab_spec is not None:
+    import matlab.engine
+
+import os
+import logging
 import unittest
 import numpy as np
-import matlab.engine
+import numpy.testing as npt
 
 import pyACA
 
@@ -23,42 +31,44 @@ path_to_matlab_code = '/Users/kaushal/Kaushal/Repositories/ACA-Code'
 
 
 class TestFeaturesWithMatlab(unittest.TestCase):
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(level=logging.INFO)
 
     def __init__(self, *args, **kwargs):
         super(TestFeaturesWithMatlab, self).__init__(*args, **kwargs)
-        self.eng = matlab.engine.start_matlab()
-        self.eng.cd(path_to_matlab_code)
+        self.matlab_engine = None
+        path_valid = os.path.exists(path_to_matlab_code)
+        if matlab_spec is not None and path_valid:
+            self.matlab_engine = matlab.engine.start_matlab()
+            self.matlab_engine.cd(path_to_matlab_code)
+        else:
+            if matlab_spec is None:
+                self.logger.warning("matlab package not found")
+            if not path_valid:
+                self.logger.warning("Invalid path to Matlab code")
 
     def __del__(self):
-        self.eng.quit()
+        if self.matlab_engine is not None:
+            self.matlab_engine.quit()
 
     def test_spectral_decrease(self):
-        X_py = np.zeros(1025)
-        X_m = self.eng.zeros(1025, 1)
-        fs = 4
 
-        # zero input
-        vsd_py = pyACA.FeatureSpectralDecrease(X_py, fs)                    # From python
-        vsd_m = self.eng.FeatureSpectralDecrease(X_m, fs, nargout=1)        # From MATLAB
-        self.assertEqual(vsd_py, vsd_m, "SD 1: Zero input incorrect")
+        if self.matlab_engine is None:
+            self.skipTest("Matlab engine not available")
 
-        # one peak input
-        X_py[512] = 1
-        X_m[512] = [1.0]
-        vsd_py = pyACA.FeatureSpectralDecrease(X_py, fs)
-        vsd_m = self.eng.FeatureSpectralDecrease(X_m, fs)
-        self.assertEqual(vsd_py, vsd_m, "SD 2: Delta input incorrect")
-
-        # flat spec input
-        X_py = 2*np.ones((1025, 1))
+        # WhiteNoise input
+        X_py = np.random.uniform(-1, 1, size=(1025, 16))
         X_m = matlab.double(X_py.tolist())
-        vsd_py = pyACA.FeatureSpectralDecrease(X_py, fs)
-        vsd_m = self.eng.FeatureSpectralDecrease(X_m, fs)
-        self.assertEqual(vsd_py, vsd_m, "SD 3: Flat input incorrect")
+        fs = 44100
 
-        # i/o dimensions
-        X = np.ones((1025, 4))
-        X_m = matlab.double(X_py.tolist())
         vsd_py = pyACA.FeatureSpectralDecrease(X_py, fs)
-        vsd_m = self.eng.FeatureSpectralDecrease(X_m, fs)
-        self.assertEqual(vsd_py, vsd_m, "SD 4: output vector dimension incorrect")
+        vsd_m = self.matlab_engine.FeatureSpectralDecrease(X_m, fs, nargout=1)
+
+        if vsd_py.shape == (1, 1):
+            vsd_py = vsd_py.item()
+        vsd_m = np.asfarray(vsd_m)
+
+        # npt.assert_almost_equal(vsd_py, vsd_m, decimal=7) //TODO: Use numpy testing instead?
+        self.assertTrue(((vsd_py - vsd_m) < 1e-7).all(), "SD: MATLAB crosscheck test (Noise input) failed")  # TODO: what should be the precision?
+
+
