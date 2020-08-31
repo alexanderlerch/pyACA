@@ -40,3 +40,24 @@ from .PitchTimeAcf import PitchTimeAcf
 from .PitchTimeAmdf import PitchTimeAmdf
 from .PitchTimeAuditory import PitchTimeAuditory
 from .PitchTimeZeroCrossings import PitchTimeZeroCrossings
+
+features = [
+    "SpectralCentroid",
+    "SpectralCrestFactor",
+    "SpectralDecrease",
+    "SpectralFlatness",
+    "SpectralFlux",
+    #"SpectralKurtosis",
+    #"SpectralMfccs",
+    #"SpectralPitchChroma",
+    "SpectralRolloff",
+    #"SpectralSkewness",
+    "SpectralSlope",
+    "SpectralTonalPowerRatio",
+    #"TimeAcfCoeff",
+    #"TimeMaxAcf",
+    #"TimePeakEnvelope",
+    #"TimeRms",
+    #"TimeStd",
+    #"TimeZeroCrossingRate"
+]
