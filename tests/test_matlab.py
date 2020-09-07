@@ -51,42 +51,27 @@ class TestFeaturesWithMatlab(unittest.TestCase):
         if self.matlab_engine is not None:
             self.matlab_engine.quit()
 
-    # def test_spectral_decrease(self):
-    #
-    #     if self.matlab_engine is None:
-    #         self.skipTest("Matlab engine not available")
-    #
-    #     # WhiteNoise input
-    #     X_py = np.random.uniform(-1, 1, size=(1025, 16))
-    #     X_m = matlab.double(X_py.tolist())
-    #     fs = 44100
-    #
-    #     vsd_py = pyACA.FeatureSpectralDecrease(X_py, fs)
-    #     vsd_m = self.matlab_engine.FeatureSpectralDecrease(X_m, fs, nargout=1)
-    #
-    #     if vsd_py.shape == (1, 1):
-    #         vsd_py = vsd_py.item()
-    #     vsd_m = np.asfarray(vsd_m)
-    #
-    #     # npt.assert_almost_equal(vsd_py, vsd_m, decimal=7) //TODO: Use numpy testing instead?
-    #     self.assertTrue(((vsd_py - vsd_m) < 1e-7).all(), "SD: MATLAB crosscheck test (Noise input) failed")  # TODO: what should be the precision?
-    #
-
     def test_all_features(self):
 
         if self.matlab_engine is None:
             self.skipTest("Matlab engine not available")
 
         # WhiteNoise input
-        X_py = np.random.uniform(-1, 1, size=(1025, 5))
-        X_m = matlab.double(X_py.tolist())
         fs = 44100
+        x_py = np.random.uniform(-1, 1, size=(fs//2, 1))  # 0.5 sec
+        x_m = matlab.double(x_py.tolist())
 
         for feature in pyACA.features:
             self.logger.info('Testing feature:' + feature)
-            vsd_py, t_py = pyACA.computeFeature(feature, X_py, fs)
-            vsd_m, t_m = self.matlab_engine.ComputeFeature(feature, X_m, fs, nargout=2)
-            vsd_m = np.asarray(vsd_m)
+            v_out_py, t_py = pyACA.computeFeature(feature, x_py, fs)
+            v_out_m, t_m = self.matlab_engine.ComputeFeature(feature, x_m, float(fs), nargout=2)
+            # Note: fs must be float when passing to Matlab
 
-            #npt.assert_almost_equal(vsd_py, vsd_m, decimal=5, err_msg="MATLAB crosscheck test (Noise input) failed for " + feature) #TODO: Use numpy testing instead?
-            self.assertTrue(((vsd_py - vsd_m) < 1e-7).all(), "MATLAB crosscheck test (Noise input) failed for " + feature)  # TODO: what should be the precision?
+            v_out_py = v_out_py.squeeze()
+            v_out_m = np.asarray(v_out_m).squeeze()
+
+            with self.subTest(msg=feature):
+                #self.assertTrue(((vsd_py - vsd_m) < 1e-7).all(), "MATLAB crosscheck test failed for " + feature)  # TODO: what should be the precision?
+                npt.assert_almost_equal(v_out_py, v_out_m, decimal=7, err_msg="MATLAB crosscheck test failed for " + feature) #TODO: Use all_close ?
+
+
