@@ -19,6 +19,7 @@ if matlab_spec is not None:
     import matlab.engine
 
 import os
+import sys
 import logging
 import unittest
 import numpy as np
@@ -38,14 +39,18 @@ class TestFeaturesWithMatlab(unittest.TestCase):
         super(TestFeaturesWithMatlab, self).__init__(*args, **kwargs)
         self.matlab_engine = None
         path_valid = os.path.exists(path_to_matlab_code)
-        if matlab_spec is not None and path_valid:
+        init_engine = True
+
+        if 'matlab.engine' not in sys.modules:
+            self.logger.warning("matlab package not found")
+            init_engine = False
+        if not path_valid:
+            self.logger.warning("Invalid path to Matlab code")
+            init_engine = False
+
+        if init_engine:
             self.matlab_engine = matlab.engine.start_matlab()
             self.matlab_engine.cd(path_to_matlab_code)
-        else:
-            if matlab_spec is None:
-                self.logger.warning("matlab package not found")
-            if not path_valid:
-                self.logger.warning("Invalid path to Matlab code")
 
     def __del__(self):
         if self.matlab_engine is not None:
@@ -61,17 +66,16 @@ class TestFeaturesWithMatlab(unittest.TestCase):
         x_py = np.random.uniform(-1, 1, size=(fs//2, 1))  # 0.5 sec
         x_m = matlab.double(x_py.tolist())
 
-        for feature in pyACA.features:
+        for feature in pyACA.getFeatureList():
             self.logger.info('Testing feature:' + feature)
             v_out_py, t_py = pyACA.computeFeature(feature, x_py, fs)
-            v_out_m, t_m = self.matlab_engine.ComputeFeature(feature, x_m, float(fs), nargout=2)
             # Note: fs must be float when passing to Matlab
+            v_out_m, t_m = self.matlab_engine.ComputeFeature(feature, x_m, float(fs), nargout=2)
 
             v_out_py = v_out_py.squeeze()
             v_out_m = np.asarray(v_out_m).squeeze()
 
             with self.subTest(msg=feature):
-                #self.assertTrue(((vsd_py - vsd_m) < 1e-7).all(), "MATLAB crosscheck test failed for " + feature)  # TODO: what should be the precision?
-                npt.assert_almost_equal(v_out_py, v_out_m, decimal=7, err_msg="MATLAB crosscheck test failed for " + feature) #TODO: Use all_close ?
+                npt.assert_almost_equal(v_out_py, v_out_m, decimal=7, err_msg="MATLAB crosscheck test failed for " + feature)
 
 
