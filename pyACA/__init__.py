@@ -24,6 +24,7 @@ from .FeatureSpectralPitchChroma import FeatureSpectralPitchChroma
 from .FeatureSpectralRolloff import FeatureSpectralRolloff
 from .FeatureSpectralSkewness import FeatureSpectralSkewness
 from .FeatureSpectralSlope import FeatureSpectralSlope
+from .FeatureSpectralSpread import FeatureSpectralSpread
 from .FeatureSpectralTonalPowerRatio import FeatureSpectralTonalPowerRatio
 from .FeatureTimeAcfCoeff import FeatureTimeAcfCoeff
 from .FeatureTimeMaxAcf import FeatureTimeMaxAcf
@@ -40,6 +41,7 @@ from .PitchTimeAcf import PitchTimeAcf
 from .PitchTimeAmdf import PitchTimeAmdf
 from .PitchTimeAuditory import PitchTimeAuditory
 from .PitchTimeZeroCrossings import PitchTimeZeroCrossings
+from .getFeatureList import getFeatureList
 
 features = [
     "SpectralCentroid",
