@@ -22,7 +22,7 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):
 
     # initialize
     f_max = 2000
-    fMinThresh = .35
+    fMinThresh = .35    # TODO: Make these optional params??
     iNumOfBlocks = math.ceil(x.size / iHopLength)
 
     # compute time stamps
@@ -44,7 +44,7 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):
             x_tmp = x[np.arange(i_start, i_stop + 1)]
             afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
 
-        afCorr = afCorr[np.arange(iBlockLength, afCorr.size)]
+        afCorr = afCorr[np.arange(i_stop-i_start+1, afCorr.size)]
 
         # update eta_min to avoid main lobe
         eta_tmp = np.argmax(afCorr < fMinThresh)
