@@ -17,7 +17,7 @@ from .FeatureSpectralCentroid import FeatureSpectralCentroid
 def FeatureSpectralSpread(X, f_s):
 
     # get spectral centroid as index
-    vsc = FeatureSpectralCentroid(X, f_s) * 2 / f_s * (X.shape[0] - 1)
+    vsc = FeatureSpectralCentroid(X, f_s) * 2 / f_s * X.shape[0]
 
     # X = X**2 removed for consistency with book
 
