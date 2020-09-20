@@ -26,6 +26,6 @@ def FeatureSpectralDecrease(X, f_s):
     norm[norm == 0] = 1
 
     # compute slope
-    vsc = np.dot(kinv, X - X[0, :]) / norm  # TODO: Return this not as an array?
+    vsc = np.dot(kinv, X - X[0, :]) / norm
 
-    return vsc
+    return np.squeeze(vsc, axis=0)

@@ -28,7 +28,7 @@ def FeatureSpectralSpread(X, f_s):
     vss = np.zeros(X.shape[1])
     indices = np.arange(0, X.shape[0])
     for n in range(0, X.shape[1]):
-        vss[n] = np.dot((indices - vsc[0, n])**2, X[:, n]) / norm[n]
+        vss[n] = np.dot((indices - vsc[n])**2, X[:, n]) / norm[n]
 
     vss = np.sqrt(vss)
 

@@ -40,6 +40,6 @@ def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):
         # compute spread
         vssk = np.zeros(X.shape[1])
         for n in range(0, X.shape[1]):
-            vssk[n] = np.dot((f - vsc[0, n])**3, X[:, n]) / (vss[n]**3 * norm[n] * X.shape[0])
+            vssk[n] = np.dot((f - vsc[n])**3, X[:, n]) / (vss[n]**3 * norm[n] * X.shape[0])
 
     return (vssk)

@@ -40,6 +40,6 @@ def FeatureSpectralKurtosis(X, f_s, UseBookDefinition=False):
         # compute spread
         vsk = np.zeros(X.shape[1])
         for n in range(0, X.shape[1]):
-            vsk[n] = np.dot((f - vsc[0, n])**4, X[:, n]) / (vss[n]**4 * norm[n] * X.shape[0])
+            vsk[n] = np.dot((f - vsc[n])**4, X[:, n]) / (vss[n]**4 * norm[n] * X.shape[0])
 
     return (vsk - 3)
