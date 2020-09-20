@@ -14,8 +14,6 @@ import numpy as np
 
 
 def FeatureSpectralDecrease(X, f_s):
-    if X.ndim == 1:
-        X = np.expand_dims(X, axis=1)
 
     # compute index vector
     kinv = np.arange(0, X.shape[0])
@@ -26,6 +24,6 @@ def FeatureSpectralDecrease(X, f_s):
     norm[norm == 0] = 1
 
     # compute slope
-    vsc = np.dot(kinv, X - X[0, :]) / norm
+    vsc = np.dot(kinv, X - X[0]) / norm
 
     return np.squeeze(vsc, axis=0)

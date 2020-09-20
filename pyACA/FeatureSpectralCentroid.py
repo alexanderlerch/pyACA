@@ -25,4 +25,7 @@ def FeatureSpectralCentroid(X, f_s):
     # convert from index to Hz
     vsc = vsc / (X.shape[0] - 1) * f_s / 2
 
-    return np.squeeze(vsc, axis=0)
+    # if input is a spectrum, output scaler else if spectrogram, output 1d array
+    vsc = np.squeeze(vsc) if X.ndim == 1 else np.squeeze(vsc, axis=0)
+
+    return vsc

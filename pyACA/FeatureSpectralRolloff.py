@@ -22,4 +22,4 @@ def FeatureSpectralRolloff(X, f_s, kappa=0.85):
     # convert from index to Hz
     vsr = vsr / (X.shape[0] - 1) * f_s / 2
 
-    return (vsr)
+    return vsr

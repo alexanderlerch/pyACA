@@ -17,6 +17,10 @@ from .FeatureSpectralSpread import FeatureSpectralSpread
 
 def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     if UseBookDefinition:  # not recommended
         # compute mean and standard deviation
         mu_x = np.mean(X, axis=0, keepdims=True)
@@ -42,4 +46,4 @@ def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):
         for n in range(0, X.shape[1]):
             vssk[n] = np.dot((f - vsc[n])**3, X[:, n]) / (vss[n]**3 * norm[n] * X.shape[0])
 
-    return (vssk)
+    return np.squeeze(vssk) if isSpectrum else vssk

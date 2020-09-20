@@ -15,6 +15,10 @@ import numpy as np
 
 def FeatureSpectralFlux(X, f_s):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     # difference spectrum (set first diff to zero)
     X = np.c_[X[:, 0], X]
 
@@ -23,4 +27,4 @@ def FeatureSpectralFlux(X, f_s):
     # flux
     vsf = np.sqrt((afDeltaX**2).sum(axis=0)) / X.shape[0]
 
-    return (vsf)
+    return np.squeeze(vsf) if isSpectrum else vsf
