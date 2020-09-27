@@ -18,11 +18,9 @@ import numpy as np
 import math
 
 
-def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s):
+def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0.35):
 
     # initialize
-    f_max = 2000
-    fMinThresh = .35    # TODO: Make these optional params??
     iNumOfBlocks = math.ceil(x.size / iHopLength)
 
     # compute time stamps
