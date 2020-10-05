@@ -42,7 +42,7 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0
             x_tmp = x[np.arange(i_start, i_stop + 1)]
             afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
 
-        afCorr = afCorr[np.arange(i_stop-i_start+1, afCorr.size)]
+        afCorr = afCorr[np.arange(iBlockLength, afCorr.size)]
 
         # update eta_min to avoid main lobe
         eta_tmp = np.argmax(afCorr < fMinThresh)

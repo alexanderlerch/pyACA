@@ -46,6 +46,6 @@ def FeatureTimeAcfCoeff(x, iBlockLength, iHopLength, f_s, eta=19):
             afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
 
         # find the coefficients specified in eta
-        vacf[np.arange(0, iNumOfResultsPerBlock), n] = afCorr[i_stop-i_start+1 + eta]
+        vacf[np.arange(0, iNumOfResultsPerBlock), n] = afCorr[iBlockLength + eta]
 
     return (vacf, t)
