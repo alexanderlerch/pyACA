@@ -62,19 +62,16 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
 
         assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
-        # pad with block length zeros just to make sure it runs for weird inputs, too
-        afAudioData = np.concatenate((afAudioData, np.zeros([iBlockLength, ])), axis=0)
-
         # in the real world, we would do this block by block...
         [f, t, X] = spectrogram(afAudioData,
-                                f_s,
-                                afWindow,
-                                iBlockLength,
-                                iBlockLength - iHopLength,
-                                iBlockLength,
-                                False,
-                                True,
-                                'spectrum')
+                                fs=f_s,
+                                window=afWindow,
+                                nperseg=iBlockLength,
+                                noverlap=iBlockLength - iHopLength,
+                                nfft=iBlockLength,
+                                detrend=False,
+                                return_onesided=True,
+                                scaling='spectrum')
 
         # we just want the magnitude spectrum...
         X = np.sqrt(X / 2)

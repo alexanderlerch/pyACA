@@ -21,7 +21,7 @@ import math
 def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0.35):
 
     # initialize
-    iNumOfBlocks = math.ceil(x.size / iHopLength)
+    iNumOfBlocks = math.floor((x.size - iBlockLength) / iHopLength + 1)
 
     # compute time stamps
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
