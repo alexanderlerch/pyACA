@@ -22,4 +22,4 @@ def FeatureSpectralFlatness(X, f_s):
 
     vtf = np.exp(X.mean(axis=0, keepdims=True)) / norm
 
-    return (vtf)
+    return np.squeeze(vtf, axis=0)

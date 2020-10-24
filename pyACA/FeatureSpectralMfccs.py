@@ -16,6 +16,10 @@ from .ToolMfccFb import ToolMfccFb
 
 def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     # allocate memory
     v_mfcc = np.zeros([iNumCoeffs, X.shape[1]])
 
@@ -30,7 +34,7 @@ def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
         # calculate the mfccs
         v_mfcc[:, n] = np.dot(T, X_Mel)
 
-    return (v_mfcc)
+    return np.squeeze(v_mfcc) if isSpectrum else v_mfcc
 
 
 # see function mfcc.m from Slaneys Auditory Toolbox

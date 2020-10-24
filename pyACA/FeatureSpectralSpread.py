@@ -16,6 +16,10 @@ from .FeatureSpectralCentroid import FeatureSpectralCentroid
 
 def FeatureSpectralSpread(X, f_s):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     # get spectral centroid as index
     vsc = FeatureSpectralCentroid(X, f_s) * 2 / f_s * (X.shape[0] - 1)
 
@@ -28,11 +32,11 @@ def FeatureSpectralSpread(X, f_s):
     vss = np.zeros(X.shape[1])
     indices = np.arange(0, X.shape[0])
     for n in range(0, X.shape[1]):
-        vss[n] = np.dot((indices - vsc[0, n])**2, X[:, n]) / norm[n]
+        vss[n] = np.dot((indices - vsc[n])**2, X[:, n]) / norm[n]
 
     vss = np.sqrt(vss)
 
     # convert from index to Hz
     vss = vss / (X.shape[0] - 1) * f_s / 2
 
-    return (vss)
+    return np.squeeze(vss) if isSpectrum else vss

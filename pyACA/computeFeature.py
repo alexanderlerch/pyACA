@@ -64,14 +64,14 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
 
         # in the real world, we would do this block by block...
         [f, t, X] = spectrogram(afAudioData,
-                                f_s,
-                                afWindow,
-                                iBlockLength,
-                                iBlockLength - iHopLength,
-                                iBlockLength,
-                                False,
-                                True,
-                                'spectrum')
+                                fs=f_s,
+                                window=afWindow,
+                                nperseg=iBlockLength,
+                                noverlap=iBlockLength - iHopLength,
+                                nfft=iBlockLength,
+                                detrend=False,
+                                return_onesided=True,
+                                scaling='spectrum')
 
         # we just want the magnitude spectrum...
         X = np.sqrt(X / 2)
@@ -135,9 +135,10 @@ if __name__ == "__main__":
                         help='option to plot the output')
 
     # retrieve command line args
-    cPath = parser.parse_args().infile
-    cFeatureName = parser.parse_args().featurename
-    bPlotOutput = parser.parse_args().plotoutput
+    args = parser.parse_args()
+    cPath = args.infile
+    cFeatureName = args.featurename
+    bPlotOutput = args.plotoutput
 
     # only for debugging
     if __debug__:

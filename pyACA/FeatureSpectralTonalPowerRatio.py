@@ -17,6 +17,10 @@ from scipy.signal import find_peaks
 
 def FeatureSpectralTonalPowerRatio(X, f_s, G_T=5e-4):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     X = X**2
 
     fSum = X.sum(axis=0)
@@ -35,4 +39,4 @@ def FeatureSpectralTonalPowerRatio(X, f_s, G_T=5e-4):
         # calculate ratio
         vtpr[n] = X[afPeaks[0], n].sum() / fSum[n]
 
-    return (vtpr)
+    return np.squeeze(vtpr) if isSpectrum else vtpr

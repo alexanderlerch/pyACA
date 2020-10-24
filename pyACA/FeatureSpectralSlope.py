@@ -25,4 +25,4 @@ def FeatureSpectralSlope(X, f_s):
     X = X - mu_x
     vssl = np.dot(kmu, X) / np.dot(kmu, kmu)
 
-    return (vssl)
+    return vssl

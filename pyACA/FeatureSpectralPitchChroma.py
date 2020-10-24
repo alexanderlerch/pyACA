@@ -16,6 +16,10 @@ import math
 
 def FeatureSpectralPitchChroma(X, f_s):
 
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
+
     # allocate memory
     v_pc = np.zeros([12, X.shape[1]])
 
@@ -30,7 +34,7 @@ def FeatureSpectralPitchChroma(X, f_s):
     norm[norm == 0] = 1
     v_pc = v_pc / norm
 
-    return (v_pc)
+    return np.squeeze(v_pc) if isSpectrum else v_pc
 
 
 def generatePcFilters(iSpecLength, f_s):
