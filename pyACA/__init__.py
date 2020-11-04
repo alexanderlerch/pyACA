@@ -13,6 +13,7 @@ from .computePitch import computePitchCl
 from .ToolSimpleDtw import ToolSimpleDtw
 from .ToolReadAudio import ToolReadAudio
 from .ToolPreprocAudio import ToolPreprocAudio
+from .ToolBlockAudio import ToolBlockAudio
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor
 from .FeatureSpectralDecrease import FeatureSpectralDecrease
