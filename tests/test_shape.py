@@ -22,7 +22,7 @@ class TestShape(unittest.TestCase):
                 npt.assert_equal(out.shape[-1], expectedNumBlocks)
 
 
-    def test_spectral_shape_spectrum_input(self):
+    def test_spectral_features_for_1d_input(self):
         fs = 44100
         X = np.zeros(1025)
 
@@ -45,13 +45,14 @@ class TestShape(unittest.TestCase):
             npt.assert_equal(out.shape, (12,))
 
 
-    def test_spectral_shape_spectrogram_single_block_input(self):
-        X = np.zeros((1025, 1))
+    def test_spectral_features_for_2d_input(self):
         fs = 44100
-
         features = pyACA.getFeatureList('spectral')
         features.remove('SpectralMfccs')
         features.remove('SpectralPitchChroma')
+
+        # Test for 2d input with only one block
+        X = np.zeros((1025, 1))
 
         for feature in features:
             with self.subTest(msg=feature):
@@ -67,14 +68,8 @@ class TestShape(unittest.TestCase):
             out = pyACA.FeatureSpectralPitchChroma(X, fs)
             npt.assert_equal(out.shape, (12, 1))
 
-
-    def test_spectral_shape_spectrogram_multiple_blocks_input(self):
+        # Test for 2d input with only multiple block
         X = np.zeros((1025, 16))
-        fs = 44100
-
-        features = pyACA.getFeatureList('spectral')
-        features.remove('SpectralMfccs')
-        features.remove('SpectralPitchChroma')
 
         for feature in features:
             with self.subTest(msg=feature):
