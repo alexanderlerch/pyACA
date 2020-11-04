@@ -15,13 +15,16 @@ computes two peak envelope measures for a time domain signal
 """
 
 import numpy as np
-import math
+import pyACA
 
 
 def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):
 
+    # create blocks
+    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+
     # number of results
-    iNumOfBlocks = math.floor((x.size - iBlockLength) / iHopLength + 1)
+    iNumOfBlocks = xBlocks.shape[0]
 
     # compute time stamps
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
@@ -32,12 +35,8 @@ def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):
     vppm = np.zeros([2, iNumOfBlocks])
     v_tmp = np.zeros(iBlockLength)
 
-    for n in range(0, iNumOfBlocks):
-
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
-
-        x_block = np.abs(x[np.arange(i_start, i_stop + 1)])
+    for n, block in enumerate(xBlocks):
+        x_block = np.abs(block)
 
         # detect the maximum per block
         vppm[0, n] = np.max(x_block)
@@ -53,7 +52,7 @@ def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):
     vppm[vppm < epsilon] = epsilon
     vppm = 20 * np.log10(vppm)
 
-    return (vppm, t)
+    return vppm, t
 
 
 def ppm(x, filterbuf, alpha):

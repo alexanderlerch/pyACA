@@ -15,13 +15,16 @@ computes the ACF maxima of a time domain signal
 """
 
 import numpy as np
-import math
+import pyACA
 
 
 def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0.35):
 
-    # initialize
-    iNumOfBlocks = math.floor((x.size - iBlockLength) / iHopLength + 1)
+    # create blocks
+    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+
+    # number of results
+    iNumOfBlocks = xBlocks.shape[0]
 
     # compute time stamps
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
@@ -29,18 +32,14 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0
     # allocate memory
     vacf = np.zeros(iNumOfBlocks)
 
-    for n in range(0, iNumOfBlocks):
-        eta_min = math.floor(f_s / f_max)
-
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
+    for n, block in enumerate(xBlocks):
+        eta_min = np.floor(f_s / f_max).astype(int)
 
         # calculate the acf
-        if not x[np.arange(i_start, i_stop + 1)].sum():
+        if not block.sum():
             continue
         else:
-            x_tmp = x[np.arange(i_start, i_stop + 1)]
-            afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
+            afCorr = np.correlate(block, block, "full") / np.dot(block, block)
 
         afCorr = afCorr[np.arange(iBlockLength, afCorr.size)]
 
@@ -55,4 +54,4 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0
         # find the coefficients specified in eta
         vacf[n] = np.max(afCorr[np.arange(eta_min + 1, afCorr.size)])
 
-    return (vacf, t)
+    return vacf, t
