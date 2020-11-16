@@ -15,13 +15,16 @@ computes the ACF coefficients of a time domain signal
 """
 
 import numpy as np
-import math
+import pyACA
 
 
 def FeatureTimeAcfCoeff(x, iBlockLength, iHopLength, f_s, eta=19):
 
+    # create blocks
+    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+
     # number of results
-    iNumOfBlocks = math.floor((x.size - iBlockLength) / iHopLength + 1)
+    iNumOfBlocks = xBlocks.shape[0]
     if (np.isscalar(eta)):
         iNumOfResultsPerBlock = 1
     else:
@@ -33,19 +36,15 @@ def FeatureTimeAcfCoeff(x, iBlockLength, iHopLength, f_s, eta=19):
     # allocate memory
     vacf = np.zeros([iNumOfResultsPerBlock, iNumOfBlocks])
 
-    for n in range(0, iNumOfBlocks):
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
-
+    for n, block in enumerate(xBlocks):
         # calculate the acf
-        if not x[np.arange(i_start, i_stop + 1)].sum():
+        if not block.sum():
             vacf[np.arange(0, iNumOfResultsPerBlock), n] = np.zeros(iNumOfResultsPerBlock)
             continue
         else:
-            x_tmp = x[np.arange(i_start, i_stop + 1)]
-            afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
+            afCorr = np.correlate(block, block, "full") / np.dot(block, block)
 
         # find the coefficients specified in eta
         vacf[np.arange(0, iNumOfResultsPerBlock), n] = afCorr[iBlockLength + eta]
 
-    return (vacf, t)
+    return vacf, t

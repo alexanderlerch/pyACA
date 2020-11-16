@@ -15,13 +15,15 @@ computes the standard deviation of a time domain signal
 """
 
 import numpy as np
-import math
-
+import pyACA
 
 def FeatureTimeStd(x, iBlockLength, iHopLength, f_s):
 
+    # create blocks
+    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+
     # number of results
-    iNumOfBlocks = math.floor((x.size - iBlockLength) / iHopLength + 1)
+    iNumOfBlocks = xBlocks.shape[0]
 
     # compute time stamps
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
@@ -29,12 +31,8 @@ def FeatureTimeStd(x, iBlockLength, iHopLength, f_s):
     # allocate memory
     vstd = np.zeros(iNumOfBlocks)
 
-    for n in range(0, iNumOfBlocks):
-
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
-
+    for n, block in enumerate(xBlocks):
         # calculate the rms
-        vstd[n] = np.std(x[np.arange(i_start, i_stop + 1)])
+        vstd[n] = np.std(block)
 
-    return (vstd, t)
+    return vstd, t
