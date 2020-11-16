@@ -7,60 +7,19 @@ import pyACA
 
 class TestShape(unittest.TestCase):
 
-    def test_compute_feature_num_blocks(self):    # takes ~ 6.2 sec
-        blockLength = 4096
-        hopLength = 2048
+    def test_compute_feature_num_blocks(self):
+        blockLength = 256   # Using smaller blocksize to reduce time required to test (~7.3 sec)
+        hopLength = 128
         fs = 44100
         inputData = np.random.uniform(-1, 1, size=(2*blockLength, 1))
 
-        # Test all input sizes for SepctralCentroid
         for inputSize in range(1, 2*blockLength):
             x = inputData[:inputSize]
-            # Num blocks considering the extra block appended in computeFeature
             expectedNumBlocks = self.calcNumBlocks(x.size+blockLength, blockLength, hopLength)
-            with self.subTest(msg='SepctralCentroid:' + str(inputSize)):
-                out, t = pyACA.computeFeature('SpectralCentroid', x, fs, iBlockLength=blockLength, iHopLength=hopLength)
-                #print(expectedNumBlocks, out.shape)
-                npt.assert_equal(out.shape[-1], expectedNumBlocks)
-
-
-        # Testing specific input sizes for all features
-        input_lengths = [
-            1,
-            blockLength//2,
-            blockLength - 1,
-            blockLength,
-            blockLength + 1,
-            blockLength + blockLength//2,
-            2 * blockLength
-        ]
-
-        features = pyACA.getFeatureList('all')
-        features.remove('SpectralCentroid')
-
-        for inputSize in input_lengths:
-            x = inputData[:inputSize]
-            expectedNumBlocks = self.calcNumBlocks(x.size+blockLength, blockLength, hopLength)
-            for feature in features:
+            for feature in pyACA.getFeatureList('all'):
                 with self.subTest(msg=feature + ':' + str(inputSize)):
                     out, t = pyACA.computeFeature(feature, x, fs, iBlockLength=blockLength, iHopLength=hopLength)
                     npt.assert_equal(out.shape[-1], expectedNumBlocks)
-
-
-    # def test_compute_feature_num_blocks_2(self):  # takes ~ 7.3 sec
-    #     blockLength = 256
-    #     hopLength = 128
-    #     fs = 44100
-    #     inputData = np.random.uniform(-1, 1, size=(2*blockLength, 1))
-    #
-    #     for inputSize in range(1, 2*blockLength):
-    #         x = inputData[:inputSize]
-    #         expectedNumBlocks = self.calcNumBlocks(x.size+blockLength, blockLength, hopLength)
-    #         for feature in pyACA.getFeatureList('all'):
-    #             with self.subTest(msg=feature + ':' + str(inputSize)):
-    #                 out, t = pyACA.computeFeature(feature, x, fs, iBlockLength=blockLength, iHopLength=hopLength)
-    #                 npt.assert_equal(out.shape[-1], expectedNumBlocks)
-    #
 
 
     def test_spectral_features_for_1d_input(self):
