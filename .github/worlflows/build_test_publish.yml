@@ -15,6 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
+      with:                # This will checkout the current branch instead of master. TODO: Remove this after testing
+        ref: ${{ github.ref }}
 
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
@@ -45,6 +47,6 @@ jobs:
 
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@master
-      with:
+      with:                                     # Testing on test.pypi.org TODO: Update to PyPI later
         password: ${{ secrets.test_pypi_token }}
         repository_url: https://test.pypi.org/legacy/
