@@ -1,0 +1,52 @@
+name: Build, test and publish the package to PyPI
+
+on: push
+
+#on:
+#  push:
+#    # Pattern matched against refs/tags
+#    tags:
+#      - '*'           # Push events to every tag
+
+jobs:
+  build-test-publish:
+    name: Build, test and publish Python 🐍 distributions 📦 to PyPI
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+      with:                # This will checkout the current branch instead of master. TODO: Remove this after testing
+        ref: ${{ github.ref }}
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Run unit tests
+      run: >-
+        python -m
+        unittest
+        tests/test_shape.py
+
+    - name: Install pypa/build
+      run: >-
+        python -m
+        pip install
+        build
+        --user
+
+    - name: Build a binary wheel and a source tarball
+      run: >-
+        python -m
+        build
+        --sdist
+        --wheel
+        --outdir dist/
+        .
+
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:                                     # Testing on test.pypi.org TODO: Update to PyPI later
+        password: ${{ secrets.test_pypi_token }}
+        repository_url: https://test.pypi.org/legacy/
