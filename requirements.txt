@@ -7,7 +7,6 @@ ipython==7.16.1
 ipython-genutils==0.2.0
 jedi==0.17.2
 kiwisolver==1.2.0
-matlabengineforpython===R2018a
 matplotlib==3.3.1
 mkl-fft==1.1.0
 mkl-random==1.1.1
