@@ -1,0 +1,28 @@
+appnope==0.1.0
+backcall==0.2.0
+certifi==2020.6.20
+cycler==0.10.0
+decorator==4.4.2
+ipython==7.16.1
+ipython-genutils==0.2.0
+jedi==0.17.2
+kiwisolver==1.2.0
+matlabengineforpython===R2018a
+matplotlib==3.3.1
+mkl-fft==1.1.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+numpy @ file:///opt/concourse/worker/volumes/live/3f9886a9-9d2f-4d0a-7e31-acf5536b90f1/volume/numpy_and_numpy_base_1596234665264/work
+parso==0.7.1
+pexpect==4.8.0
+pickleshare==0.7.5
+Pillow==7.2.0
+prompt-toolkit==3.0.6
+ptyprocess==0.6.0
+Pygments==2.6.1
+pyparsing==2.4.7
+python-dateutil==2.8.1
+scipy @ file:///opt/concourse/worker/volumes/live/5de63de1-ebe3-42a0-667e-ce551df4774f/volume/scipy_1592940143707/work
+six==1.15.0
+traitlets==4.3.3
+wcwidth==0.2.5
