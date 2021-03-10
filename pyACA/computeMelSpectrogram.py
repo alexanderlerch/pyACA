@@ -47,7 +47,7 @@ def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarathmic=True, iB
         nfft=iBlockLength,
         detrend=False,
         return_onesided=True,
-        scaling='spectrum' # Returns power spectrum
+        scaling='spectrum'  # Returns power spectrum
     )
 
     # Convert power spectrum to magnitude spectrum
@@ -56,15 +56,13 @@ def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarathmic=True, iB
     # Compute Mel filters
     H, f_c = ToolMelFb(iBlockLength, f_s, iNumMelBands, fMax)
 
-    M = H*X
+    M = np.matmul(H, X)
 
     if bLogarathmic:
         # Convert amplitude to level (dB)
         M = 20 * np.log10(M + 1e-12)
 
-
     return M, f_c, t
-
 
 
 
@@ -87,12 +85,11 @@ def ToolMelFb(iFftLength, f_s, iNumFilters, f_max):
 
     afFilterMax = 2 / (f_u - f_l)
 
-    print(f_fft.shape, f_l.shape)
     # Compute the transfer functions
-    for c in range(iNumFilters):    #TODO: Something fishy is gonna happen here. Test!
-        H[c] = (f_fft > f_l[c] & f_fft <= f_c[c]) * \
-            afFilterMax[c] * (f_fft-f_l[c])/(f_c[c]-f_l[c]) + \
-            (f_fft > f_c[c] & f_fft < f_u[c]) * afFilterMax[c] * \
-            (f_u[c]-f_fft)/(f_u[c]-f_c[c])
+    for c in range(iNumFilters):
+        H[c] = np.logical_and(f_fft > f_l[c], f_fft <= f_c[c]) * \
+            afFilterMax[c] * (f_fft-f_l[c]) / (f_c[c]-f_l[c]) + \
+            np.logical_and(f_fft > f_c[c], f_fft < f_u[c]) * \
+            afFilterMax[c] * (f_u[c]-f_fft) / (f_u[c]-f_c[c])
 
     return H, f_c
