@@ -12,7 +12,9 @@ computes a mel spectrogram from the audio data
       iHopLength: internal hop length (default: 2048 samples)
 
   Returns:
-      #TODO: Add
+      M: Mel spectrum
+      f_c: Center frequencies of mel bands
+      t: Timestamps
 """
 
 import numpy as np
