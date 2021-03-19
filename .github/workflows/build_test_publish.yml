@@ -2,12 +2,6 @@ name: Build, test and publish the package to PyPI
 
 on: push
 
-#on:
-#  push:
-#    # Pattern matched against refs/tags
-#    tags:
-#      - '*'           # Push events to every tag
-
 jobs:
   build-test-publish:
     name: Build, test and publish Python 🐍 distributions 📦 to PyPI
@@ -15,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-      with:                # This will checkout the current branch instead of master. TODO: Remove this after testing
+      with:                                 # This will checkout the current branch instead of master.
         ref: ${{ github.ref }}
 
     - name: Set up Python 3.6
@@ -56,3 +50,9 @@ jobs:
       with:                                     # Testing on test.pypi.org TODO: Update to PyPI later
         password: ${{ secrets.test_pypi_token }}
         repository_url: https://test.pypi.org/legacy/
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags')
+      uses: ncipollo/release-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
