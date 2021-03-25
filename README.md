@@ -55,8 +55,7 @@ conversion, dynamic time warping, gammatone filterbank, ...
 
 ```python
 	import pyACA
-	import matplotlib.pyplot as plt 
-
+	
 	# read audio file
 	cPath = "c:/temp/test.wav"
 	[f_s,afAudioData] = pyACA.ToolReadAudio(cPath)
