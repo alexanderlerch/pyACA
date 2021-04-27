@@ -7,3 +7,9 @@
 /dist
 /pyACA.egg-info
 /pyACA/*.bak
+/TestResults
+/tests/.pytest_cache/v/cache
+/tests/__pycache__
+/tests/*.bak
+/.vs/pyACA/v16/TestStore/0/*.testlog
+/.vs/pyACA/v16/TestStore/0/testlog.manifest

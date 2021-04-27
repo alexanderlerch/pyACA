@@ -79,3 +79,22 @@ class TestFeaturesWithMatlab(unittest.TestCase):
                 npt.assert_almost_equal(v_out_py, v_out_m, decimal=7, err_msg="MATLAB crosscheck test failed for " + feature)
 
 
+    def test_mel_spectrogram(self):
+
+        if self.matlab_engine is None:
+            self.skipTest("Matlab engine not available")
+
+        # WhiteNoise input
+        fs = 44100
+        x_py = np.random.uniform(-1, 1, size=(fs//2, 1))  # 0.5 sec
+        x_m = matlab.double(x_py.tolist())
+
+        self.logger.info('Testing computeMelSpectrogram')
+        M_py, fc_py, t_py = pyACA.computeMelSpectrogram(x_py, fs)
+        M_m, fc_m, t_m = self.matlab_engine.ComputeMelSpectrogram(x_m, float(fs), nargout=3)
+
+        M_py = M_py.squeeze()
+        M_m = np.asarray(M_m).squeeze()
+
+        with self.subTest(msg='computeMelSpectrogram'):
+            npt.assert_almost_equal(M_py, M_m, decimal=7, err_msg="MATLAB crosscheck test failed for computeMelSpectrogram" )

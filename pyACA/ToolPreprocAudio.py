@@ -24,10 +24,10 @@ def ToolPreprocAudio(afAudioData, iBlockLength):
     if fNorm != 0:
         afAudioData = afAudioData / fNorm
 
-    # additional preprocessing step might inlucde sample rate conversion and filtering
+    # additional preprocessing step might include sample rate conversion and filtering
     
     # pad with block length zeros just to make sure it runs for weird inputs, too
     afAudioData = np.concatenate((afAudioData, np.zeros([iBlockLength, ])), axis=0)
     
-    return (afAudioData)
+    return afAudioData
 
