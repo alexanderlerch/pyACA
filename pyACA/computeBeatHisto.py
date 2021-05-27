@@ -11,7 +11,7 @@ computes a simple beat histogram
       iHopLength: internal hop length (default: 2048 samples)
 
   Returns:
-      key string
+      beat histogram, BPM axis ticks
 """
 
 import numpy as np

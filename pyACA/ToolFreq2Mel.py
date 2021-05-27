@@ -15,10 +15,15 @@ import math
 
 
 def ToolFreq2Mel(fInHz, cModel = 'Fant'):
+    # Fant
     def acaFant_scalar(f):
         return 1000 * math.log2(1 + f/1000)
+        
+    # Shaughnessy
     def acaShaughnessy_scalar(f):
         return 2595 * math.log10(1 + f/700)
+        
+    # Umesh
     def acaUmesh_scalar(f):
         return f/(2.4e-4*f + 0.741)
 
