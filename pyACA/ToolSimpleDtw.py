@@ -14,8 +14,8 @@ import numpy as np
 
 def ToolSimpleDtw(D):
 
-    # init directions for back-tracking
-    iDec = np.array([[-1, -1], [-1, 0], [0, -1]])  # DeltaP contents: diag, vert, hori
+    # init directions for back-tracking [diag, vert, hori]
+    iDec = np.array([[-1, -1], [-1, 0], [0, -1]]) 
 
     # cost initialization
     C = np.zeros(D.shape)
