@@ -37,7 +37,7 @@ def PitchTimeAmdf(x, iBlockLength, iHopLength, f_s):
         i_start = n * iHopLength
         i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
 
-        # calculate the acf
+        # calculate the amdf
         if not x[np.arange(i_start, i_stop + 1)].sum():
             continue
         else:
