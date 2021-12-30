@@ -14,10 +14,21 @@ computes the novelty measure per Spectral Flux
 
 """
 
-from .FeatureSpectralFlux import FeatureSpectralFlux
-
+import numpy as np
 
 def NoveltyFlux(X, f_s):
-    d_flux = FeatureSpectralFlux(X, f_s)
+    isSpectrum = X.ndim == 1
+    if isSpectrum:
+        X = np.expand_dims(X, axis=1)
 
-    return (d_flux)
+    # difference spectrum (set first diff to zero)
+    X = np.c_[X[:, 0], X]
+    afDeltaX = np.diff(X, 1, axis=1)
+
+    # half-wave rectification
+    afDeltaX[afDeltaX<0] = 0
+
+    # flux
+    d_flux  = np.sqrt((afDeltaX**2).sum(axis=0)) / X.shape[0]
+
+    return np.squeeze(d_flux) if isSpectrum else d_flux

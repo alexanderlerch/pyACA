@@ -28,7 +28,7 @@ import numpy.testing as npt
 import pyACA
 
 # Initialize this according to the path on your system:
-path_to_matlab_code = '/Users/kaushal/Kaushal/Repositories/ACA-Code'
+path_to_matlab_code = '../../ACA-Code'
 
 
 class TestFeaturesWithMatlab(unittest.TestCase):

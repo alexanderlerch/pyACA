@@ -1,5 +1,6 @@
 import unittest
 import numpy as np
+import numpy.testing as npt
 
 import pyACA
 
@@ -98,29 +99,16 @@ class TestFeatures(unittest.TestCase):
         vtf = pyACA.FeatureSpectralFlatness(X, fs)
         self.assertEqual(len(np.squeeze(vtf)), 4, "TF 4: output vector dimension incorrect")
 
-    #def test_spectral_flux(self):
-    #    X = np.zeros(1025)
-    #    fs = 4
+    def test_novelty_flux(self):
+        X = np.ones([5, 2])
+        X[:, 1] = 0
+        vnf = pyACA.NoveltyFlux(X, -1)
+        self.assertEqual(vnf[1], 0, "NF 1: hwr incorrect")
 
-    #    # zero input
-    #    vsf = pyACA.FeatureSpectralFlatness(X, fs)
-    #    self.assertEqual(vsf, 0, "TF 1: Zero input incorrect")
-
-    #    # one peak input
-    #    X[512] = 1
-    #    vsf = pyACA.FeatureSpectralFlatness(X, fs)
-    #    self.assertEqual(vsf, 0, "TF 2: Delta input")
-
-    #    # flat spec input
-    #    X = 2*np.ones(1025)
-    #    vsf = pyACA.FeatureSpectralFlatness(X, fs)
-    #    self.assertEqual(vsf, 1, "TF 3: Flat input incorrect")
-
-    #    # i/o dimensions
-    #    X = np.ones([1025,4])
-    #    vsf = pyACA.FeatureSpectralFlatness(X, fs)
-    #    self.assertEqual(len(np.squeeze(vsf)), 4, "TF 4: output vector dimension incorrect")
-
+        X = np.ones([5, 2])
+        X[:, 0] = 0
+        vnf = pyACA.NoveltyFlux(X, -1)
+        npt.assert_almost_equal(vnf[1], np.sqrt(5) / 5, decimal=7, err_msg="NF 2: hwr incorrect")
 
 if __name__ == '__main__':
     unittest.main()
