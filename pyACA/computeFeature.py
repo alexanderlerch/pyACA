@@ -20,7 +20,6 @@ supported features are:
     'TimeAcfCoeff',
     'TimeMaxAcf',
     'TimePeakEnvelope',
-    'TimePredictivityRatio',
     'TimeRms',
     'TimeStd',
     'TimeZeroCrossingRate',
@@ -143,7 +142,7 @@ if __name__ == "__main__":
     # only for debugging
     if __debug__:
         if not cPath:
-            cPath = "c:/temp/test.wav"
+            cPath = "../../ACA-Plots/audio/sax_example.wav"
         if not cFeatureName:
             cFeatureName = "SpectralCentroid"
         if not bPlotOutput:

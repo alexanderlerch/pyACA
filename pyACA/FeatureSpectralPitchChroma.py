@@ -55,7 +55,7 @@ def generatePcFilters(iSpecLength, f_s):
         afBounds = np.array([2**(-1 / (2 * iNumPitchesPerOctave)), 2**(1 / (2 * iNumPitchesPerOctave))]) * f_mid * 2 * (iSpecLength - 1) / f_s
         for j in range(0, iNumOctaves):
             iBounds = np.array([math.ceil(2**j * afBounds[0]), math.ceil(2**j * afBounds[1])])
-            H[i, range(iBounds[0], iBounds[1])] = 1 / (iBounds[1] - iBounds[0])
+            H[i, range(iBounds[0], iBounds[1])] = 1 / (iBounds[1] - iBounds[0] + 1)
 
         # increment to next semi-tone
         f_mid = f_mid * 2**(1 / iNumPitchesPerOctave)

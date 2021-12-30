@@ -18,8 +18,10 @@ def FeatureSpectralFlatness(X, f_s):
     norm = X.mean(axis=0, keepdims=True)
     norm[norm == 0] = 1
 
-    X = np.log(X + 1e-20)
+    XLog = np.log(X + 1e-20)
 
-    vtf = np.exp(X.mean(axis=0, keepdims=True)) / norm
+    vtf = np.exp(XLog.mean(axis=0, keepdims=True)) / norm
 
+    vtf[X.min(axis=0, keepdims=True) == 0] = 0
+    
     return np.squeeze(vtf, axis=0)

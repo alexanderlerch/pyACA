@@ -29,7 +29,7 @@ def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
 
     for n in range(0, X.shape[1]):
         # compute the mel spectrum
-        X_Mel = np.log10(np.dot(H, X[:, n] + 1e-20))
+        X_Mel = np.log10(np.dot(H, X[:, n]) + 1e-20)
 
         # calculate the mfccs
         v_mfcc[:, n] = np.dot(T, X_Mel)
