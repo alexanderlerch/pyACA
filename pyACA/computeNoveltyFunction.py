@@ -43,12 +43,13 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
 
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
-    #mypackage = __import__(".Novelty" + cNoveltyName, package="pyACA")
     hNoveltyFunc = getattr(pyACA, "Novelty" + cNoveltyName)
 
-    # initialization
-    fLengthLpInS = 0.3
-    iLengthLp = np.max([2, math.ceil(fLengthLpInS * f_s / iHopLength)])
+    # lp initialization
+    fLenSmoothLpInS = 0.07
+    fLenThreshLpInS = 0.14
+    iLenSmoothLp = np.max([2, math.ceil(fLenSmoothLpInS * f_s / iHopLength)])
+    iLenThreshLp = np.max([2, math.ceil(fLenThreshLpInS * f_s / iHopLength)])
 
     # pre-processing
     afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
@@ -71,13 +72,14 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
     d = hNoveltyFunc(X, f_s)
 
     # smooth novelty function
-    b = np.ones(10) / 10
+    b = np.ones(iLenSmoothLp) / iLenSmoothLp
     d = filtfilt(b, 1, d)
     d[d < 0] = 0
 
     # compute threshold
-    b = np.ones(iLengthLp) / iLengthLp
-    G_T = .5 * np.mean(d[np.arange(1, d.shape[0])]) + filtfilt(b, 1, d)
+    iLenThreshLp = min(iLenThreshLp, np.floor(len(d)/3))
+    b = np.ones(iLenThreshLp) / iLenThreshLp
+    G_T = .4 * np.mean(d[np.arange(1, d.shape[0])]) + filtfilt(b, 1, d)
 
     # find local maxima above the threshold
     iPeaks = find_peaks(d - G_T, height=0)
@@ -109,18 +111,18 @@ if __name__ == "__main__":
 
     # retrieve command line args
     args = parser.parse_args()
-    cPath = args.infile
+    cInPath = args.infile
     cNoveltyName = args.noveltyname
     bPlotOutput = args.plotoutput
 
     # only for debugging
     if __debug__:
-        if not cPath:
-            cPath = "c:/temp/test.wav"
+        if not cInPath:
+            cInPath = "../../ACA-Plots/audio/sax_example.wav"
         if not cNoveltyName:
-            cNoveltyName = "Laroche"
+            cNoveltyName = "Flux"
         if not bPlotOutput:
             bPlotOutput = True
 
     # call the function
-    computeNoveltyFunctionCl(cPath, cNoveltyName)
+    computeNoveltyFunctionCl(cInPath, cNoveltyName)
