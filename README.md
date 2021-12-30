@@ -1,3 +1,10 @@
+![GitHub top language](https://img.shields.io/github/languages/top/alexanderlerch/pyACA)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pyACA)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/alexanderlerch/pyACA)
+![GitHub issues](https://img.shields.io/github/issues-raw/alexanderlerch/pyACA)
+![GitHub last commit](https://img.shields.io/github/last-commit/alexanderlerch/pyACA)
+![GitHub](https://img.shields.io/github/license/alexanderlerch/pyACA)
+
 # pyACA
 Python scripts accompanying the book "An Introduction to Audio Content 
 Analysis" (www.AudioContentAnalysis.org)
