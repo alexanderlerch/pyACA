@@ -17,6 +17,7 @@ computes a simple beat histogram
 import numpy as np
 
 from pyACA.computeNoveltyFunction import computeNoveltyFunction
+from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
@@ -27,6 +28,9 @@ def computeBeatHisto(afAudioData, f_s, afWindow=None, iBlockLength=1024, iHopLen
         afWindow = ToolComputeHann(iBlockLength)
 
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
+
+    # pre-processing
+    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     # novelty function
     [d, t, peaks] = computeNoveltyFunction('Flux', afAudioData, f_s, afWindow, iBlockLength, iHopLength)
@@ -66,10 +70,11 @@ if __name__ == "__main__":
     cOutPath = args.outfile
 
     # only for debugging
-    if not cInPath:
-        cInPath = "c:/temp/test.wav"
-    if not cOutPath:
-        cOutPath = "c:/temp/out.txt"
+    if __debug__:
+        if not cInPath:
+            cInPath = "../../ACA-Plots/audio/sax_example.wav"
+        if not cOutPath:
+            cOutPath = "c:/temp/out.txt"
 
     # call the function
     computeBeatHistoCl(cInPath, cOutPath)
