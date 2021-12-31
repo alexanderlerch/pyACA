@@ -27,6 +27,8 @@ jobs:
         python -m
         unittest
         tests/test_shape.py
+        tests/test_features.py
+        tests/test_tools.py
 
     - name: Install pypa/build
       run: >-

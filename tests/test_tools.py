@@ -65,15 +65,18 @@ class TestTools(unittest.TestCase):
 
     def test_freq2midi2freq(self):
 
+        # check concert pitch
         npt.assert_almost_equal(69, pyACA.ToolFreq2Midi(440), decimal=7, err_msg="FMIDI 1: frequency to pitch conversion incorrect")
         npt.assert_almost_equal(440, pyACA.ToolMidi2Freq(69), decimal=7, err_msg="FMIDI 2: pitch to frequency conversion incorrect")
 
+        # generate high resolution pitch vector and corresponding frequencies
         midi = np.arange(0,1280)/10
         hz = 2**((midi-69)/12) * 440
 
         midiout = pyACA.ToolFreq2Midi(hz)
         hzout = pyACA.ToolMidi2Freq(midi)
-        
+
+        # find maximum deviation
         diffmidi = np.abs(midiout-midi).max()
         diffhz = np.abs(hzout-hz).max()
 
@@ -83,9 +86,11 @@ class TestTools(unittest.TestCase):
 
     def test_freq2mel2freq(self):
 
+        # check reference point at 1000Hz
         npt.assert_almost_equal(1000, pyACA.ToolFreq2Mel(1000), decimal=7, err_msg="FMEL 1: frequency to pitch conversion incorrect")
         npt.assert_almost_equal(1000, pyACA.ToolMel2Freq(1000), decimal=7, err_msg="FMEL 2: pitch to frequency conversion incorrect")
 
         mel = np.arange(0,3000)
 
-        npt.assert_almost_equal(mel, pyACA.ToolFreq2Mel(pyACA.ToolMel2Freq(mel)), decimal=7, err_msg="FM 3: pitch to frequency to pitch conversion incorrect")
+        # check back and forth conversion
+        npt.assert_almost_equal(mel, pyACA.ToolFreq2Mel(pyACA.ToolMel2Freq(mel)), decimal=7, err_msg="FMEL 3: pitch to frequency to pitch conversion incorrect")
