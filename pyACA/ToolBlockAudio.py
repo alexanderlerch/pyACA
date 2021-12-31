@@ -24,9 +24,7 @@ def ToolBlockAudio(afAudioData, iBlockLength, iHopLength, f_s):
     t = np.arange(0, iNumBlocks) * iHopLength / f_s
 
     # pad with block length zeros just to make sure it runs for weird inputs, too
-    afAudioPadded = np.concatenate((afAudioData, np.zeros([iBlockLength, ])), axis=0)
+    afAudioPadded = np.concatenate((afAudioData, np.zeros([iBlockLength+iHopLength, ])), axis=0)
 
-    if iNumBlocks < 1:
-        return np.array([])
-    return (np.vstack([np.array(afAudioPadded[i*iHopLength:i*iHopLength+iBlockLength]) for i in range(iNumBlocks)]), t)
+    return (np.vstack([np.array(afAudioPadded[n*iHopLength:n*iHopLength+iBlockLength]) for n in range(iNumBlocks)]), t)
 
