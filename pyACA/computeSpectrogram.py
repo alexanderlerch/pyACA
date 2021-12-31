@@ -44,11 +44,12 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
 
     for n in range(0, xb.shape[0]):
         # apply window
-        tmp = abs(np.fft.fft(xb[n, :] * afWindow)) * 2 / xb.shape[1]
+        tmp = abs(np.fft.fft(xb[n, :] * afWindow)) / xb.shape[1]
 
         # compute magnitude spectrum
         X[:, n] = tmp[range(iSpecDim[0])]
-        X[[0, iSpecDim[0]-1], n] = X[[0, iSpecDim[0]-1], n] / np.sqrt(2)  # let's be pedantic about normalization
+
+    X[[0, iSpecDim[0]-1], :] = X[[0, iSpecDim[0]-1], :] / np.sqrt(2)  # let's be pedantic about normalization
 
     f = np.arange(0, iSpecDim[0]) * f_s / iBlockLength
 
