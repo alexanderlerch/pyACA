@@ -7,7 +7,7 @@ import pyACA
 
 class TestTools(unittest.TestCase):
 
-    def test_block_audio(self):
+    def test_blockaudio(self):
         iBlockLength = 20
         iHopLength = 10
         fs = 1
@@ -61,3 +61,31 @@ class TestTools(unittest.TestCase):
         # content
         npt.assert_almost_equal(X[10][10] / X[20][10], 4154.15, decimal=2, err_msg="SP 4: magnitude spectrum incorrect")
         npt.assert_almost_equal(X[115][10] / X[116][10], 1.029, decimal=2, err_msg="SP 5: magnitude spectrum incorrect")
+
+
+    def test_freq2midi2freq(self):
+
+        npt.assert_almost_equal(69, pyACA.ToolFreq2Midi(440), decimal=7, err_msg="FMIDI 1: frequency to pitch conversion incorrect")
+        npt.assert_almost_equal(440, pyACA.ToolMidi2Freq(69), decimal=7, err_msg="FMIDI 2: pitch to frequency conversion incorrect")
+
+        midi = np.arange(0,1280)/10
+        hz = 2**((midi-69)/12) * 440
+
+        midiout = pyACA.ToolFreq2Midi(hz)
+        hzout = pyACA.ToolMidi2Freq(midi)
+        
+        diffmidi = np.abs(midiout-midi).max()
+        diffhz = np.abs(hzout-hz).max()
+
+        npt.assert_almost_equal(diffmidi, 0, decimal=7, err_msg="FMIDI 3: frequency to pitch conversion incorrect")
+        npt.assert_almost_equal(diffhz, 0, decimal=7, err_msg="FMIDI 4: pitch to frequency conversion incorrect")
+
+
+    def test_freq2mel2freq(self):
+
+        npt.assert_almost_equal(1000, pyACA.ToolFreq2Mel(1000), decimal=7, err_msg="FMEL 1: frequency to pitch conversion incorrect")
+        npt.assert_almost_equal(1000, pyACA.ToolMel2Freq(1000), decimal=7, err_msg="FMEL 2: pitch to frequency conversion incorrect")
+
+        mel = np.arange(0,3000)
+
+        npt.assert_almost_equal(mel, pyACA.ToolFreq2Mel(pyACA.ToolMel2Freq(mel)), decimal=7, err_msg="FM 3: pitch to frequency to pitch conversion incorrect")
