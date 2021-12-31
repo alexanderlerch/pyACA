@@ -46,19 +46,19 @@ def computeBeatHisto(afAudioData, f_s, cMethod='FFT', afWindow=None, iBlockLengt
         T = np.flip(afCorr)
     elif cMethod == 'FFT':
         iHistoLength = 65536
-        afWindow = ToolComputeHann(iHistoLength)
+        afWindow = np.zeros(2*iHistoLength)
+        afWindow[np.arange(0, iHistoLength)] = ToolComputeHann(iHistoLength)
         f_s = f_s / iHopLength
         if len(d) < 2 * iHistoLength:
             d = [d, np.zeros([1, 2 * iHistoLength - len(d)])]
 
-        [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+        [X, f, t] = computeSpectrogram(d, f_s, afWindow, 2*iHistoLength, iHistoLength/4)
 
         T = X.mean(axis=1, keepdims=True)
 
         # restrict range
-        T[:8] = 0
         Bpm = f * 60
-        lIdx = np.argwhere(Bpm >= 30)[0]
+        lIdx = np.argwhere(Bpm < 30)[-1]
         hIdx = np.argwhere(Bpm > 200)[0]
         T = T[np.arange(lIdx, hIdx)]
         Bpm = Bpm[np.arange(lIdx, hIdx)]
