@@ -15,12 +15,13 @@ computes the musical key of an input audio file
 """
 
 import numpy as np
-from scipy.signal import spectrogram
 
+from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.FeatureSpectralPitchChroma import FeatureSpectralPitchChroma
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolReadAudio import ToolReadAudio
+
 
 def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
 
@@ -43,18 +44,7 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
     afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     # in the real world, we would do this block by block...
-    [f, t, X] = spectrogram(afAudioData,
-                            f_s,
-                            afWindow,
-                            iBlockLength,
-                            iBlockLength - iHopLength,
-                            iBlockLength,
-                            False,
-                            True,
-                            'spectrum')
-
-    #  scale the same as for matlab
-    X = np.sqrt(X / 2)
+    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
 
     # compute instantaneous pitch chroma
     v_pc = FeatureSpectralPitchChroma(X, f_s)

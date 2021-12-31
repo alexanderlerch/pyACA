@@ -18,14 +18,15 @@ computes a mel spectrogram from the audio data
 """
 
 import numpy as np
-from scipy.signal import spectrogram
 
+from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolFreq2Mel import ToolFreq2Mel
 from pyACA.ToolMel2Freq import ToolMel2Freq
 
-def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarathmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
+
+def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
 
     if not fMax:
         fMax = f_s/2
@@ -40,32 +41,18 @@ def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarathmic=True, iB
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # Compute spectrogram (in the real world, we would do this block by block)
-    f, t, X = spectrogram(
-        afAudioData,
-        fs=f_s,
-        window=afWindow,
-        nperseg=iBlockLength,
-        noverlap=iBlockLength - iHopLength,
-        nfft=iBlockLength,
-        detrend=False,
-        return_onesided=True,
-        scaling='spectrum'  # Returns power spectrum
-    )
-
-    # Convert power spectrum to magnitude spectrum
-    X = np.sqrt(X / 2)
+    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
 
     # Compute Mel filters
     H, f_c = ToolMelFb(iBlockLength, f_s, iNumMelBands, fMax)
 
     M = np.matmul(H, X)
 
-    if bLogarathmic:
+    if bLogarithmic:
         # Convert amplitude to level (dB)
         M = 20 * np.log10(M + 1e-12)
 
     return M, f_c, t
-
 
 
 def ToolMelFb(iFftLength, f_s, iNumFilters, f_max):

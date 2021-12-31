@@ -21,13 +21,10 @@ import pyACA
 def FeatureTimeZeroCrossingRate(x, iBlockLength, iHopLength, f_s):
 
     # create blocks
-    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+    xBlocks, t = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
 
     # number of results
     iNumOfBlocks = xBlocks.shape[0]
-
-    # compute time stamps
-    t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
 
     # allocate memory
     vzc = np.zeros(iNumOfBlocks)

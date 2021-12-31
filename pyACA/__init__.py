@@ -3,6 +3,7 @@ name = "pyACA"
 from .computeBeatHisto import computeBeatHisto
 from .computeFeature import computeFeature
 from .computeKey import computeKey
+from .computeSpectrogram import computeSpectrogram
 from .computeMelSpectrogram import computeMelSpectrogram
 from .computeNoveltyFunction import computeNoveltyFunction
 from .computePitch import computePitch

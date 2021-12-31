@@ -15,7 +15,7 @@ class TestShape(unittest.TestCase):
 
         for inputSize in range(1, 2*blockLength):
             x = inputData[:inputSize]
-            expectedNumBlocks = self.calcNumBlocks(x.size+blockLength, blockLength, hopLength)
+            expectedNumBlocks = self.calcNumBlocks(x.size, blockLength, hopLength)
             for feature in pyACA.getFeatureList('all'):
                 with self.subTest(msg=feature + ':' + str(inputSize)):
                     out, t = pyACA.computeFeature(feature, x, fs, iBlockLength=blockLength, iHopLength=hopLength)
@@ -87,4 +87,4 @@ class TestShape(unittest.TestCase):
 
 
     def calcNumBlocks(self, inputSize, blockLen, hopLen):
-        return np.floor((inputSize - blockLen) / hopLen + 1)
+        return np.ceil((inputSize) / hopLen)

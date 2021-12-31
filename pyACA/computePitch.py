@@ -23,11 +23,10 @@ supported pitch trackers are:
       t time stamp for the frequency value
 """
 
-import numpy as np
-from scipy.signal import spectrogram
 import matplotlib.pyplot as plt
 
 import pyACA
+from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
@@ -49,18 +48,7 @@ def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=
         assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
         # in the real world, we would do this block by block...
-        [f_k, t, X] = spectrogram(afAudioData,
-                                  f_s,
-                                  afWindow,
-                                  iBlockLength,
-                                  iBlockLength - iHopLength,
-                                  iBlockLength,
-                                  False,
-                                  True,
-                                  'spectrum')
-
-        # we just want the magnitude spectrum...
-        X = np.sqrt(X / 2)
+        [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
 
         # compute instantaneous pitch chroma
         f = hPitchFunc(X, f_s)

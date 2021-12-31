@@ -25,11 +25,11 @@ computes the novelty function for onset detection
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.signal import spectrogram
 from scipy.signal import filtfilt
 from scipy.signal import find_peaks
 
 import pyACA
+from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
@@ -55,18 +55,7 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
     afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
 
     # in the real world, we would do this block by block...
-    [f, t, X] = spectrogram(afAudioData,
-                            f_s,
-                            afWindow,
-                            iBlockLength,
-                            iBlockLength - iHopLength,
-                            iBlockLength,
-                            False,
-                            True,
-                            'spectrum')
-
-    #  scale the same as for matlab
-    X = np.sqrt(X / 2)
+    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
 
     # novelty function
     d = hNoveltyFunc(X, f_s)

@@ -37,7 +37,7 @@ supported features are:
 """
 
 import numpy as np
-from scipy.signal import spectrogram
+from pyACA.computeSpectrogram import computeSpectrogram
 import matplotlib.pyplot as plt
 
 import pyACA
@@ -62,18 +62,7 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
         assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
         # in the real world, we would do this block by block...
-        [f, t, X] = spectrogram(afAudioData,
-                                fs=f_s,
-                                window=afWindow,
-                                nperseg=iBlockLength,
-                                noverlap=iBlockLength - iHopLength,
-                                nfft=iBlockLength,
-                                detrend=False,
-                                return_onesided=True,
-                                scaling='spectrum')
-
-        # we just want the magnitude spectrum...
-        X = np.sqrt(X / 2)
+        [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
 
         # compute instantaneous feature
         v = hFeatureFunc(X, f_s)

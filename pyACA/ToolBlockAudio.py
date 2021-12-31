@@ -7,6 +7,7 @@ be discarded. To avoid losing data, you should pad the input with zeros of at le
     afAudioData: 1D np.array
     iBlockLength: block length
     iHopLength: hop length
+    f_s: sample rate
 
   Returns:
     A 2D np.array containing the blocked data of shape (iNumOfBlocks, iBlockLength).
@@ -15,13 +16,17 @@ be discarded. To avoid losing data, you should pad the input with zeros of at le
 import numpy as np
 
 
-def ToolBlockAudio(afAudioData, iBlockLength, iHopLength):
+def ToolBlockAudio(afAudioData, iBlockLength, iHopLength, f_s):
 
-    iNumOfBlocks = np.floor((afAudioData.shape[0] - iBlockLength) / iHopLength + 1).astype(int)
+    iNumBlocks = np.ceil(afAudioData.shape[0] / iHopLength ).astype(int)
 
-    if iNumOfBlocks < 1:
+    # time stamp vector
+    t = np.arange(0, iNumBlocks) * iHopLength / f_s
+
+    # pad with block length zeros just to make sure it runs for weird inputs, too
+    afAudioPadded = np.concatenate((afAudioData, np.zeros([iBlockLength, ])), axis=0)
+
+    if iNumBlocks < 1:
         return np.array([])
-    return np.vstack([np.array(afAudioData[i*iHopLength:i*iHopLength+iBlockLength]) for i in range(iNumOfBlocks)])
-
-
+    return (np.vstack([np.array(afAudioPadded[i*iHopLength:i*iHopLength+iBlockLength]) for i in range(iNumBlocks)]), t)
 

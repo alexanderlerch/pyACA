@@ -21,13 +21,10 @@ import pyACA
 def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0.35):
 
     # create blocks
-    xBlocks = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength)
+    xBlocks, t = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
 
     # number of results
     iNumOfBlocks = xBlocks.shape[0]
-
-    # compute time stamps
-    t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
 
     # allocate memory
     vacf = np.zeros(iNumOfBlocks)
