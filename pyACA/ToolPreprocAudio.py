@@ -5,6 +5,7 @@ helper function: read audio from wav
   Args:
     afAudioData: audio file data
     iBlockLength: processing block length
+    bNormalize: flag to switch off normalization (optional)
 
   Returns:
     afAudioData (array): processed samples
@@ -13,16 +14,17 @@ helper function: read audio from wav
 import numpy as np
 
 
-def ToolPreprocAudio(afAudioData, iBlockLength):
+def ToolPreprocAudio(afAudioData, iBlockLength, bNormalize=True):
 
     # pre-processing: downmixing
     if afAudioData.ndim > 1:
         afAudioData = afAudioData.mean(axis=1)
     
     # pre-processing: normalization
-    fNorm = np.max(np.abs(afAudioData))
-    if fNorm != 0:
-        afAudioData = afAudioData / fNorm
+    if bNormalize:
+        fNorm = np.max(np.abs(afAudioData))
+        if fNorm != 0:
+            afAudioData = afAudioData / fNorm
 
     # additional preprocessing step might include sample rate conversion and filtering
     

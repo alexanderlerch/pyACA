@@ -24,10 +24,13 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolBlockAudio import ToolBlockAudio
 
 
-def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
+def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048, bNormalize=True):
 
-    # Pre-process: down-mix, normalize, zero-pad
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    iBlockLength = np.int_(iBlockLength)
+    iHopLength = np.int_(iHopLength)
+
+    # Pre-process: down-mix, normalize
+    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength, bNormalize)
 
     if afWindow is None:
         # Compute window function for FFT
@@ -44,7 +47,7 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
 
     for n in range(0, xb.shape[0]):
         # apply window
-        tmp = abs(np.fft.fft(xb[n, :] * afWindow)) / xb.shape[1]
+        tmp = abs(np.fft.fft(xb[n, :] * afWindow)) * 2 / xb.shape[1]
 
         # compute magnitude spectrum
         X[:, n] = tmp[range(iSpecDim[0])]
