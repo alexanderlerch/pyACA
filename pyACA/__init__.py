@@ -15,6 +15,7 @@ from .computePitch import computePitchCl
 from .ToolBlockAudio import ToolBlockAudio
 from .ToolComputeHann import ToolComputeHann
 from .ToolFreq2Bark import ToolFreq2Bark
+from .ToolLooCrossVal import ToolLooCrossVal
 from .ToolFreq2Mel import ToolFreq2Mel
 from .ToolFreq2Midi import ToolFreq2Midi
 from .ToolMel2Freq import ToolMel2Freq

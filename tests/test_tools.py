@@ -151,3 +151,13 @@ class TestTools(unittest.TestCase):
 
         est_class = pyACA.ToolSimpleKnn(test_data, train_data, train_label, 4)
         self.assertEqual(sum(abs(est_class - ground_truth4)), 0, "KNN 9: incorrect result")
+
+    def test_loocv(self):
+
+        data = np.array([[0, 1, 2, 3, 4, 5, 6, 7, 8], [2, 1, 0, 5, 4, 3, 8, 7, 6]])
+        gt = np.array([0, 0, 0, 1, 1, 1, 2, 2, 2])
+
+        [avg_acc, accuracies, confmat] = pyACA.ToolLooCrossVal(data, gt)
+
+        self.assertEqual(len(accuracies)-len(gt), 0, "CV 1: incorrect result dimensions")
+
