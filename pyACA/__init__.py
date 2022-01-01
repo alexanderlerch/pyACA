@@ -21,6 +21,7 @@ from .ToolMel2Freq import ToolMel2Freq
 from .ToolMidi2Freq import ToolMidi2Freq
 from .ToolReadAudio import ToolReadAudio
 from .ToolSimpleDtw import ToolSimpleDtw
+from .ToolSimpleKnn import ToolSimpleKnn
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor
 from .FeatureSpectralDecrease import FeatureSpectralDecrease
