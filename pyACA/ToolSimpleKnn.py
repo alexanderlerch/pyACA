@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-helper function: computes path through a distance matrix with simple Dynamic Time Warping
+helper function: k nearest neighbor classifier
 
   Args:
     TestFeatureVector: features for test observation (length iNumFeatures)
     TrainFeatureMatrix: features for all train observations (dimension iNumFeatures x iNumObservations)
-    TrainClassIndices: audio signal (length iNumObservations)
+    TrainClassIndices: class labels (length observations)
     k: number of points taken into account (default = 3)
 
   Returns:
