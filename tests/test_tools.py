@@ -188,5 +188,30 @@ class TestTools(unittest.TestCase):
 
         npt.assert_almost_equal(ev[0], ev[1] / fScale**2, decimal=7, err_msg="PCA 7: incorrect eigenvalues")
         npt.assert_almost_equal(np.abs(np.max(T)), np.abs(np.min(T)), decimal=7, err_msg="PCA 8: incorrect transformation matrix")
-        npt.assert_almost_equal(np.sum(np.abs(u_pc[0,:])), np.sum(np.abs(u_pc[1,:])) / fScale, decimal=7, err_msg="PCA 9: incorrect component scaling")
+        npt.assert_almost_equal(np.sum(np.abs(u_pc[0, :])), np.sum(np.abs(u_pc[1, :])) / fScale, decimal=7, err_msg="PCA 9: incorrect component scaling")
         npt.assert_almost_equal(np.sum(u_pc), 0, decimal=7, err_msg="PCA 10: incorrect component mean")
+
+    def test_feature_selection(self):
+        # generate 3D features (dim 1 not separable, dim 2 separable, dim 3 noise
+        np.random.seed(11)
+        sep = np.array([[.1, .2, .3, .4]])
+        offset = .12
+        f1 = np.concatenate((.2*(sep + .5*offset), sep - .5*offset), axis=1)
+        f2 = np.concatenate((sep - 2*offset, sep + 2*offset), axis=1)
+        f3 = 0.3 * np.random.rand(1, f1.shape[1])
+        V = np.concatenate((f1, f2, f3), axis=0)
+        # assign class labels (last one is wrong)
+        classIdx = np.array([0, 0, 0, 0, 1, 1, 1, 0])
+
+        # dimensions
+        featIdx, acc = pyACA.ToolSeqFeatureSel(V, classIdx, 2)
+        self.assertEqual(len(featIdx), 2, "FeS 1: output dimensions incorrect")
+        self.assertEqual(len(featIdx), 2, "FeS 2: output dimensions incorrect")
+
+        # selected features
+        featIdx, acc = pyACA.ToolSeqFeatureSel(V, classIdx)
+        self.assertEqual(len(featIdx), 3, "FeS 3: output dimensions incorrect")
+        self.assertEqual(featIdx[0], 1, "FeS 4: selected features incorrect")
+        self.assertEqual(featIdx[1], 0, "FeS 5: selected features incorrect")
+        self.assertEqual(featIdx[2], 2, "FeS 6: selected features incorrect")
+
