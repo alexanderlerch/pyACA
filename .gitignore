@@ -13,3 +13,7 @@
 /tests/*.bak
 /.vs/pyACA/v16/TestStore/0/*.testlog
 /.vs/pyACA/v16/TestStore/0/testlog.manifest
+/.vs/pyACA/v17/*.suo
+/.vs/pyACA/v17/TestStore/1/*.testlog
+/.vs/pyACA/v17/TestStore/1/*.manifest
+/pyACA/*.user

@@ -160,3 +160,33 @@ class TestTools(unittest.TestCase):
         [avg_acc, accuracies, confmat] = pyACA.ToolLooCrossVal(data, gt)
 
         self.assertEqual(len(accuracies)-len(gt), 0, "CV 1: incorrect result dimensions")
+
+    def test_pca(self):
+        V1 = np.array([[1, 2, 3, 4], [0.5, 1, 1.5, 2]])
+        V2 = -V1
+        V = np.concatenate((V1, V2), axis=1)
+
+        # dimensions
+        u_pc, T, ev = pyACA.ToolPca(V)
+
+        self.assertEqual(u_pc.shape[0], V.shape[0], "PCA 1: component dimensions incorrect")
+        self.assertEqual(u_pc.shape[1], V.shape[1], "PCA 2: component dimensions incorrect")
+        self.assertEqual(T.shape[0], V.shape[0], "PCA 3: transformation matrix dimensions incorrect")
+        self.assertEqual(T.shape[1], V.shape[0], "PCA 4: transformation matrix dimensions incorrect")
+        self.assertEqual(ev.shape[0], V.shape[0], "PCA 5: eigenvalue dimensions incorrect")
+
+        # only one component
+        npt.assert_almost_equal(ev[1], 0, decimal=7, err_msg="PCA 6: incorrect eigenvalue")
+
+        fScale = 0.5
+        V1 = np.array([[-2, -1, 1, 2], [-2, -1, 1, 2]])
+        V2 = fScale * np.vstack((-V1[0, :], V1[1, :]))
+        V = np.concatenate((V1, V2), axis=1)
+
+        # two perfectly orthogonal components
+        u_pc, T, ev = pyACA.ToolPca(V)
+
+        npt.assert_almost_equal(ev[0], ev[1] / fScale**2, decimal=7, err_msg="PCA 7: incorrect eigenvalues")
+        npt.assert_almost_equal(np.abs(np.max(T)), np.abs(np.min(T)), decimal=7, err_msg="PCA 8: incorrect transformation matrix")
+        npt.assert_almost_equal(np.sum(np.abs(u_pc[0,:])), np.sum(np.abs(u_pc[1,:])) / fScale, decimal=7, err_msg="PCA 9: incorrect component scaling")
+        npt.assert_almost_equal(np.sum(u_pc), 0, decimal=7, err_msg="PCA 10: incorrect component mean")

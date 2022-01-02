@@ -20,6 +20,7 @@ from .ToolFreq2Mel import ToolFreq2Mel
 from .ToolFreq2Midi import ToolFreq2Midi
 from .ToolMel2Freq import ToolMel2Freq
 from .ToolMidi2Freq import ToolMidi2Freq
+from .ToolPca import ToolPca
 from .ToolReadAudio import ToolReadAudio
 from .ToolSimpleDtw import ToolSimpleDtw
 from .ToolSimpleKnn import ToolSimpleKnn
