@@ -73,7 +73,7 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
     # find local maxima above the threshold
     iPeaks = find_peaks(d - G_T, height=0)
 
-    return (d, t, iPeaks[0])
+    return d, t, iPeaks[0]
 
 
 def computeNoveltyFunctionCl(cPath, cNoveltyName):
@@ -84,7 +84,7 @@ def computeNoveltyFunctionCl(cPath, cNoveltyName):
     # plot feature output
     if bPlotOutput:
         plt.plot(t, d)
-    return (d, t, iPeaks)
+    return d, t, iPeaks
 
 
 if __name__ == "__main__":

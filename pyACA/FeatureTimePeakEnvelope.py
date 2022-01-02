@@ -70,4 +70,4 @@ def ppm(x, filterbuf, alpha):
 
         filterbuf = ppmout[i]
 
-    return (ppmout)
+    return ppmout

@@ -44,4 +44,4 @@ def generateDctMatrix(iNumBands, iNumCepstralCoeffs):
     T = T / np.sqrt(iNumBands / 2)
     T[0, :] = T[0, :] / np.sqrt(2)
 
-    return (T)
+    return T

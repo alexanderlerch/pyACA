@@ -50,7 +50,7 @@ def PitchTimeAmdf(x, iBlockLength, iHopLength, f_s):
         # convert to Hz
         f[n] = f_s / (f[n] + eta_min + 1)
 
-    return (f, t)
+    return f, t
 
 
 def computeAmdf(x, eta_max):
@@ -64,4 +64,4 @@ def computeAmdf(x, eta_max):
     for eta in range(0, np.min([K, eta_max + 1])):
         afAmdf[eta] = np.sum(np.abs(x[np.arange(0, K - 1 - eta)] - x[np.arange(eta + 1, K)])) / K
 
-    return (afAmdf)
+    return afAmdf

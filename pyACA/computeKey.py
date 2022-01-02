@@ -62,7 +62,7 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
 
     cKey = cKeyNames[iKeyIdx]
 
-    return (cKey)
+    return cKey
 
 
 def computeKeyCl(cPath):

@@ -45,4 +45,4 @@ def PitchTimeZeroCrossings(x, iBlockLength, iHopLength, f_s):
         if i_tmp.size:
             f[n] = f_s / np.mean(2 * i_tmp)
 
-    return (f, t)
+    return f, t

@@ -25,7 +25,7 @@ def FeatureTimeAcfCoeff(x, iBlockLength, iHopLength, f_s, eta=19):
 
     # number of results
     iNumOfBlocks = xBlocks.shape[0]
-    if (np.isscalar(eta)):
+    if np.isscalar(eta):
         iNumOfResultsPerBlock = 1
     else:
         iNumOfResultsPerBlock = eta.size

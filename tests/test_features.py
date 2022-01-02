@@ -4,6 +4,7 @@ import numpy.testing as npt
 
 import pyACA
 
+
 class TestFeatures(unittest.TestCase):
 
     def test_spectral_centroid(self):
@@ -25,10 +26,9 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual(vsc, 1, "SC 3: Flat input incorrect")
 
         # i/o dimensions
-        X = np.ones([1025,4])
+        X = np.ones([1025, 4])
         vsc = pyACA.FeatureSpectralCentroid(X, fs)
         self.assertEqual(len(np.squeeze(vsc)), 4, "SC 4: output vector dimension incorrect")
-
 
     def test_spectral_crest(self):
         X = np.zeros(1025)
@@ -49,7 +49,7 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual(vtsc, 1/len(X), "TSC 3: Flat input incorrect")
 
         # i/o dimensions
-        X = np.ones([1025,4])
+        X = np.ones([1025, 4])
         vtsc = pyACA.FeatureSpectralCrestFactor(X, fs)
         self.assertEqual(len(np.squeeze(vtsc)), 4, "TSC 4: output vector dimension incorrect")
 
@@ -72,7 +72,7 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual(vsd, 0, "SD 3: Flat input incorrect")
 
         # i/o dimensions
-        X = np.ones([1025,4])
+        X = np.ones([1025, 4])
         vsd = pyACA.FeatureSpectralDecrease(X, fs)
         self.assertEqual(len(np.squeeze(vsd)), 4, "SD 4: output vector dimension incorrect")
 
@@ -95,7 +95,7 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual(vtf, 1, "TF 3: Flat input incorrect")
 
         # i/o dimensions
-        X = np.ones([1025,4])
+        X = np.ones([1025, 4])
         vtf = pyACA.FeatureSpectralFlatness(X, fs)
         self.assertEqual(len(np.squeeze(vtf)), 4, "TF 4: output vector dimension incorrect")
 

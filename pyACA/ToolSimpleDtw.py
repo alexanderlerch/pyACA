@@ -47,4 +47,4 @@ def ToolSimpleDtw(D):
         tmp = np.vstack([n, p])
         p = tmp
 
-    return (p[1:, :], C)
+    return p[1:, :], C

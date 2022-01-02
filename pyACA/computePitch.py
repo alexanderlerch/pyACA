@@ -34,7 +34,7 @@ from pyACA.ToolReadAudio import ToolReadAudio
 
 def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     
-    #mypackage = __import__(".Pitch" + cPitchTrackName, package="pyACA")
+    # mypackage = __import__(".Pitch" + cPitchTrackName, package="pyACA")
     hPitchFunc = getattr(pyACA, "Pitch" + cPitchTrackName)
 
     # pre-processing
@@ -56,7 +56,7 @@ def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=
     if isTemporal(cPitchTrackName):
         [f, t] = hPitchFunc(afAudioData, iBlockLength, iHopLength, f_s)
 
-    return (f, t)
+    return f, t
 
 
 #######################################################
@@ -66,7 +66,7 @@ def isSpectral(cName):
     if "Spectral" in cName:
         bResult = True
 
-    return (bResult)
+    return bResult
 
 
 def isTemporal(cName):
@@ -74,7 +74,7 @@ def isTemporal(cName):
     if "Time" in cName:
         bResult = True
 
-    return (bResult)
+    return bResult
 
 
 def computePitchCl(cPath, cPitchTrackName, bPlotOutput=False):
@@ -90,7 +90,7 @@ def computePitchCl(cPath, cPitchTrackName, bPlotOutput=False):
     if bPlotOutput:
         plt.plot(t, v)
 
-    return (v, t)
+    return v, t
 
 
 if __name__ == "__main__":

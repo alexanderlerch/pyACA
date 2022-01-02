@@ -17,6 +17,7 @@ computes the standard deviation of a time domain signal
 import numpy as np
 import pyACA
 
+
 def FeatureTimeStd(x, iBlockLength, iHopLength, f_s):
 
     # create blocks

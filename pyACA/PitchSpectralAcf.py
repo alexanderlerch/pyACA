@@ -44,4 +44,4 @@ def PitchSpectralAcf(X, f_s):
         # find max index and convert to Hz (note: X has double length)
         f[n] = (f[n] + eta_min) / (X.shape[0] - 2) * f_s
 
-    return (f)
+    return f

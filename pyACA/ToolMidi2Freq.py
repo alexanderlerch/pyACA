@@ -13,7 +13,7 @@ helper function: compute periodic von-Hann window
 import numpy as np
 
 
-def ToolMidi2Freq(pInMidi, fA4InHz = 440):
+def ToolMidi2Freq(pInMidi, fA4InHz=440):
     def convert_midi2freq_scalar(p, fA4InHz):
  
         if p < 0:
@@ -23,10 +23,10 @@ def ToolMidi2Freq(pInMidi, fA4InHz = 440):
 
     pInMidi = np.asarray(pInMidi)
     if pInMidi.ndim == 0:
-       return convert_midi2freq_scalar(pInMidi,fA4InHz)
+        return convert_midi2freq_scalar(pInMidi, fA4InHz)
 
     fInHz = np.zeros(pInMidi.shape)
-    for k,p in enumerate(pInMidi):
-        fInHz[k] =  convert_midi2freq_scalar(p,fA4InHz)
+    for k, p in enumerate(pInMidi):
+        fInHz[k] = convert_midi2freq_scalar(p, fA4InHz)
             
-    return (fInHz)
+    return fInHz

@@ -14,7 +14,7 @@ import numpy as np
 import math
 
 
-def ToolFreq2Mel(fInHz, cModel = 'Fant'):
+def ToolFreq2Mel(fInHz, cModel='Fant'):
     # Fant
     def acaFant_scalar(f):
         return 1000 * math.log2(1 + f/1000)
@@ -38,13 +38,13 @@ def ToolFreq2Mel(fInHz, cModel = 'Fant'):
 
     fMel = np.zeros(f.shape)
     if cModel == 'Shaughnessy':
-        for k,fi in enumerate(f):
-            fMel[k] =  acaShaughnessy_scalar(fi)
+        for k, fi in enumerate(f):
+            fMel[k] = acaShaughnessy_scalar(fi)
     elif cModel == 'Umesh':
-        for k,fi in enumerate(f):
-            fMel[k] =  acaUmesh_scalar(fi)
+        for k, fi in enumerate(f):
+            fMel[k] = acaUmesh_scalar(fi)
     else:
-        for k,fi in enumerate(f):
-            fMel[k] =  acaFant_scalar(fi)
+        for k, fi in enumerate(f):
+            fMel[k] = acaFant_scalar(fi)
             
-    return (fMel)
+    return fMel

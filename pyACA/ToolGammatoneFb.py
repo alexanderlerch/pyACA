@@ -27,7 +27,7 @@ def ToolGammatoneFb(afAudioData, f_s, iNumBands=20, f_low=100):
         for j in range(0, 4):
             X[k, :] = lfilter(afCoeffB[j, :, k], afCoeffA[j, :, k], X[k, :])
 
-    return (X)
+    return X
 
 
 # see function ERBSpace.m from Slaneys Auditory Toolbox
@@ -37,7 +37,7 @@ def getMidFrequencies(f_low, f_hi, iNumBands, fEarQ, fBW):
     f_c = np.exp(np.arange(1, iNumBands + 1) * freq)
     f_c = -(fEarQ * fBW) + f_c * (f_hi + fEarQ * fBW)
 
-    return (f_c)
+    return f_c
 
 
 # see function MakeERBFilters.m from Slaneys Auditory Toolbox
@@ -92,7 +92,7 @@ def getCoeffs(f_c, B, T):
         afCoeffB[3, :, k] = [A0, A14[k], A2]
         afCoeffA[3, :, k] = [B0, B1[k], B2[k]]
 
-    return (afCoeffB, afCoeffA)
+    return afCoeffB, afCoeffA
 
 
 #############################################################################

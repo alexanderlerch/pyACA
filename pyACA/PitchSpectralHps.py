@@ -34,4 +34,4 @@ def PitchSpectralHps(X, f_s):
     # find max index and convert to Hz
     f = (f + k_min) / (X.shape[0] - 1) * f_s / 2
 
-    return (f)
+    return f

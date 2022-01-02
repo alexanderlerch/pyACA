@@ -20,9 +20,6 @@ def FeatureSpectralPitchChroma(X, f_s):
     if isSpectrum:
         X = np.expand_dims(X, axis=1)
 
-    # allocate memory
-    v_pc = np.zeros([12, X.shape[1]])
-
     # generate filter matrix
     H = generatePcFilters(X.shape[0], f_s)
 
@@ -60,4 +57,4 @@ def generatePcFilters(iSpecLength, f_s):
         # increment to next semi-tone
         f_mid = f_mid * 2**(1 / iNumPitchesPerOctave)
 
-    return (H)
+    return H

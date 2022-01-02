@@ -48,7 +48,7 @@ from pyACA.ToolReadAudio import ToolReadAudio
 
 def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
  
-    #mypackage = __import__(".Feature" + cFeatureName, package="pyACA")
+    # mypackage = __import__(".Feature" + cFeatureName, package="pyACA")
     hFeatureFunc = getattr(pyACA, "Feature" + cFeatureName)
 
     # pre-processing
@@ -71,7 +71,7 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
         [v, t] = hFeatureFunc(afAudioData, iBlockLength, iHopLength, f_s)
         # [v, t] = hFeatureFunc(afAudioData, iBlockLength, iHopLength, f_s, np.array([2, 3]))
 
-    return (v, t)
+    return v, t
 
 
 #######################################################
@@ -81,7 +81,7 @@ def isSpectral(cName):
     if "Spectral" in cName:
         bResult = True
 
-    return (bResult)
+    return bResult
 
 
 def isTemporal(cName):
@@ -89,16 +89,15 @@ def isTemporal(cName):
     if "Time" in cName:
         bResult = True
 
-    return (bResult)
+    return bResult
 
 
-def computeFeatureCl(cPath, cFeatureName, bPlotOutput = False):
+def computeFeatureCl(cPath, cFeatureName, bPlotOutput=False):
 
     # read audio file
     [f_s, afAudioData] = ToolReadAudio(cPath)
     
     # for debugging
-    #afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
 
     # compute feature
     [v, t] = computeFeature(cFeatureName, afAudioData, f_s, None, 1024, 256)
@@ -107,7 +106,7 @@ def computeFeatureCl(cPath, cFeatureName, bPlotOutput = False):
     if bPlotOutput:
         plt.plot(t, v)
 
-    return (v, t)
+    return v, t
 
 
 if __name__ == "__main__":

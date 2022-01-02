@@ -29,4 +29,4 @@ def NoveltyHainsworth(X, f_s):
     # flux
     d_hai = np.sum(afDiff, axis=0) / X.shape[0]
 
-    return (d_hai)
+    return d_hai

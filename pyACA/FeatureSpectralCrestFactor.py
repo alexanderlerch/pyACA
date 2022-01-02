@@ -12,6 +12,7 @@ computes the spectral crest from the magnitude spectrum
 
 import numpy as np
 
+
 def FeatureSpectralCrestFactor(X, f_s):
 
     norm = X.sum(axis=0, keepdims=True)

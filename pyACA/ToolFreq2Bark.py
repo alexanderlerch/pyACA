@@ -14,13 +14,16 @@ import numpy as np
 import math
 
 
-def ToolFreq2Bark(fInHz, cModel = 'Schroeder'):
+def ToolFreq2Bark(fInHz, cModel='Schroeder'):
     def acaSchroeder_scalar(f):
         return 7 * math.asinh(f/650)
+
     def acaTerhardt_scalar(f):
         return 13.3 * math.atan(0.75 * f/1000)
+
     def acaZwicker_scalar(f):
         return 13 * math.atan(0.76 * f/1000) + 3.5 * math.atan(f/7500)
+
     def acaTraunmuller_scalar(f):
         return 26.81/(1+1960./f) - 0.53
 
@@ -37,16 +40,16 @@ def ToolFreq2Bark(fInHz, cModel = 'Schroeder'):
 
     fBark = np.zeros(f.shape)
     if cModel == 'Terhardt':
-        for k,fi in enumerate(f):
-            fBark[k] =  acaTerhardt_scalar(fi)
+        for k, fi in enumerate(f):
+            fBark[k] = acaTerhardt_scalar(fi)
     elif cModel == 'Zwicker':
-        for k,fi in enumerate(f):
-            fBark[k] =  acaZwicker_scalar(fi)
+        for k, fi in enumerate(f):
+            fBark[k] = acaZwicker_scalar(fi)
     elif cModel == 'Traunmuller':
-        for k,fi in enumerate(f):
-            fBark[k] =  acaTraunmuller_scalar(fi)
+        for k, fi in enumerate(f):
+            fBark[k] = acaTraunmuller_scalar(fi)
     else:
-        for k,fi in enumerate(f):
-            fBark[k] =  acaSchroeder_scalar(fi)
+        for k, fi in enumerate(f):
+            fBark[k] = acaSchroeder_scalar(fi)
             
-    return (fBark)
+    return fBark

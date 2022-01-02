@@ -33,4 +33,4 @@ def ToolReadAudio(cAudioFilePath):
     if x.dtype == 'uint8':
         audio = audio - 1.
 
-    return (samplerate, audio)
+    return samplerate, audio

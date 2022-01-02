@@ -56,4 +56,4 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
 
     f = np.arange(0, iSpecDim[0]) * f_s / iBlockLength
 
-    return (X, f, t)
+    return X, f, t

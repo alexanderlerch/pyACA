@@ -16,6 +16,7 @@ computes the novelty measure per Spectral Flux
 
 import numpy as np
 
+
 def NoveltyFlux(X, f_s):
     isSpectrum = X.ndim == 1
     if isSpectrum:
@@ -26,9 +27,9 @@ def NoveltyFlux(X, f_s):
     afDeltaX = np.diff(X, 1, axis=1)
 
     # half-wave rectification
-    afDeltaX[afDeltaX<0] = 0
+    afDeltaX[afDeltaX < 0] = 0
 
     # flux
-    d_flux  = np.sqrt((afDeltaX**2).sum(axis=0)) / X.shape[0]
+    d_flux = np.sqrt((afDeltaX**2).sum(axis=0)) / X.shape[0]
 
     return np.squeeze(d_flux) if isSpectrum else d_flux

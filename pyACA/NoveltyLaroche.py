@@ -25,4 +25,4 @@ def NoveltyLaroche(X, f_s):
     # flux
     d_lar = np.sum(afDiff, axis=0) / X.shape[0]
 
-    return (d_lar)
+    return d_lar

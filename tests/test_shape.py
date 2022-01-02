@@ -21,7 +21,6 @@ class TestShape(unittest.TestCase):
                     out, t = pyACA.computeFeature(feature, x, fs, iBlockLength=blockLength, iHopLength=hopLength)
                     npt.assert_equal(out.shape[-1], expectedNumBlocks)
 
-
     def test_spectral_features_for_1d_input(self):
         fs = 44100
         X = np.zeros(1025)
@@ -43,7 +42,6 @@ class TestShape(unittest.TestCase):
         with self.subTest(msg='SpectralPitchChroma'):
             out = pyACA.FeatureSpectralPitchChroma(X, fs)
             npt.assert_equal(out.shape, (12,))
-
 
     def test_spectral_features_for_2d_input(self):
         fs = 44100
@@ -85,6 +83,5 @@ class TestShape(unittest.TestCase):
             out = pyACA.FeatureSpectralPitchChroma(X, fs)
             npt.assert_equal(out.shape, (12, 16))
 
-
     def calcNumBlocks(self, inputSize, blockLen, hopLen):
-        return np.ceil((inputSize) / hopLen)
+        return np.ceil(inputSize / hopLen)

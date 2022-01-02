@@ -160,4 +160,3 @@ class TestTools(unittest.TestCase):
         [avg_acc, accuracies, confmat] = pyACA.ToolLooCrossVal(data, gt)
 
         self.assertEqual(len(accuracies)-len(gt), 0, "CV 1: incorrect result dimensions")
-

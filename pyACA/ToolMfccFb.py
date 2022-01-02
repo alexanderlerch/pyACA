@@ -45,4 +45,4 @@ def ToolMfccFb(iFftLength, f_s):
         i_u = np.max([0, np.argmin(f_k < f_u[c]) - 1])
         H[c, np.arange(i_l, i_u + 1)] = afFilterMax[c] * (f_u[c] - f_k[np.arange(i_l, i_u + 1)]) / (f_u[c] - f_c[c])
 
-    return (H)
+    return H
