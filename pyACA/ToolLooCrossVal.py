@@ -16,6 +16,9 @@ from pyACA.ToolSimpleKnn import ToolSimpleKnn
 
 def ToolLooCrossVal(FeatureMatrix, ClassIndices):
 
+    if FeatureMatrix.ndim == 1:
+        FeatureMatrix = FeatureMatrix[None, :]
+
     iNumObservations = FeatureMatrix.shape[1]
     kNearestNeighbor = 3
 
@@ -76,7 +79,7 @@ def splitData_I(gt_labels, num_folds, classes):
     # compute observations per fold stratified
     avg_obs_fold = np.floor(len(gt_labels)/num_folds).astype(int)
     num_obs_fold = np.zeros([num_folds, len(classes)]).astype(int)
-    while np.sum(num_obs_class) > np.sum(num_obs_fold) and np.sum(num_obs_fold) < num_folds * avg_obs_fold:
+    while np.sum(num_obs_class) > np.sum(num_obs_fold) and np.sum(num_obs_fold) <= num_folds * avg_obs_fold:
         for k in range(len(classes)):
             for f in range(num_folds):
                 if np.sum(num_obs_fold[f, :]) >= avg_obs_fold:
