@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3b3cd7d2-c445-4941-9cf4-ad0b3e25e31d": {
+      "ProjectGuid": "3b3cd7d2-c445-4941-9cf4-ad0b3e25e31d",
+      "DisplayName": "tests",
+      "ColorIndex": 0
+    },
+    "bde0068b-42b7-4ee2-ac46-63598af50a90": {
+      "ProjectGuid": "bde0068b-42b7-4ee2-ac46-63598af50a90",
+      "DisplayName": "pyACA",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
