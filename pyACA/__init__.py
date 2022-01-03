@@ -18,6 +18,7 @@ from .ToolFreq2Bark import ToolFreq2Bark
 from .ToolLooCrossVal import ToolLooCrossVal
 from .ToolFreq2Mel import ToolFreq2Mel
 from .ToolFreq2Midi import ToolFreq2Midi
+from .ToolInstFreq import ToolInstFreq
 from .ToolMel2Freq import ToolMel2Freq
 from .ToolMidi2Freq import ToolMidi2Freq
 from .ToolPca import ToolPca

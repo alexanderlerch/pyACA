@@ -76,6 +76,10 @@ class TestTools(unittest.TestCase):
         npt.assert_almost_equal(X[np.int_(f0)][0], A, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
         npt.assert_almost_equal(np.sum(X), A, decimal=7, err_msg="SP 7: magnitude spectrum incorrect")
 
+        [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=True)
+
+        npt.assert_almost_equal(X[np.int_(f0)][0], 1, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
+
     def test_freq2midi2freq(self):
 
         # check concert pitch
@@ -215,3 +219,46 @@ class TestTools(unittest.TestCase):
         self.assertEqual(featIdx[1], 0, "FeS 5: selected features incorrect")
         self.assertEqual(featIdx[2], 2, "FeS 6: selected features incorrect")
 
+    def test_hann(self):
+
+        iBlockLength = np.asarray([2, 16, 128, 1024, 16384])
+
+        for b in iBlockLength:
+            w = pyACA.ToolComputeHann(b)
+            self.assertEqual(len(w), b, "HN 1: window dimension incorrect")
+
+        # note that the window should be periodic
+        npt.assert_almost_equal(w[0], 0, decimal=7, err_msg="HN 2: window does not start with 0")
+        npt.assert_almost_equal(np.max(w), 1, decimal=7, err_msg="HN 3: window maximum incorrect")
+        npt.assert_almost_equal(w[int(iBlockLength[-1]/4)], .5, decimal=7, err_msg="HN 4: window shape incorrect")
+
+
+    def test_instfreq(self):
+        iBlockLength = 1024
+        iHopLength = 128
+        f_s = 48000
+        fFreqRes =  f_s/iBlockLength
+        fLengthInS = (iBlockLength + iHopLength)/ f_s
+        f = np.arange(0, iBlockLength/2+1) * f_s / iBlockLength / 2
+    
+        # select freqs to generate
+        bins = iBlockLength / np.asarray ([32, 8, 4])
+        fFreq = fFreqRes * (bins + np.asarray([.5, .25, 0]))
+
+        # generate audio
+        t = np.arange(0, iBlockLength + iHopLength) / f_s
+        x = np.zeros([len(fFreq), len(t)])
+        for i, f in enumerate(fFreq):
+            x[i, :] = np.sin(2 * np.pi * f * t)
+
+        X = np.zeros([2, iBlockLength]).astype(complex)
+        w = pyACA.ToolComputeHann(iBlockLength)
+        X[0, :] = np.fft.fft(np.sum(x[:,0:iBlockLength], axis=0) * w) * 2 / iBlockLength
+        X[1, :] = np.fft.fft(np.sum(x[:,iHopLength:iHopLength+iBlockLength], axis=0) * w) * 2 / iBlockLength
+
+        iSpecDim = np.int_(iBlockLength / 2 + 1)
+        X = X[:, 0:iSpecDim]
+        f_I = pyACA.ToolInstFreq(X,iHopLength, f_s)
+
+        for i,f in enumerate(fFreq):
+           npt.assert_almost_equal(f_I[bins[i].astype(int)], f, decimal=4, err_msg="IF 1: incorrect result")
