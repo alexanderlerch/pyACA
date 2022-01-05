@@ -232,17 +232,14 @@ class TestTools(unittest.TestCase):
         npt.assert_almost_equal(np.max(w), 1, decimal=7, err_msg="HN 3: window maximum incorrect")
         npt.assert_almost_equal(w[int(iBlockLength[-1]/4)], .5, decimal=7, err_msg="HN 4: window shape incorrect")
 
-
     def test_instfreq(self):
         iBlockLength = 1024
         iHopLength = 128
         f_s = 48000
-        fFreqRes =  f_s/iBlockLength
-        fLengthInS = (iBlockLength + iHopLength)/ f_s
-        f = np.arange(0, iBlockLength/2+1) * f_s / iBlockLength / 2
-    
+        fFreqRes = f_s/iBlockLength
+
         # select freqs to generate
-        bins = iBlockLength / np.asarray ([32, 8, 4])
+        bins = iBlockLength / np.asarray([32, 8, 4])
         fFreq = fFreqRes * (bins + np.asarray([.5, .25, 0]))
 
         # generate audio
@@ -253,12 +250,42 @@ class TestTools(unittest.TestCase):
 
         X = np.zeros([2, iBlockLength]).astype(complex)
         w = pyACA.ToolComputeHann(iBlockLength)
-        X[0, :] = np.fft.fft(np.sum(x[:,0:iBlockLength], axis=0) * w) * 2 / iBlockLength
-        X[1, :] = np.fft.fft(np.sum(x[:,iHopLength:iHopLength+iBlockLength], axis=0) * w) * 2 / iBlockLength
+        X[0, :] = np.fft.fft(np.sum(x[:, 0:iBlockLength], axis=0) * w) * 2 / iBlockLength
+        X[1, :] = np.fft.fft(np.sum(x[:, iHopLength:iHopLength+iBlockLength], axis=0) * w) * 2 / iBlockLength
 
         iSpecDim = np.int_(iBlockLength / 2 + 1)
         X = X[:, 0:iSpecDim]
-        f_I = pyACA.ToolInstFreq(X,iHopLength, f_s)
+        f_I = pyACA.ToolInstFreq(X, iHopLength, f_s)
 
-        for i,f in enumerate(fFreq):
-           npt.assert_almost_equal(f_I[bins[i].astype(int)], f, decimal=4, err_msg="IF 1: incorrect result")
+        for i, f in enumerate(fFreq):
+            npt.assert_almost_equal(f_I[bins[i].astype(int)], f, decimal=4, err_msg="IF 1: incorrect result")
+
+    def test_gmm(self):
+        mu = np.array([[1, 2],
+                       [-1, -2]])
+        sigma = np.array([[[3, .2],
+                           [.2, 2]],
+
+                          [[2, 0],
+                           [0, 1]]])
+        N = np.array([2000,
+                      1000])
+
+        np.random.seed(11)
+        points = []
+        for i in range(len(mu)):
+            x = np.random.multivariate_normal(mu[i], sigma[i], N[i])
+            points.append(x)
+        V = np.concatenate(points).T
+
+        mu_hat, sigma_hat, state = pyACA.ToolGmm(V, 2)
+
+        diffm0 = np.min(np.array([np.sum(np.abs(mu[0] - mu_hat[:, 0])), np.sum(np.abs(mu[0] - mu_hat[:, 1]))]))
+        diffm1 = np.min(np.array([np.sum(np.abs(mu[1] - mu_hat[:, 0])), np.sum(np.abs(mu[1] - mu_hat[:, 1]))]))
+        npt.assert_almost_equal(diffm0, 0, decimal=1, err_msg="GMM 1: incorrect result")
+        npt.assert_almost_equal(diffm1, 0, decimal=1, err_msg="GMM 2: incorrect result")
+
+        diffs0 = np.min(np.array([np.max(np.abs(sigma[0] - sigma_hat[0])), np.max(np.abs(sigma[0] - sigma_hat[1]))]))
+        diffs1 = np.min(np.array([np.max(np.abs(sigma[1] - sigma_hat[0])), np.max(np.abs(sigma[1] - sigma_hat[1]))]))
+        npt.assert_almost_equal(diffs0, 0, decimal=1, err_msg="GMM 3: incorrect result")
+        npt.assert_almost_equal(diffs1, 0, decimal=1, err_msg="GMM 4: incorrect result")
