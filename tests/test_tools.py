@@ -7,6 +7,32 @@ import pyACA
 
 class TestTools(unittest.TestCase):
 
+    def test_nmf(self):
+        np.random.seed(42)
+        X = np.random.rand(128, 6) / 20
+        X[np.arange(4, 128, 4), 0:2] = 1
+        X[np.arange(7, 128, 7), 2:4] = 1
+        X[:, 4:6] = 0.7 * X[:, 0:2] + 0.3 * X[:, 2:4]
+        W, H, err = pyACA.ToolSimpleNmf(X, 2)
+
+        npt.assert_almost_equal(W[8, 1], np.mean(W[np.arange(4, 128, 4), 1]), decimal=3, err_msg="NMF 1: dictionary incorrect")
+        npt.assert_almost_equal(W[12, 1], np.mean(W[np.arange(4, 128, 4), 1]), decimal=3, err_msg="NMF 2: dictionary incorrect")
+        npt.assert_almost_equal(W[124, 1], np.mean(W[np.arange(4, 128, 4), 1]), decimal=3, err_msg="NMF 3: dictionary incorrect")
+
+        npt.assert_almost_equal(W[21, 0], np.mean(W[np.arange(7, 128, 7), 0]), decimal=3, err_msg="NMF 4: dictionary incorrect")
+        npt.assert_almost_equal(W[84, 0], np.mean(W[np.arange(7, 128, 7), 0]), decimal=3, err_msg="NMF 5: dictionary incorrect")
+        npt.assert_almost_equal(W[105, 0], np.mean(W[np.arange(7, 128, 7), 0]), decimal=3, err_msg="NMF 6: dictionary incorrect")
+
+        self.assertEqual(np.max(np.diff(err)) < 0, True, "NMF 7: loss incorrect")
+
+        for n in range(3):
+            npt.assert_almost_equal(H[1, 2*n]-H[1, 2*n+1], 0, decimal=0, err_msg="NMF 8: activation incorrect")
+            npt.assert_almost_equal(H[0, 2*n]-H[0, 2*n+1], 0, decimal=0, err_msg="NMF 9: activation incorrect")
+        self.assertEqual(np.mean(H[0, 0:2]) < 1, True, "NMF 10: activation incorrect")
+        self.assertEqual(np.mean(H[1, 2:4]) < 1, True, "NMF 11: activation incorrect")
+        self.assertEqual(np.mean(H[1, 0:2]) > np.mean(H[1, 4:6]), True, "NMF 12: activation incorrect")
+        self.assertEqual(np.mean(H[0, 2:4]) > np.mean(H[0, 4:6]), True, "NMF 13: activation incorrect")
+
     def test_blockaudio(self):
         iBlockLength = 20
         iHopLength = 10

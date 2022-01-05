@@ -27,6 +27,7 @@ from .ToolReadAudio import ToolReadAudio
 from .ToolSeqFeatureSel import ToolSeqFeatureSel
 from .ToolSimpleDtw import ToolSimpleDtw
 from .ToolSimpleKnn import ToolSimpleKnn
+from .ToolSimpleNmf import ToolSimpleNmf
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor
 from .FeatureSpectralDecrease import FeatureSpectralDecrease
