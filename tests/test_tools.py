@@ -33,6 +33,32 @@ class TestTools(unittest.TestCase):
         self.assertEqual(np.mean(H[1, 0:2]) > np.mean(H[1, 4:6]), True, "NMF 12: activation incorrect")
         self.assertEqual(np.mean(H[0, 2:4]) > np.mean(H[0, 4:6]), True, "NMF 13: activation incorrect")
 
+    def test_viterbi(self):
+        # states: healthy: 0, fever: 1
+        # obs: normal: 0, cold: 1, dizzy: 2
+        # V = np.array([0, 1, 2])
+        
+        # start prob: healthy: 0.6, fever: 0.4
+        p_s = np.array([0.6, 0.4])
+        
+        # emission prob: normal|healthy: 0.5, cold|healthy: 0.4, dizzy|healthy: 0.1
+        #                normal|fever: 0.1, cold|fever: 0.3, dizzy|fever: 0.6
+        P_E = np.array([[0.5, 0.4, 0.1],
+                       [0.1, 0.3, 0.6]])
+        # trans prob: healthy->healthy: 0.7, healthy->fever: 0.3, fever->healthy: 0.4, fever->fever: 0.6
+        P_T = np.array([[0.7, 0.3],
+                        [0.4, 0.6]])
+
+        p, P_res = pyACA.ToolViterbi(P_E, P_T, p_s)
+
+        npt.assert_almost_equal(np.sum(np.abs(p - np.array([0, 0, 1]))), 0, decimal=7, err_msg="V 1: state sequence incorrect")
+        npt.assert_almost_equal(np.sum(np.abs(P_res - np.array([[0.3000, 0.0840, 0.0059], [0.04, 0.0270, 0.0151]]))), 0, decimal=4, err_msg="V 1: state sequence incorrect")
+
+        p, P_res = pyACA.ToolViterbi(P_E, P_T, p_s, True)
+
+        npt.assert_almost_equal(np.sum(np.abs(p - np.array([0, 0, 1]))), 0, decimal=7, err_msg="V 1: state sequence incorrect")
+        npt.assert_almost_equal(np.sum(np.abs(P_res - np.log(np.array([[0.3000, 0.0840, 0.0059], [0.04, 0.0270, 0.0151]])))), 0, decimal=2, err_msg="V 1: state sequence incorrect")
+
     def test_blockaudio(self):
         iBlockLength = 20
         iHopLength = 10

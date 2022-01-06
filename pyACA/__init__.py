@@ -28,6 +28,7 @@ from .ToolSeqFeatureSel import ToolSeqFeatureSel
 from .ToolSimpleDtw import ToolSimpleDtw
 from .ToolSimpleKnn import ToolSimpleKnn
 from .ToolSimpleNmf import ToolSimpleNmf
+from .ToolViterbi import ToolViterbi
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor
 from .FeatureSpectralDecrease import FeatureSpectralDecrease
