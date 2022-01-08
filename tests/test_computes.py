@@ -5,7 +5,7 @@ import numpy.testing as npt
 import pyACA
 
 
-class TestTools(unittest.TestCase):
+class TestComputes(unittest.TestCase):
 
     def test_specgram(self):
         f = 400
@@ -45,3 +45,44 @@ class TestTools(unittest.TestCase):
         [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=True)
 
         npt.assert_almost_equal(X[np.int_(f0)][0], 1, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
+
+    def test_chords(self):
+        fSeriesOfIntervals = 2**(np.array([[7, 12, 14, 7, 10],
+                                           [4, 9, 11, 4, 6],
+                                           [0, 5, 7, 0, 3]]) / 12)
+        fBaseFreq = 440
+        fFreq = fBaseFreq * fSeriesOfIntervals
+        f_s = 44100
+
+        # generate audio with cadence plus an additional minor chord
+        t = np.arange(0, f_s) / f_s
+        x = np.zeros([1, 0])
+        for n in range(fFreq.shape[1]):
+            x_tmp = np.zeros([1, len(t)])
+            for f in range(fFreq.shape[0]):
+                x_tmp += np.sin(2 * np.pi * fFreq[f, n] * t)
+            x = np.concatenate((x, x_tmp), axis=1)
+
+        x = x.T
+
+        cChordLabel, aiChordIdx, t, P_E = pyACA.computeChords(x, f_s)
+
+        gtchords = np.array([9, 2, 4, 9, 12])
+        # shift time stamps to account for block middle
+        t = t[2:len(t)]
+        for n in range(len(t)):
+            if t[n] < 1:
+                gt = gtchords[0]
+            elif t[n] < 2:
+                gt = gtchords[1]
+            elif t[n] < 3:
+                gt = gtchords[2]
+            elif t[n] < 3.99:
+                gt = gtchords[3]
+            elif t[n] > 4.05:
+                gt = gtchords[4]
+            else:
+                continue
+
+            self.assertEqual(aiChordIdx[0, n], gt, "CH 1: detected chord incorrect")
+            self.assertEqual(aiChordIdx[1, n], gt, "CH 2: detected chord incorrect")
