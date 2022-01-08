@@ -4,7 +4,7 @@ computeKey
 
 computes a simple beat histogram
   Args:
-      afAudioData: array with floating point audio data.
+      x: array with floating point audio data.
       f_s: sample rate
       cMethod:  method of beat histogram computation ('Corr' or 'FFT'(default))
       afWindow: FFT window of length iBlockLength (default: hann)
@@ -24,7 +24,7 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeBeatHisto(afAudioData, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iHopLength=8):
+def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iHopLength=8):
     # compute window function for FFT
     if afWindow is None:
         afWindow = ToolComputeHann(iBlockLength)
@@ -32,10 +32,10 @@ def computeBeatHisto(afAudioData, f_s, cMethod='FFT', afWindow=None, iBlockLengt
     assert (afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # pre-processing
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     # novelty function
-    [d, t, peaks] = computeNoveltyFunction('Flux', afAudioData, f_s, afWindow, iBlockLength, iHopLength)
+    [d, t, peaks] = computeNoveltyFunction('Flux', x, f_s, afWindow, iBlockLength, iHopLength)
 
     if cMethod == 'Corr':
         # compute autocorrelation of result
@@ -44,6 +44,7 @@ def computeBeatHisto(afAudioData, f_s, cMethod='FFT', afWindow=None, iBlockLengt
 
         Bpm = np.flip(60 / t[np.arange(1, t.shape[0])])
         T = np.flip(afCorr)
+
     elif cMethod == 'FFT':
         iHistoLength = 65536
         afWindow = np.zeros(2*iHistoLength)

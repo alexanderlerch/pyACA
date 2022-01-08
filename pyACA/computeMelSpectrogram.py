@@ -4,7 +4,7 @@ computeMelSpectrogram
 
 computes a mel spectrogram from the audio data
   Args:
-      afAudioData: time domain sample data, dimension channels X samples
+      x: time domain sample data, dimension channels X samples
       f_s: sample rate of audio data
       bLogarithmic: levels (true) or magnitudes (false)
       afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
@@ -26,13 +26,13 @@ from pyACA.ToolFreq2Mel import ToolFreq2Mel
 from pyACA.ToolMel2Freq import ToolMel2Freq
 
 
-def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
+def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
 
     if not fMax:
         fMax = f_s/2
 
     # Pre-process: down-mix, normalize, zero-pad
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     if afWindow is None:
         # Compute window function for FFT
@@ -41,7 +41,7 @@ def computeMelSpectrogram(afAudioData, f_s, afWindow=None, bLogarithmic=True, iB
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # Compute spectrogram (in the real world, we would do this block by block)
-    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+    [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
     # Compute Mel filters
     H, f_c = ToolMelFb(iBlockLength, f_s, iNumMelBands, fMax)

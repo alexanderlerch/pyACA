@@ -10,7 +10,7 @@ computes the novelty function for onset detection
 
   Args:
       cNoveltyName: name of the novelty measure
-      afAudioData: array with floating point audio data.
+      x: array with floating point audio data.
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
@@ -35,7 +35,7 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=512):
+def computeNoveltyFunction(cNoveltyName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=512):
 
     # compute window function for FFT
     if afWindow is None:
@@ -52,10 +52,10 @@ def computeNoveltyFunction(cNoveltyName, afAudioData, f_s, afWindow=None, iBlock
     iLenThreshLp = np.max([2, math.ceil(fLenThreshLpInS * f_s / iHopLength)])
 
     # pre-processing
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     # in the real world, we would do this block by block...
-    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+    [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
     # novelty function
     d = hNoveltyFunc(X, f_s)

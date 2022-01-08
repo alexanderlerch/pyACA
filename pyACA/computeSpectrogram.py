@@ -32,7 +32,7 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
     iHopLength = np.int_(iHopLength)
 
     # Pre-process: down-mix, normalize
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength, bNormalize)
+    afAudioData = ToolPreprocAudio(afAudioData, bNormalize)
 
     if afWindow is None:
         # Compute window function for FFT

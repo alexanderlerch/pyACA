@@ -25,7 +25,7 @@ supported features are:
     'TimeZeroCrossingRate',
   Args:
       cFeatureName: feature to compute, e.g. 'SpectralSkewness'
-      afAudioData: array with floating point audio data.
+      x: array with floating point audio data.
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
@@ -46,13 +46,13 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
+def computeFeature(cFeatureName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
  
     # mypackage = __import__(".Feature" + cFeatureName, package="pyACA")
     hFeatureFunc = getattr(pyACA, "Feature" + cFeatureName)
 
     # pre-processing
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     if isSpectral(cFeatureName):
         # compute window function for FFT
@@ -62,13 +62,13 @@ def computeFeature(cFeatureName, afAudioData, f_s, afWindow=None, iBlockLength=4
         assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
         # in the real world, we would do this block by block...
-        [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+        [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
         # compute instantaneous feature
         v = hFeatureFunc(X, f_s)
 
     if isTemporal(cFeatureName):
-        [v, t] = hFeatureFunc(afAudioData, iBlockLength, iHopLength, f_s)
+        [v, t] = hFeatureFunc(x, iBlockLength, iHopLength, f_s)
         # [v, t] = hFeatureFunc(afAudioData, iBlockLength, iHopLength, f_s, np.array([2, 3]))
 
     return v, t
@@ -98,9 +98,11 @@ def computeFeatureCl(cPath, cFeatureName, bPlotOutput=False):
     [f_s, afAudioData] = ToolReadAudio(cPath)
     
     # for debugging
+    iBlockLength = 4096
+    iHopLength = 2048
 
     # compute feature
-    [v, t] = computeFeature(cFeatureName, afAudioData, f_s, None, 1024, 256)
+    [v, t] = computeFeature(cFeatureName, afAudioData, f_s, None, iBlockLength, iHopLength)
 
     # plot feature output
     if bPlotOutput:
@@ -132,7 +134,7 @@ if __name__ == "__main__":
         if not cPath:
             cPath = "../../ACA-Plots/audio/sax_example.wav"
         if not cFeatureName:
-            cFeatureName = "SpectralCentroid"
+            cFeatureName = "TimeRms"
         if not bPlotOutput:
             bPlotOutput = False
 

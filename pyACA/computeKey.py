@@ -4,7 +4,7 @@ computeKey
 
 computes the musical key of an input audio file
   Args:
-      afAudioData: array with floating point audio data.
+      x: array with floating point audio data.
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
@@ -23,7 +23,7 @@ from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
+def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
 
     # compute window function for FFT
     if afWindow is None:
@@ -41,10 +41,10 @@ def computeKey(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=20
     t_pc = t_pc / t_pc.sum(axis=1, keepdims=True)
 
     # pre-processing
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     # in the real world, we would do this block by block...
-    [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+    [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
     # compute instantaneous pitch chroma
     v_pc = FeatureSpectralPitchChroma(X, f_s)

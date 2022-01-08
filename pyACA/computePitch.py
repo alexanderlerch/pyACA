@@ -12,7 +12,7 @@ supported pitch trackers are:
     'TimeZeroCrossings',
   Args:
       cPitchTrackName: feature to compute, e.g. 'SpectralHps'
-      afAudioData: array with floating point audio data.
+      x: array with floating point audio data.
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
@@ -32,13 +32,13 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
+def computePitch(cPitchTrackName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     
     # mypackage = __import__(".Pitch" + cPitchTrackName, package="pyACA")
     hPitchFunc = getattr(pyACA, "Pitch" + cPitchTrackName)
 
     # pre-processing
-    afAudioData = ToolPreprocAudio(afAudioData, iBlockLength)
+    x = ToolPreprocAudio(x)
 
     if isSpectral(cPitchTrackName):
         # compute window function for FFT
@@ -48,13 +48,13 @@ def computePitch(cPitchTrackName, afAudioData, f_s, afWindow=None, iBlockLength=
         assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
         # in the real world, we would do this block by block...
-        [X, f, t] = computeSpectrogram(afAudioData, f_s, None, iBlockLength, iHopLength)
+        [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
         # compute instantaneous pitch chroma
         f = hPitchFunc(X, f_s)
 
     if isTemporal(cPitchTrackName):
-        [f, t] = hPitchFunc(afAudioData, iBlockLength, iHopLength, f_s)
+        [f, t] = hPitchFunc(x, iBlockLength, iHopLength, f_s)
 
     return f, t
 
