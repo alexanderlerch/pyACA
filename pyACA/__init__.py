@@ -1,6 +1,7 @@
 #
 name = "pyACA"
 from .computeBeatHisto import computeBeatHisto
+from .computeChords import computeChords
 from .computeFeature import computeFeature
 from .computeKey import computeKey
 from .computeSpectrogram import computeSpectrogram
@@ -26,6 +27,7 @@ from .ToolPca import ToolPca
 from .ToolReadAudio import ToolReadAudio
 from .ToolSeqFeatureSel import ToolSeqFeatureSel
 from .ToolSimpleDtw import ToolSimpleDtw
+from .ToolSimpleKmeans import ToolSimpleKmeans
 from .ToolSimpleKnn import ToolSimpleKnn
 from .ToolSimpleNmf import ToolSimpleNmf
 from .ToolViterbi import ToolViterbi

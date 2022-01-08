@@ -59,6 +59,33 @@ class TestTools(unittest.TestCase):
         npt.assert_almost_equal(np.sum(np.abs(p - np.array([0, 0, 1]))), 0, decimal=7, err_msg="V 1: state sequence incorrect")
         npt.assert_almost_equal(np.sum(np.abs(P_res - np.log(np.array([[0.3000, 0.0840, 0.0059], [0.04, 0.0270, 0.0151]])))), 0, decimal=2, err_msg="V 1: state sequence incorrect")
 
+    def test_kmeans(self):
+        mu = np.array([[-5, 5],
+                       [5, -5]])
+        iNumObs = 32
+        phase = np.arange(0, iNumObs)*2*np.pi / iNumObs
+        r = np.array([.1, .5])
+
+        # generate data points for two clusters
+        cluster1 = np.zeros([2, 2*iNumObs])
+        cluster2 = np.zeros([2, 2*iNumObs])
+
+        cluster1[:, 0:iNumObs] = mu[:, [0]] + r[0] * np.squeeze(np.array([[np.exp(1j*phase).real], [np.exp(1j*phase).imag]]))
+        cluster1[:, iNumObs:2*iNumObs] = mu[:, [0]] + r[1] * np.squeeze(np.array([[np.exp(1j*phase).real], [np.exp(1j*phase).imag]]))
+
+        cluster2[:, 0:iNumObs] = mu[:, [1]] + r[0] * np.squeeze(np.array([[np.exp(1j*phase).real], [np.exp(1j*phase).imag]]))
+        cluster2[:, iNumObs:2*iNumObs] = mu[:, [1]] + r[1] * np.squeeze(np.array([[np.exp(1j*phase).real], [np.exp(1j*phase).imag]]))
+
+        V = np.concatenate((cluster1, cluster2), axis=1)
+
+        [clusterIdx, state] = pyACA.ToolSimpleKmeans(V, 2)
+
+        self.assertEqual(np.sum(np.diff(clusterIdx[0:2*iNumObs])), 0, "KM 1: block content incorrect")
+        self.assertEqual(np.sum(np.diff(clusterIdx[2*iNumObs:-1])), 0, "KM 2: block content incorrect")
+        self.assertEqual(np.abs(clusterIdx[0]-clusterIdx[-1]), 1, "KM 3: block content incorrect")
+
+    # def test_chords(self):
+
     def test_blockaudio(self):
         iBlockLength = 20
         iHopLength = 10
