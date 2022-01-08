@@ -84,8 +84,6 @@ class TestTools(unittest.TestCase):
         self.assertEqual(np.sum(np.diff(clusterIdx[2*iNumObs:-1])), 0, "KM 2: block content incorrect")
         self.assertEqual(np.abs(clusterIdx[0]-clusterIdx[-1]), 1, "KM 3: block content incorrect")
 
-    # def test_chords(self):
-
     def test_blockaudio(self):
         iBlockLength = 20
         iHopLength = 10
