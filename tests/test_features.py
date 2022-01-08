@@ -119,7 +119,8 @@ class TestFeatures(unittest.TestCase):
         fs = 4096
 
         vrms, t = pyACA.FeatureTimeRms(x, iBlockLength, iHopLength, fs)
-        self.assertEqual(vrms[0], -100, "RMS 1: feature value incorrect")
+        self.assertEqual(vrms[0, 0], -100, "RMS 1: feature value incorrect")
+        self.assertEqual(vrms[1, 0], -100, "RMS 2: feature value incorrect")
 
         # sine test
         f0 = 4
@@ -131,8 +132,21 @@ class TestFeatures(unittest.TestCase):
         x = A*np.sin(2 * np.pi * f0 * t)
 
         vrms, t = pyACA.FeatureTimeRms(x, iBlockLength, iHopLength, fs)
-        self.assertEqual(t[1]-t[0], .25, "RMS 2: time stamps incorrect")
-        npt.assert_almost_equal(vrms[1], 20*np.log10(np.sqrt(2)/2), decimal=7, err_msg="RMS 3: feature value incorrect")
+        self.assertEqual(t[1]-t[0], .25, "RMS 3: time stamps incorrect")
+        npt.assert_almost_equal(vrms[0, 1], 20*np.log10(np.sqrt(2)/2), decimal=7, err_msg="RMS 4: feature value incorrect")
+
+        # sine test
+        f0 = 128
+        fs = 8192
+        A = .5
+        iBlockLength = 1024
+        iHopLength = 512
+        t = np.arange(0, fs) / fs
+        x = A*np.sin(2 * np.pi * f0 * t)
+
+        vrms, t = pyACA.FeatureTimeRms(x, iBlockLength, iHopLength, fs)
+        npt.assert_almost_equal(vrms[0, 10], 20*np.log10(np.sqrt(2)/4), decimal=7, err_msg="RMS 5: feature value incorrect")
+        npt.assert_almost_equal(vrms[1, 10], 20*np.log10(np.sqrt(2)/4), decimal=2, err_msg="RMS 6: feature value incorrect")
 
     def test_zerocrossingrate(self):
         fs = 44100
