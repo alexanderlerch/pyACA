@@ -3,7 +3,7 @@
 helper function: read audio from wav
 
   Args:
-    afAudioData: audio file data
+    afAudioData: audio file data (samples x channels)
     iBlockLength: processing block length
     bNormalize: flag to switch off normalization (optional)
 
