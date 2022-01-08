@@ -53,7 +53,7 @@ def ToolViterbi(P_E, P_T, p_s, bUseLogLikelihood=False):
     p = np.zeros(P_E.shape[1]).astype(int)
     # start with the last element, then count down
     p[-1] = np.argmax(P_res[:, -1]).astype(int)
-    for n in range(P_E.shape[1]-2, 0, -1):
+    for n in range(P_E.shape[1]-2, -1, -1):
         p[n] = I[p[n+1], n+1]
 
     return p, P_res
