@@ -17,3 +17,6 @@
 /.vs/pyACA/v17/TestStore/1/*.testlog
 /.vs/pyACA/v17/TestStore/1/*.manifest
 /pyACA/*.user
+/pyACA.sln
+/pyACA/pyACA.pyproj
+/tests/tests.pyproj
