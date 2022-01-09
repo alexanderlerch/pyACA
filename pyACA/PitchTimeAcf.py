@@ -9,7 +9,7 @@ computes the lag of the autocorrelation function
     f_s: sample rate of audio data (unused)
 
   Returns:
-      f frequency
+      f_0 frequency
       t time stamp for the frequency value
 """
 
@@ -28,7 +28,7 @@ def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
 
     # allocate memory
-    f = np.zeros(iNumOfBlocks)
+    f_0 = np.zeros(iNumOfBlocks)
 
     for n in range(0, iNumOfBlocks):
         eta_min = int(round(f_s / f_max)) - 1
@@ -54,9 +54,9 @@ def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):
         eta_min = np.max([eta_min, eta_tmp])
 
         # find the coefficients specified in eta
-        f[n] = np.argmax(afCorr[np.arange(eta_min + 1, afCorr.size)]) + 1
+        f_0[n] = np.argmax(afCorr[np.arange(eta_min + 1, afCorr.size)]) + 1
 
         # convert to Hz
-        f[n] = f_s / (f[n] + eta_min + 1)
+        f_0[n] = f_s / (f_0[n] + eta_min + 1)
 
-    return f, t
+    return f_0, t

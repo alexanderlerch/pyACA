@@ -14,7 +14,7 @@ from scipy.io.wavfile import read as wavread
 
 
 def ToolReadAudio(cAudioFilePath):
-    [samplerate, x] = wavread(cAudioFilePath)
+    [f_s, x] = wavread(cAudioFilePath)
 
     if x.dtype == 'float32':
         audio = x
@@ -33,4 +33,4 @@ def ToolReadAudio(cAudioFilePath):
     if x.dtype == 'uint8':
         audio = audio - 1.
 
-    return samplerate, audio
+    return f_s, audio

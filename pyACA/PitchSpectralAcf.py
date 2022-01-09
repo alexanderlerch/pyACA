@@ -7,7 +7,7 @@ computes the maximum of the spectral autocorrelation function
     f_s: sample rate of audio data
 
   Returns:
-    f acf maximum location (in Hz)
+    f_0 acf maximum location (in Hz)
 """
 
 import numpy as np
@@ -18,7 +18,7 @@ def PitchSpectralAcf(X, f_s):
 
     # initialize
     f_min = 300
-    f = np.zeros(X.shape[1])
+    f_0 = np.zeros(X.shape[1])
 
     # use spectral symmetry for robustness
     X[0, :] = np.max(X)
@@ -39,9 +39,9 @@ def PitchSpectralAcf(X, f_s):
         iPeaks = find_peaks(afCorr, height=0)
         if iPeaks[0].size:
             eta_min = np.max([eta_min, iPeaks[0][0] - 1])
-        f[n] = np.argmax(afCorr[np.arange(eta_min, afCorr.size)]) + 1
+        f_0[n] = np.argmax(afCorr[np.arange(eta_min, afCorr.size)]) + 1
 
         # find max index and convert to Hz (note: X has double length)
-        f[n] = (f[n] + eta_min) / (X.shape[0] - 2) * f_s
+        f_0[n] = (f_0[n] + eta_min) / (X.shape[0] - 2) * f_s
 
-    return f
+    return f_0

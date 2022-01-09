@@ -9,7 +9,7 @@ computes f_0 through "auditory" approach
     f_s: sample rate of audio data (unused)
 
   Returns:
-      f frequency
+      f_0 frequency
       t time stamp for the frequency value
 """
 
@@ -25,7 +25,7 @@ def PitchTimeAuditory(x, iBlockLength, iHopLength, f_s):
 
     # initialize
     iNumOfBlocks = math.ceil(x.size / iHopLength)
-    f = np.zeros(iNumOfBlocks)
+    f_0 = np.zeros(iNumOfBlocks)
     f_max = 2000
     iNumBands = 20
     fLengthLpInS = 0.001
@@ -74,9 +74,9 @@ def PitchTimeAuditory(x, iBlockLength, iHopLength, f_s):
         iPeaks = find_peaks(afSumCorr, height=0)
         if iPeaks[0].size:
             eta_min = np.max([eta_min, iPeaks[0][0] - 1])
-        f[n] = np.argmax(afSumCorr[np.arange(eta_min + 1, afSumCorr.size)]) + 1
+        f_0[n] = np.argmax(afSumCorr[np.arange(eta_min + 1, afSumCorr.size)]) + 1
 
         # convert to Hz
-        f[n] = f_s / (f[n] + eta_min + 1)
+        f_0[n] = f_s / (f_0[n] + eta_min + 1)
 
-    return f, t
+    return f_0, t

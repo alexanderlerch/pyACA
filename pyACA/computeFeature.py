@@ -37,10 +37,10 @@ supported features are:
 """
 
 import numpy as np
-from pyACA.computeSpectrogram import computeSpectrogram
 import matplotlib.pyplot as plt
 
 import pyACA
+from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
@@ -69,7 +69,6 @@ def computeFeature(cFeatureName, x, f_s, afWindow=None, iBlockLength=4096, iHopL
 
     if isTemporal(cFeatureName):
         [v, t] = hFeatureFunc(x, iBlockLength, iHopLength, f_s)
-        # [v, t] = hFeatureFunc(afAudioData, iBlockLength, iHopLength, f_s, np.array([2, 3]))
 
     return v, t
 

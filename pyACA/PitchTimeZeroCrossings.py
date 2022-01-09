@@ -9,7 +9,7 @@ computes f_0 through zero crossing distances
     f_s: sample rate of audio data (unused)
 
   Returns:
-      f frequency
+      f_0 fundamental frequency estimate
       t time stamp for the frequency value
 """
 
@@ -21,7 +21,7 @@ def PitchTimeZeroCrossings(x, iBlockLength, iHopLength, f_s):
 
     # initialize
     iNumOfBlocks = math.ceil(x.size / iHopLength)
-    f = np.zeros(iNumOfBlocks)
+    f_0 = np.zeros(iNumOfBlocks)
 
     # compute time stamps
     t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
@@ -43,6 +43,6 @@ def PitchTimeZeroCrossings(x, iBlockLength, iHopLength, f_s):
 
         # average distance of zero crossings indicates half period
         if i_tmp.size:
-            f[n] = f_s / np.mean(2 * i_tmp)
+            f_0[n] = f_s / np.mean(2 * i_tmp)
 
-    return f, t
+    return f_0, t
