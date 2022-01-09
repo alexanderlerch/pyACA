@@ -35,7 +35,7 @@ class TestComputes(unittest.TestCase):
         iBlockLength = 16
         iHopLength = 16
         t = np.arange(0, fs) / fs
-        x = A*np.sin(2 * np.pi * f0 * t)
+        x = A * np.sin(2 * np.pi * f0 * t)
 
         [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=False)
 
@@ -45,6 +45,27 @@ class TestComputes(unittest.TestCase):
         [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=True)
 
         npt.assert_almost_equal(X[np.int_(f0)][0], 1, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
+
+    def test_melspecgram(self):
+        f = 400
+        f_s = 40000
+        iBlockLength = 1024
+        iHopLength = 512
+        t = np.arange(0, f_s - 1) / f_s
+        x = np.sin(2 * np.pi * f * t)
+
+        iNumMelBands = 128
+        [M, f, t] = pyACA.computeMelSpectrogram(x, f_s, None, True, iBlockLength, iHopLength, iNumMelBands)
+        self.assertEqual(M.shape[0], iNumMelBands, "MSP 1: number of frequency bins incorrect")
+        
+        iNumMelBands = 256
+        [M, f, t] = pyACA.computeMelSpectrogram(x, f_s, None, True, iBlockLength, iHopLength, iNumMelBands)
+        self.assertEqual(M.shape[0], iNumMelBands, "MSP 2: number of frequency bins incorrect")
+        
+        iNumMelBands = 64
+        [M, f, t] = pyACA.computeMelSpectrogram(x, f_s, None, True, iBlockLength, iHopLength, iNumMelBands)
+        self.assertEqual(M.shape[0], iNumMelBands, "MSP 3: number of frequency bins incorrect")
+
 
     def test_chords(self):
         fSeriesOfIntervals = 2**(np.array([[7, 12, 14, 7, 10],

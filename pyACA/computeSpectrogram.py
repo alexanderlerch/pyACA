@@ -4,7 +4,7 @@ computeSpectrogram
 
 computes a spectrogram from the audio data
   Args:
-      afAudioData: time domain sample data, dimension channels X samples
+      x: time domain sample data, dimension channels X samples
       f_s: sample rate of audio data
       bLogarithmic: levels (true) or magnitudes (false)
       afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
@@ -26,13 +26,13 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolBlockAudio import ToolBlockAudio
 
 
-def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048, bNormalize=True, bMagnitude=True):
+def computeSpectrogram(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048, bNormalize=True, bMagnitude=True):
 
     iBlockLength = np.int_(iBlockLength)
     iHopLength = np.int_(iHopLength)
 
     # Pre-process: down-mix, normalize
-    afAudioData = ToolPreprocAudio(afAudioData, bNormalize)
+    x = ToolPreprocAudio(x, bNormalize)
 
     if afWindow is None:
         # Compute window function for FFT
@@ -41,7 +41,7 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # block audio data
-    xb, t = ToolBlockAudio(afAudioData, iBlockLength, iHopLength, f_s)
+    xb, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
     
     # allocate memory
     iSpecDim = np.int_([(xb.shape[1] / 2 + 1), xb.shape[0]])
@@ -68,3 +68,40 @@ def computeSpectrogram(afAudioData, f_s, afWindow=None, iBlockLength=4096, iHopL
     f = np.arange(0, iSpecDim[0]) * f_s / iBlockLength
 
     return X, f, t
+
+
+def computeSpectrogramCl(cPath):
+    from pyACA.ToolReadAudio import ToolReadAudio
+
+    # read audio file
+    [f_s, x] = ToolReadAudio(cPath)
+    
+    # for debugging
+    iBlockLength = 4096
+    iHopLength = 2048
+
+    # compute feature
+    [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
+
+    return X, f, t
+
+
+if __name__ == "__main__":
+    import argparse
+
+    # add command line args and parse them
+    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser.add_argument('--infile', metavar='path', required=False,
+                        help='path to input audio file')
+
+    # retrieve command line args
+    args = parser.parse_args()
+    cPath = args.infile
+
+    # only for debugging
+    if __debug__:
+        if not cPath:
+            cPath = "../ACA-Plots/audio/sax_example.wav"
+
+    # call the function
+    computeSpectrogramCl(cPath)

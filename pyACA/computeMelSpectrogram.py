@@ -44,7 +44,7 @@ def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength
     [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
     # Compute Mel filters
-    H, f_c = ToolMelFb(iBlockLength, f_s, iNumMelBands, fMax)
+    H, f_c = generateMelFb_I(iBlockLength, f_s, iNumMelBands, fMax)
 
     M = np.matmul(H, X)
 
@@ -55,7 +55,7 @@ def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength
     return M, f_c, t
 
 
-def ToolMelFb(iFftLength, f_s, iNumFilters, f_max):
+def generateMelFb_I(iFftLength, f_s, iNumFilters, f_max):
 
     # Initialization
     f_min = 0
@@ -82,3 +82,36 @@ def ToolMelFb(iFftLength, f_s, iNumFilters, f_max):
             afFilterMax[c] * (f_u[c]-f_fft) / (f_u[c]-f_c[c])
 
     return H, f_c
+
+
+def computeMelSpectrogramCl(cPath):
+    from pyACA.ToolReadAudio import ToolReadAudio
+
+    # read audio file
+    [f_s, x] = ToolReadAudio(cPath)
+    
+    # compute feature
+    [M, f, t] = computeMelSpectrogram(x, f_s)
+
+    return M, f, t
+
+
+if __name__ == "__main__":
+    import argparse
+
+    # add command line args and parse them
+    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser.add_argument('--infile', metavar='path', required=False,
+                        help='path to input audio file')
+
+    # retrieve command line args
+    args = parser.parse_args()
+    cPath = args.infile
+
+    # only for debugging
+    if __debug__:
+        if not cPath:
+            cPath = "../ACA-Plots/audio/sax_example.wav"
+
+    # call the function
+    computeMelSpectrogramCl(cPath)

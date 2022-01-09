@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1111da02-1e45-4ce9-93db-4462a09cc049}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>setup.py</StartupFile>
+    <StartupFile>tests\test_computes.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -110,7 +110,7 @@
     <Compile Include="pyACA\PitchTimeAuditory.py" />
     <Compile Include="pyACA\PitchTimeZeroCrossings.py" />
     <Compile Include="pyACA\ToolBlockAudio.py" />
-    <Compile Include="pyACA\ToolComputeHann.py" />
+    <Compile Include="pyACA\ToolResample.py" />
     <Compile Include="pyACA\ToolFreq2Bark.py" />
     <Compile Include="pyACA\ToolFreq2Mel.py" />
     <Compile Include="pyACA\ToolFreq2Midi.py" />
