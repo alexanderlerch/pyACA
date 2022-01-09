@@ -84,6 +84,8 @@ def generateMelFb_I(iFftLength, f_s, iNumFilters, f_max):
     return H, f_c
 
 
+#######################################################
+# main
 def computeMelSpectrogramCl(cPath):
     from pyACA.ToolReadAudio import ToolReadAudio
 

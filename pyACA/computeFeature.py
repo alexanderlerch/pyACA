@@ -90,6 +90,8 @@ def isTemporal(cName):
     return bResult
 
 
+#######################################################
+# main
 def computeFeatureCl(cPath, cFeatureName, bPlotOutput=False):
 
     # read audio file

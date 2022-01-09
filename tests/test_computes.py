@@ -66,7 +66,6 @@ class TestComputes(unittest.TestCase):
         [M, f, t] = pyACA.computeMelSpectrogram(x, f_s, None, True, iBlockLength, iHopLength, iNumMelBands)
         self.assertEqual(M.shape[0], iNumMelBands, "MSP 3: number of frequency bins incorrect")
 
-
     def test_chords(self):
         fSeriesOfIntervals = 2**(np.array([[7, 12, 14, 7, 10],
                                            [4, 9, 11, 4, 6],
@@ -107,3 +106,15 @@ class TestComputes(unittest.TestCase):
 
             self.assertEqual(aiChordIdx[0, n], gt, "CH 1: detected chord incorrect")
             self.assertEqual(aiChordIdx[1, n], gt, "CH 2: detected chord incorrect")
+
+    def test_fingerprint(self):
+
+        x = np.zeros(24000)
+        f_s = 8000
+        SubFingerprint, tf = pyACA.computeFingerprint(x, f_s)
+
+        self.assertEqual(SubFingerprint.shape[0], 32, "FP 1: Subfingerprint length incorrect")
+        self.assertEqual(SubFingerprint.shape[1], 234, "FP 2: number of Subfingerprints incorrect")
+
+        # not sure what a good test for fingerprinting would be...
+ 

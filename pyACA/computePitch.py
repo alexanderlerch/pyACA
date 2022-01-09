@@ -77,6 +77,8 @@ def isTemporal(cName):
     return bResult
 
 
+#######################################################
+# main
 def computePitchCl(cPath, cPitchTrackName, bPlotOutput=False):
     
     # read audio file

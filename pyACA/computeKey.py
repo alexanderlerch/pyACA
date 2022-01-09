@@ -65,6 +65,8 @@ def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     return cKey
 
 
+#######################################################
+# main
 def computeKeyCl(cPath):
     
     [f_s, afAudioData] = ToolReadAudio(cPath)

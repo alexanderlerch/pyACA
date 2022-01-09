@@ -69,7 +69,8 @@ def computeSpectrogram(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048
 
     return X, f, t
 
-
+#######################################################
+# main
 def computeSpectrogramCl(cPath):
     from pyACA.ToolReadAudio import ToolReadAudio
 

@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1111da02-1e45-4ce9-93db-4462a09cc049}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>tests\test_computes.py</StartupFile>
+    <StartupFile>pyACA\computeChords.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -111,7 +111,7 @@
     <Compile Include="pyACA\PitchTimeZeroCrossings.py" />
     <Compile Include="pyACA\ToolBlockAudio.py" />
     <Compile Include="pyACA\ToolResample.py" />
-    <Compile Include="pyACA\ToolFreq2Bark.py" />
+    <Compile Include="pyACA\ToolBin2Freq.py" />
     <Compile Include="pyACA\ToolFreq2Mel.py" />
     <Compile Include="pyACA\ToolFreq2Midi.py" />
     <Compile Include="pyACA\ToolGammatoneFb.py" />

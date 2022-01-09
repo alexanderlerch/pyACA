@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-computeKey
+computeFingerprint
 
-computes a simple beat histogram
+computes an audio fingerprint (derived from Haitsma et al.)
   Args:
       x: array with floating point audio data
       f_s: sample rate
@@ -14,14 +14,17 @@ computes a simple beat histogram
 
 import numpy as np
 
-from pyACA.computeFeature import computeFeature
+from pyACA.computeSpectrogram import computeSpectrogram
+from pyACA.ToolComputeHann import ToolComputeHann
+from pyACA.ToolFreq2Bin import ToolFreq2Bin
 from pyACA.ToolPreprocAudio import ToolPreprocAudio
+from pyACA.ToolResample import ToolResample
 
 
 def computeFingerprint(x, f_s):
 
     # set default parameters
-    target_fs = 5000
+    fs_target = 5000
     iBlockLength = 2048
     iHopLength = 64
   
@@ -29,12 +32,11 @@ def computeFingerprint(x, f_s):
     x = ToolPreprocAudio(x)
 
     # pre-processing: downsampling to target sample rate
-    if (f_s != target_fs):
-        x = resample(x, target_fs, f_s)
+    if f_s != fs_target:
+        x, t_x = ToolResample(x, fs_target, f_s)
     
-
     # initialization: generate transformation matrix for 33 frequency bands
-    H = generateBands_I(iBlockLength, target_fs)
+    H = generateBands_I(iBlockLength, fs_target)
     
     # initialization: generate FFT window
     afWindow = ToolComputeHann(iBlockLength)
@@ -46,20 +48,20 @@ def computeFingerprint(x, f_s):
     X = np.abs(X)**2
     
     # group spectral bins in bands
-    E = H * X
+    E = np.matmul(H, X)
     
     # extract fingerprint through diff (both time and freq)
-    SubFingerprint = np.diff(np.diff(E,1,1),1,2)
-    tf = tf[:-1] + iHopLength / 2 * target_fs
+    SubFingerprint = np.diff(np.diff(E, 1, axis=0), 1, axis=1)
+    tf = tf[:-1] + iHopLength / (2 * fs_target)
 
     # quantize fingerprint
     SubFingerprint[SubFingerprint < 0] = 0
     SubFingerprint[SubFingerprint > 0] = 1
 
-    return
+    return SubFingerprint, tf
 
 
-def generateBands_I(iFFTLength, f_s)
+def generateBands_I(iFftLength, f_s):
 
     # constants
     iNumBands = 33
@@ -67,15 +69,50 @@ def generateBands_I(iFFTLength, f_s)
     f_min = 300
     
     # initialize
-    f_band_bounds = f_min * np.exp(np.log(f_max / f_min) * range(iNumBands) / iNumBands)
-    f_fft = range(iFFTLength/2+1) / iFFTLength * f_s
-    H = np.zeros([iNumBands, iFFTLength/2+1])
-    idx = np.zeros([length(f_band_bounds), 2])
+    f_band_bounds = f_min * np.exp(np.log(f_max / f_min) * range(iNumBands+1) / iNumBands)
+    f_fft = np.arange(iFftLength / 2 + 1) / iFftLength * f_s
+    H = np.zeros([iNumBands, iFftLength // 2 + 1])
+    idx = np.zeros([len(f_band_bounds), 2]).astype(int)
 
     # get indices falling into each band
-    for k = 1:length(f_band_bounds)-1
-        idx[k, 0] = find(f_fft > f_band_bounds[k], 1, 'first')
-        idx[k, 1] = find(f_fft < f_band_bounds[k+1], 1, 'last')
-        H[k, idx[k, 0]:idx[k, 1]] = 1
+    for k in range(len(f_band_bounds)-1):
+        idx[k, 0] = np.ceil(ToolFreq2Bin(f_band_bounds[k], iFftLength, f_s)).astype(int)
+        idx[k, 1] = np.floor(ToolFreq2Bin(f_band_bounds[k+1], iFftLength, f_s)).astype(int)
+        H[k, idx[k, 0]:idx[k, 1] + 1] = 1
     
     return H
+
+
+#######################################################
+# main
+def computeFingerprintCl(cPath):
+    from pyACA.ToolReadAudio import ToolReadAudio
+
+    # read audio file
+    [f_s, x] = ToolReadAudio(cPath)
+    
+    # compute fingerprint
+    [F, t] = computeFingerprint(x, f_s)
+
+    return F, t
+
+
+if __name__ == "__main__":
+    import argparse
+
+    # add command line args and parse them
+    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser.add_argument('--infile', metavar='path', required=False,
+                        help='path to input audio file')
+
+    # retrieve command line args
+    args = parser.parse_args()
+    cPath = args.infile
+
+    # only for debugging
+    if __debug__:
+        if not cPath:
+            cPath = "../ACA-Plots/audio/sax_example.wav"
+
+    # call the function
+    computeFingerprintCl(cPath)

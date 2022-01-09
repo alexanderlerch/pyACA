@@ -11,10 +11,14 @@ from .computeNoveltyFunction import computeNoveltyFunction
 from .computePitch import computePitch
 
 from .computeBeatHisto import computeBeatHistoCl
-from .computeFeature import computeFeatureCl
+from .computeChords import computeChordsCl
+from .computeFeature import computeFingerprintCl
+from .computeFingerprint import computeFeatureCl
 from .computeKey import computeKeyCl
+from .computeMelSpectrogram import computeMelSpectrogramCl
 from .computeNoveltyFunction import computeNoveltyFunctionCl
 from .computePitch import computePitchCl
+from .computeSpectrogram import computeSpectrogramCl
 
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralCrestFactor import FeatureSpectralCrestFactor

@@ -110,3 +110,39 @@ def getChordTransProb_I():
     P_T = P_T / np.sum(P_T, axis=0)
 
     return P_T
+
+
+
+#######################################################
+# main
+def computeChordsCl(cPath):
+    from pyACA.ToolReadAudio import ToolReadAudio
+
+    # read audio file
+    [f_s, x] = ToolReadAudio(cPath)
+    
+    # compute fingerprint
+    [cChordLabel, aiChordIdx, t, P_E] = computeChords(x, f_s)
+
+    return cChordLabel, aiChordIdx, t, P_E
+
+
+if __name__ == "__main__":
+    import argparse
+
+    # add command line args and parse them
+    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser.add_argument('--infile', metavar='path', required=False,
+                        help='path to input audio file')
+
+    # retrieve command line args
+    args = parser.parse_args()
+    cPath = args.infile
+
+    # only for debugging
+    if __debug__:
+        if not cPath:
+            cPath = "../ACA-Plots/audio/sax_example.wav"
+
+    # call the function
+    computeChordsCl(cPath)

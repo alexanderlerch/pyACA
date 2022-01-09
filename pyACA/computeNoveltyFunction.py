@@ -76,6 +76,8 @@ def computeNoveltyFunction(cNoveltyName, x, f_s, afWindow=None, iBlockLength=409
     return d, t, iPeaks[0]
 
 
+#######################################################
+# main
 def computeNoveltyFunctionCl(cPath, cNoveltyName):
     
     [f_s, afAudioData] = ToolReadAudio(cPath)
