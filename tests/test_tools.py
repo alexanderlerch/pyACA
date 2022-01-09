@@ -33,6 +33,37 @@ class TestTools(unittest.TestCase):
         self.assertEqual(np.mean(H[1, 0:2]) > np.mean(H[1, 4:6]), True, "NMF 12: activation incorrect")
         self.assertEqual(np.mean(H[0, 2:4]) > np.mean(H[0, 4:6]), True, "NMF 13: activation incorrect")
 
+    def test_resample(self):
+        fs_in = 8000
+        fs_out = 44100
+        fFreq = 100
+        t_in = np.arange(0, fs_in) / fs_in
+        x = np.sin(2 * np.pi * fFreq * t_in)
+
+        [x_out, t_out] = pyACA.ToolResample(x, fs_out, fs_in)
+        x_gt = np.sin(2 * np.pi * fFreq * t_out)
+
+        # check output sample rate
+        npt.assert_almost_equal(1 / (t_out[1]-t_out[0]), fs_out, decimal=7, err_msg="RS 1: sample rate incorrect")
+
+        # check output samples
+        npt.assert_almost_equal(np.mean(np.abs(x_gt - x_out)[10:-10]), 0, decimal=3, err_msg="RS 2: interpolation incorrect")
+        
+        fs_in = 48000
+        fs_out = 7003
+        fFreq = 100
+        t_in = np.arange(0, fs_in) / fs_in
+        x = np.sin(2 * np.pi * fFreq * t_in)
+
+        [x_out, t_out] = pyACA.ToolResample(x, fs_out, fs_in)
+        x_gt = np.sin(2 * np.pi * fFreq * t_out)
+
+        # check output sample rate
+        npt.assert_almost_equal(1 / (t_out[1]-t_out[0]), fs_out, decimal=7, err_msg="RS 3: sample rate incorrect")
+
+        # check output samples
+        npt.assert_almost_equal(np.mean(np.abs(x_gt - x_out)[10:-10]), 0, decimal=3, err_msg="RS 4: interpolation incorrect")
+
     def test_viterbi(self):
         # states: healthy: 0, fever: 1
         # obs: normal: 0, cold: 1, dizzy: 2

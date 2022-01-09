@@ -25,6 +25,7 @@ from .ToolMel2Freq import ToolMel2Freq
 from .ToolMidi2Freq import ToolMidi2Freq
 from .ToolPca import ToolPca
 from .ToolReadAudio import ToolReadAudio
+from .ToolResample import ToolResample
 from .ToolSeqFeatureSel import ToolSeqFeatureSel
 from .ToolSimpleDtw import ToolSimpleDtw
 from .ToolSimpleKmeans import ToolSimpleKmeans
