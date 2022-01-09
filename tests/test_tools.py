@@ -149,6 +149,24 @@ class TestTools(unittest.TestCase):
         self.assertEqual(dim[0], targetNumBlocks, "TB 6: number of blocks incorrect")
         self.assertEqual(dim[1], iBlockLength, "TB 7: block length incorrect")
 
+    def test_freq2bin2freq(self):
+
+        iUpsample = 10
+        iFftLength = 256
+        f_s = 8000
+        bins = np.arange(0, 1281)/iUpsample
+        fftres = f_s / iFftLength / iUpsample
+
+        hzout = pyACA.ToolBin2Freq(bins, iFftLength, f_s)
+
+        npt.assert_almost_equal(hzout[1]-hzout[0], fftres, decimal=7, err_msg="FBIN 1: frequency resolution incorrect")
+        self.assertEqual(len(hzout), len(bins), "FBIN 2: output dimension incorrect")
+        npt.assert_almost_equal(hzout[0], 0, decimal=7, err_msg="FBIN 3: frequency values incorrect")
+        npt.assert_almost_equal(hzout[-1], f_s * 0.5, decimal=7, err_msg="FBIN 4: frequency values incorrect")
+
+        # check back and forth conversion
+        npt.assert_almost_equal(bins, pyACA.ToolFreq2Bin(pyACA.ToolBin2Freq(bins, iFftLength, f_s), iFftLength, f_s), decimal=7, err_msg="FBIN 5: bin to frequency to bin conversion incorrect")
+
     def test_freq2midi2freq(self):
 
         # check concert pitch
