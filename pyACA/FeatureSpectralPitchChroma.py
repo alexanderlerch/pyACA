@@ -42,7 +42,7 @@ def generatePcFilters(iSpecLength, f_s):
     iNumPitchesPerOctave = 12
 
     # sanity check
-    while (f_mid * 2**iNumOctaves > f_s / 2.):
+    while f_mid * 2**iNumOctaves > f_s / 2.:
         iNumOctaves = iNumOctaves - 1
 
     H = np.zeros([iNumPitchesPerOctave, iSpecLength])

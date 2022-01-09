@@ -30,7 +30,7 @@ def FeatureTimeRms(x, iBlockLength, iHopLength, f_s):
     iNumOfBlocks = x_b.shape[0]
 
     # single pole implementation
-    v_sp    = filterSP(x**2, alpha)
+    v_sp = filterSP(x**2, alpha)
 
     # allocate memory
     vrms = np.zeros([2, iNumOfBlocks])
@@ -58,6 +58,6 @@ def filterSP(x, alpha):
     xf[0] = alpha * x[0]
 
     for i in range(1, len(x)):
-        xf[i] = alpha * x[i] + (1 - alpha ) * xf[i-1]
+        xf[i] = alpha * x[i] + (1 - alpha) * xf[i-1]
     
     return xf

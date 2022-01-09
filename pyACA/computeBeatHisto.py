@@ -67,7 +67,7 @@ def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iH
         T = 0
         Bpm = 0
 
-    return (T, Bpm)
+    return T, Bpm
 
 
 def computeBeatHistoCl(cInPath, cOutPath):

@@ -93,4 +93,3 @@ def getCoeffs(f_c, B, T):
         afCoeffA[3, :, k] = [B0, B1[k], B2[k]]
 
     return afCoeffB, afCoeffA
-
