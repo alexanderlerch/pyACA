@@ -12,8 +12,8 @@ from .computePitch import computePitch
 
 from .computeBeatHisto import computeBeatHistoCl
 from .computeChords import computeChordsCl
-from .computeFeature import computeFingerprintCl
-from .computeFingerprint import computeFeatureCl
+from .computeFeature import computeFeatureCl
+from .computeFingerprint import computeFingerprintCl
 from .computeKey import computeKeyCl
 from .computeMelSpectrogram import computeMelSpectrogramCl
 from .computeNoveltyFunction import computeNoveltyFunctionCl
