@@ -10,8 +10,7 @@
 Python scripts accompanying the book "An Introduction to Audio Content 
 Analysis" (www.AudioContentAnalysis.org). The source code shows example implementations of basic approaches, features, and algorithms for music audio content analysis.
 
-## Functionality
-
+## functionality
 The top-level functions are (alphabetical):
 > - [`computeBeatHisto`](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/computeBeatHisto.py): calculates a simple beat histogram
 > - [`computeChords`](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/computeChords.py): simple chord recognition
@@ -29,32 +28,39 @@ conventions:
 > - `Pitch`*: pitch tracking approach
 > - `Novelty`*: novelty function computation
 > - `Tool`*: additional helper functions and basic algorithms such as 
->  - [Blocking](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolBlockAudio.py) of audio into overlapping blocks
->  - [Pre-processing](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolPreprocAudio.py) audio
->  - Conversion ([freq2bark](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Bark.py), [freq2mel](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Mel.py), [freq2midi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Midi.py), [mel2freq](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/Mel2Freq.py), [midi2freq](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolMidi2Freq.py))
->  - Filterbank ([Gammatone](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolGammatoneFb.py))
->  - [Gaussian Mixture Model](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolGmm.py)
->  - [Principal Component Analysis](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolPca.py)
->  - [Feature Selection](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSeqFeatureSel.py)
->  - [Dynamic Time Warping](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleDtw.py)
->  - [K-Means Clustering](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleKmeans.py)
->  - [K Nearest Neighbor classification](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleKnn.py)
->  - [Non-Negative Matrix Factorization](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleNmf.py)
->  - [Viterbi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolViterbi.py) algorithm
+>   - [Blocking](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolBlockAudio.py) of audio into overlapping blocks
+>   - [Pre-processing](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolPreprocAudio.py) audio
+>   - Conversion ([freq2bark](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Bark.py), [freq2mel](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Mel.py), [freq2midi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolFreq2Midi.py), [mel2freq](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/Mel2Freq.py), [midi2freq](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolMidi2Freq.py))
+>   - Filterbank ([Gammatone](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolGammatoneFb.py))
+>   - [Gaussian Mixture Model](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolGmm.py)
+>   - [Principal Component Analysis](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolPca.py)
+>   - [Feature Selection](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSeqFeatureSel.py)
+>   - [Dynamic Time Warping](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleDtw.py)
+>   - [K-Means Clustering](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleKmeans.py)
+>   - [K Nearest Neighbor classification](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleKnn.py)
+>   - [Non-Negative Matrix Factorization](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleNmf.py)
+>   - [Viterbi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolViterbi.py) algorithm
 
 
-## Design principles
+## design principles
 Please note that the provided code examples are only _intended to showcase 
-algorithmic principles_ – they are not suited for practical usage without 
-parameter optimization and additional algorithmic tuning. Rather, they intend to show how to implement audio analysis solutions from scratch and to facilitate algorithmic understanding to enable the reader to design and implement their own analysis approaches. Furthermore,
-the python code might **violate typical python style conventions** in order to
-be consistent with the Matlab code (see below).
-### Readability
-### Cross-language comparability
-### Dependencies
-The _required dependencies_ are reduced to a minimum to improve maintainability and increase accessibility. More specifically, the only common dependencies are [numpy](https://numpy.org/) and [scipy](https://scipy.org/). This design choice brings some limitations; for instance, reading of non-RIFF audio files is not supported.  
+algorithmic principles_ – they are not entirely suitable for practical usage without 
+parameter optimization and additional algorithmic tuning. Rather, they intend to show how to implement audio analysis solutions and to facilitate algorithmic understanding to enable the reader to design and implement their own analysis approaches. 
 
-## Related repositories and links
+### minimal dependencies
+The _required dependencies_ are reduced to a minimum, more specifically to only [numpy](https://numpy.org/) and [scipy](https://scipy.org/), for the following reasons:
+* accessibility, i.e., clear algorithmic implementation from scratch without obfuscation by using 3rd party implementations,
+* maintainability through independence of 3rd party code. 
+This design choice brings, however, some limitations; for instance, reading of non-RIFF audio files is not supported and the machine learning models are very simple.  
+
+### readability
+Consistent variable naming and formatting, as well as the choice for simple implementations allow for easier parsing.
+The readability of the source code will sometimes come at the cost of lower performance.
+
+### cross-language comparability
+All code is matched exactly with [Matlab implementations](https://www.github.com/alexanderlerch/ACA=Code) and the equations in the book. This also means that the python code might **violate typical python style conventions** in order to be consistent.
+
+## related repositories and links
 The python source code in this repository is matched with corresponding source code in the [Matlab repository](https://www.github.com/alexanderlerch/ACA-Code).
 
 Other, _related repositories_ are
@@ -63,24 +69,15 @@ Other, _related repositories_ are
 
 The _main entry point_ to all book-related information is [AudioContentAnalysis.org](https://www.AudioContentAnalysis.org)
 
-## Getting started
-### Installation
-**TODO double check - these are only place holders!**
-
-For developers working on local clone, `cd` to the repo and replace `pyACA` with `.`. 
-
+## getting started
+### installation
 ```console
 pip install pyACA 
 ```
-**Running tests**
-```
-pip install .[tests]
-pytest tests/ --cov=pyACA
-```
 
-### Code examples
+### code examples
 
-**Example 1**: Computation and plot of the _Spectral Centroid_
+**example 1**: computation and plot of the _Spectral Centroid_
 
 ```python
 import pyACA
@@ -95,7 +92,7 @@ cPath = "c:/temp/test.wav"
 # plot feature output
 plt.plot(t,np.squeeze(v))
 ```
-**Example 2**: Computation of two features (here: _Spectral Centroid_ and _Spectral Flux_)
+**example 2**: Computation of two features (here: _Spectral Centroid_ and _Spectral Flux_)
 
 ```python
 import pyACA

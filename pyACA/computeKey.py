@@ -4,23 +4,21 @@ computeKey
 
 computes the musical key of an input audio file
   Args:
-      x: array with floating point audio data.
+      x: array with floating point audio data  (dimension samples x channels)
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
       iHopLength: internal hop length (default: 2048 samples)
 
   Returns:
-      key string
+      cKey: key string
 """
 
 import numpy as np
 
 from pyACA.computeSpectrogram import computeSpectrogram
 from pyACA.ToolComputeHann import ToolComputeHann
-from pyACA.FeatureSpectralPitchChroma import FeatureSpectralPitchChroma
-from pyACA.ToolPreprocAudio import ToolPreprocAudio
-from pyACA.ToolReadAudio import ToolReadAudio
+from pyACA.computeFeature import computeFeature
 
 
 def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
@@ -40,17 +38,12 @@ def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
                     [6.33, 2.68, 3.52, 5.38, 2.60, 3.53, 2.54, 4.75, 3.98, 2.69, 3.34, 3.17]])
     t_pc = t_pc / t_pc.sum(axis=1, keepdims=True)
 
-    # pre-processing
-    x = ToolPreprocAudio(x)
-
-    # in the real world, we would do this block by block...
-    [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
-
-    # compute instantaneous pitch chroma
-    v_pc = FeatureSpectralPitchChroma(X, f_s)
+    # extract audio pitch chroma
+    v_pc, t = computeFeature("SpectralPitchChroma", x, f_s, afWindow, iBlockLength, iHopLength)
 
     # average pitch chroma
     v_pc = v_pc.mean(axis=1)
+
     # compute manhattan distances for modes (major and minor)
     d = np.zeros(t_pc.shape)
     v_pc = np.concatenate((v_pc, v_pc), axis=0).reshape(2, 12)
@@ -68,6 +61,7 @@ def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
 #######################################################
 # main
 def computeKeyCl(cPath):
+    from pyACA.ToolReadAudio import ToolReadAudio
     
     [f_s, afAudioData] = ToolReadAudio(cPath)
     # afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)

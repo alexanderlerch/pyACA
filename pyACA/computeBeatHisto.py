@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-computeKey
+computeBeatHisto
 
 computes a simple beat histogram
   Args:
       x: array with floating point audio data.
       f_s: sample rate
       cMethod:  method of beat histogram computation ('Corr' or 'FFT'(default))
-      afWindow: FFT window of length iBlockLength (default: hann)
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
+      afWindow: FFT window of length iBlockLength (Hann will be used if 'None')
+      iBlockLength: internal block length (default: 1024 samples)
+      iHopLength: internal hop length (default: 8 samples)
 
   Returns:
       beat histogram, BPM axis ticks
@@ -24,7 +24,7 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iHopLength=8):
+def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=10241, iHopLength=8):
     # compute window function for FFT
     if afWindow is None:
         afWindow = ToolComputeHann(iBlockLength)
@@ -39,13 +39,14 @@ def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iH
 
     if cMethod == 'Corr':
         # compute autocorrelation of result
-        afCorr = np.correlate(d, d, "full") / np.dot(d, d)
-        afCorr = afCorr[np.arange(d.shape[0], afCorr.size)]
+        r_dd = np.correlate(d, d, "full") / np.dot(d, d)
+        r_dd = r_dd[np.arange(d.shape[0], r_dd.size)]
 
         Bpm = np.flip(60 / t[np.arange(1, t.shape[0])])
-        T = np.flip(afCorr)
+        T = np.flip(r_dd)
 
     elif cMethod == 'FFT':
+        # compute the magnitude spectrum of result
         iHistoLength = 65536
         afWindow = np.zeros(2*iHistoLength)
         afWindow[np.arange(0, iHistoLength)] = ToolComputeHann(iHistoLength)
@@ -53,11 +54,11 @@ def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iH
         if len(d) < 2 * iHistoLength:
             d = [d, np.zeros([1, 2 * iHistoLength - len(d)])]
 
-        [X, f, t] = computeSpectrogram(d, f_s, afWindow, 2*iHistoLength, iHistoLength/4)
+        [D, f, t] = computeSpectrogram(d, f_s, afWindow, 2*iHistoLength, iHistoLength/4)
 
-        T = X.mean(axis=1, keepdims=True)
+        T = D.mean(axis=1, keepdims=True)
 
-        # restrict range
+        # restrict Bpm range
         Bpm = f * 60
         lIdx = np.argwhere(Bpm < 30)[-1]
         hIdx = np.argwhere(Bpm > 200)[0]

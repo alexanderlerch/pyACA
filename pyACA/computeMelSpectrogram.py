@@ -29,7 +29,7 @@ from pyACA.ToolMel2Freq import ToolMel2Freq
 def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
 
     if not fMax:
-        fMax = f_s/2
+        fMax = f_s / 2
 
     # Pre-process: down-mix, normalize, zero-pad
     x = ToolPreprocAudio(x)
@@ -57,16 +57,16 @@ def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength
 
 def generateMelFb_I(iFftLength, f_s, iNumFilters, f_max):
 
-    # Initialization
+    # initialization
     f_min = 0
-    f_max = min(f_max, f_s/2)
-    f_fft = np.linspace(0, f_s/2, iFftLength//2+1)
+    f_max = min(f_max, f_s / 2)
+    f_fft = np.linspace(0, f_s / 2, iFftLength // 2 + 1)
     H = np.zeros((iNumFilters, f_fft.size))
 
-    # Compute center band frequencies
+    # compute center band frequencies
     mel_min = ToolFreq2Mel(f_min)
     mel_max = ToolFreq2Mel(f_max)
-    f_mel = ToolMel2Freq(np.linspace(mel_min, mel_max, iNumFilters+2))
+    f_mel = ToolMel2Freq(np.linspace(mel_min, mel_max, iNumFilters + 2))
 
     f_l = f_mel[0:iNumFilters]
     f_c = f_mel[1:iNumFilters + 1]
@@ -74,7 +74,7 @@ def generateMelFb_I(iFftLength, f_s, iNumFilters, f_max):
 
     afFilterMax = 2 / (f_u - f_l)
 
-    # Compute the transfer functions
+    # compute the transfer functions
     for c in range(iNumFilters):
         H[c] = np.logical_and(f_fft > f_l[c], f_fft <= f_c[c]) * \
             afFilterMax[c] * (f_fft-f_l[c]) / (f_c[c]-f_l[c]) + \

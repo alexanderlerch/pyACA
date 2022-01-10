@@ -25,15 +25,15 @@ supported features are:
     'TimeZeroCrossingRate',
   Args:
       cFeatureName: feature to compute, e.g. 'SpectralSkewness'
-      x: array with floating point audio data.
+      x: array with floating point audio data  (dimension samples x channels)
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
       iHopLength: internal hop length (default: 2048 samples)
 
   Returns:
-      feature value v
-      time stamp t
+      v: feature value
+      t: time stamp
 """
 
 import matplotlib.pyplot as plt

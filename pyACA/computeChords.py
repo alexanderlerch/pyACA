@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-computeKey
+computeChords
 
-computes a simple beat histogram
+recognizes the chords in an audio file
   Args:
       x: array with floating point audio data
       f_s: sample rate
@@ -11,7 +11,7 @@ computes a simple beat histogram
 
   Returns:
       cChordLabel: detected chords as strings
-      aiChordIdx: detected chords as indices
+      aiChordIdx: detected chords as indices (2 x iNumObservations)
       t: time stamps
       P_E: full matrix of chord probabilities (iNumChords x iNumObservations)
 """

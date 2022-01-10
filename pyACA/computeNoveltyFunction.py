@@ -10,16 +10,16 @@ computes the novelty function for onset detection
 
   Args:
       cNoveltyName: name of the novelty measure
-      x: array with floating point audio data.
+      x: array with floating point audio data  (dimension samples x channels)
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
+      iHopLength: internal hop length (default: 512 samples)
 
   Returns:
-      d novelty function
-      t time stamps
-      iPeaks indices of picked onset times
+      d: novelty function
+      t: time stamps
+      iPeaks: indices of picked onset times
 """
 
 import math
@@ -80,9 +80,10 @@ def computeNoveltyFunction(cNoveltyName, x, f_s, afWindow=None, iBlockLength=409
 # main
 def computeNoveltyFunctionCl(cPath, cNoveltyName):
     
-    [f_s, afAudioData] = ToolReadAudio(cPath)
+    [f_s, x] = ToolReadAudio(cPath)
     # afAudioData = np.sin(2*np.pi * np.arange(f_s*1)*440./f_s)
-    [d, t, iPeaks] = computeNoveltyFunction(cNoveltyName, afAudioData, f_s)
+    [d, t, iPeaks] = computeNoveltyFunction(cNoveltyName, x, f_s)
+    
     # plot feature output
     if bPlotOutput:
         plt.plot(t, d)

@@ -2,9 +2,10 @@
 """
 computeFingerprint
 
-computes an audio fingerprint (derived from Haitsma et al.)
+computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one fingerprint
   Args:
-      x: array with floating point audio data
+      x: array with floating point audio data  (dimension samples x channels)
+      x: array with floating point audio data  (dimension samples x channels)
       f_s: sample rate
 
   Returns:
