@@ -135,8 +135,8 @@ class TestTools(unittest.TestCase):
         self.assertEqual(xb[targetNumBlocks - 2][0], numSamples - 11, "TB 3: block content incorrect")
 
         # time stamps
-        self.assertEqual(time[0], 0, "TB 4: time stamp incorrect")
-        self.assertEqual(time[1], iHopLength / fs, "TB 5: time stamp incorrect")
+        self.assertEqual(time[0], iBlockLength / (2*fs), "TB 4: time stamp incorrect")
+        self.assertEqual(time[1], time[0] + iHopLength / fs, "TB 5: time stamp incorrect")
 
         fs = 40000
         iBlockLength = 1024

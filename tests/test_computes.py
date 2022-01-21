@@ -75,12 +75,12 @@ class TestComputes(unittest.TestCase):
         f_s = 44100
 
         # generate audio with cadence plus an additional minor chord
-        t = np.arange(0, f_s) / f_s
+        tl = np.arange(0, f_s) / f_s
         x = np.zeros([1, 0])
         for n in range(fFreq.shape[1]):
-            x_tmp = np.zeros([1, len(t)])
+            x_tmp = np.zeros([1, len(tl)])
             for f in range(fFreq.shape[0]):
-                x_tmp += np.sin(2 * np.pi * fFreq[f, n] * t)
+                x_tmp += np.sin(2 * np.pi * fFreq[f, n] * tl)
             x = np.concatenate((x, x_tmp), axis=1)
 
         x = x.T
@@ -89,7 +89,6 @@ class TestComputes(unittest.TestCase):
 
         gtchords = np.array([9, 2, 4, 9, 12])
         # shift time stamps to account for block middle
-        t = t[2:len(t)]
         for n in range(len(t)):
             if t[n] < 1:
                 gt = gtchords[0]

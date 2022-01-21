@@ -21,7 +21,7 @@ def ToolBlockAudio(afAudioData, iBlockLength, iHopLength, f_s):
     iNumBlocks = np.ceil(afAudioData.shape[0] / iHopLength).astype(int)
 
     # time stamp vector
-    t = np.arange(0, iNumBlocks) * iHopLength / f_s
+    t = np.arange(0, iNumBlocks) * iHopLength / f_s + iBlockLength / (2*f_s)
 
     # pad with block length zeros just to make sure it runs for weird inputs, too
     afAudioPadded = np.concatenate((afAudioData, np.zeros([iBlockLength+iHopLength, ])), axis=0)
