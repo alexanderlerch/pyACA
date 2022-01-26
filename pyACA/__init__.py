@@ -55,6 +55,7 @@ from .PitchTimeZeroCrossings import PitchTimeZeroCrossings
 
 from .ToolBlockAudio import ToolBlockAudio
 from .ToolComputeHann import ToolComputeHann
+from .ToolDownmix import ToolDownmix
 from .ToolFreq2Bark import ToolFreq2Bark
 from .ToolGmm import ToolGmm
 from .ToolLooCrossVal import ToolLooCrossVal
@@ -65,6 +66,7 @@ from .ToolFreq2Midi import ToolFreq2Midi
 from .ToolInstFreq import ToolInstFreq
 from .ToolMel2Freq import ToolMel2Freq
 from .ToolMidi2Freq import ToolMidi2Freq
+from .ToolNormalizeAudio import ToolNormalizeAudio
 from .ToolPca import ToolPca
 from .ToolReadAudio import ToolReadAudio
 from .ToolResample import ToolResample

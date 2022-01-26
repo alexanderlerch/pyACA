@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-helper function: read audio from wav
+helper function: preprocesses audio signal
 
   Args:
-    afAudioData: audio file data (samples x channels)
+    x: audio file data (samples x channels)
     bNormalize: flag to switch off normalization (optional)
 
   Returns:
@@ -12,19 +12,19 @@ helper function: read audio from wav
 
 import numpy as np
 
+from pyACA.ToolDownmix import ToolDownmix
+from pyACA.ToolNormalizeAudio import ToolNormalizeAudio
 
-def ToolPreprocAudio(afAudioData, bNormalize=True):
+
+def ToolPreprocAudio(x, bNormalize=True):
 
     # pre-processing: downmixing
-    if afAudioData.ndim > 1:
-        afAudioData = afAudioData.mean(axis=1)
+    x = ToolDownmix(x)
     
     # pre-processing: normalization
     if bNormalize:
-        fNorm = np.max(np.abs(afAudioData))
-        if fNorm != 0:
-            afAudioData = afAudioData / fNorm
-
+        x = ToolNormalizeAudio(x)
+ 
     # additional preprocessing step might include sample rate conversion and filtering
     
-    return afAudioData
+    return x

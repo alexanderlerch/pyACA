@@ -376,3 +376,17 @@ class TestTools(unittest.TestCase):
         diffs1 = np.min(np.array([np.max(np.abs(sigma[1] - sigma_hat[0])), np.max(np.abs(sigma[1] - sigma_hat[1]))]))
         npt.assert_almost_equal(diffs0, 0, decimal=1, err_msg="GMM 3: incorrect result")
         npt.assert_almost_equal(diffs1, 0, decimal=1, err_msg="GMM 4: incorrect result")
+
+    def test_normalize(self):
+        x = np.array([.1, .2, -.8])
+
+        x_norm = pyACA.ToolNormalizeAudio(x)
+        npt.assert_almost_equal(np.max(abs(x_norm)), 1, decimal=7, err_msg="Norm 1: incorrect result")
+        npt.assert_almost_equal(x_norm[1], x[1] / abs(x[2]), decimal=7, err_msg="Norm 2: incorrect result")
+
+    def test_downmix(self):
+        x = np.array([[.8, -.4], [.4, 0], [.15, .25]])
+
+        x_downmix = pyACA.ToolDownmix(x)
+        npt.assert_almost_equal(np.mean(x_downmix), .2, decimal=7, err_msg="DM 1: incorrect result")
+        npt.assert_almost_equal(np.max(x_downmix), .2, decimal=7, err_msg="DM 2: incorrect result")

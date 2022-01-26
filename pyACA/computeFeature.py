@@ -132,9 +132,9 @@ if __name__ == "__main__":
     # only for debugging
     if __debug__:
         if not cPath:
-            cPath = "../../ACA-Plots/audio/sax_example.wav"
+            cPath = "../ACA-Plots/audio/sax_example.wav"
         if not cFeatureName:
-            cFeatureName = "TimeRms"
+            cFeatureName = "SpectralKurtosis"
         if not bPlotOutput:
             bPlotOutput = False
 
