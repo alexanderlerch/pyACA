@@ -24,7 +24,7 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
-def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=10241, iHopLength=8):
+def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iHopLength=8):
     # compute window function for FFT
     if afWindow is None:
         afWindow = ToolComputeHann(iBlockLength)
