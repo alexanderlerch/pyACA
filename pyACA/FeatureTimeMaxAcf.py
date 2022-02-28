@@ -21,18 +21,18 @@ import pyACA
 def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0.35):
 
     # create blocks
-    xBlocks, t = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
+    x_b, t = pyACA.ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
 
     # number of results
-    iNumOfBlocks = xBlocks.shape[0]
+    iNumOfBlocks = x_b.shape[0]
 
     # allocate memory
     vacf = np.zeros(iNumOfBlocks)
 
-    for n, block in enumerate(xBlocks):
+    for n, block in enumerate(x_b):
         eta_min = np.floor(f_s / f_max).astype(int)
 
-        # calculate the acf
+        # calculate the acf if nonzero
         if not block.sum():
             continue
         else:

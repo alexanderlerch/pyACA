@@ -15,7 +15,7 @@ import os
 import pyACA
 
 
-def getFeatureList(feature_type='all'):
+def getFeatureList(feature_type ='all'):
 
     feature_type = feature_type.lower()
     if feature_type == 'all':

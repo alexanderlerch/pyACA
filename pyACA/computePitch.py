@@ -12,7 +12,7 @@ supported pitch trackers are:
     'TimeZeroCrossings',
   Args:
       cPitchTrackName: feature to compute, e.g. 'SpectralHps'
-      x: array with floating point audio data.
+      x: array with floating point audio data
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
       iBlockLength: internal block length (default: 4096 samples)

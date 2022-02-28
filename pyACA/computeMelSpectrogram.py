@@ -10,6 +10,8 @@ computes a mel spectrogram from the audio data
       afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
       iBlockLength: internal block length (default: 4096 samples)
       iHopLength: internal hop length (default: 2048 samples)
+      iNumMelBands: number of mel bands (default: 128 bands)
+      fMaxInHz: maximum frequency (default: None)
 
   Returns:
       M: Mel spectrum
@@ -26,10 +28,10 @@ from pyACA.ToolFreq2Mel import ToolFreq2Mel
 from pyACA.ToolMel2Freq import ToolMel2Freq
 
 
-def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMax=None):
+def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMaxInHz=None):
 
-    if not fMax:
-        fMax = f_s / 2
+    if not fMaxInHz:
+        fMaxInHz = f_s / 2
 
     # Pre-process: down-mix, normalize, zero-pad
     x = ToolPreprocAudio(x)
@@ -44,7 +46,7 @@ def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength
     [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
     # Compute Mel filters
-    H, f_c = generateMelFb_I(iBlockLength, f_s, iNumMelBands, fMax)
+    H, f_c = generateMelFb_I(iBlockLength, f_s, iNumMelBands, fMaxInHz)
 
     M = np.matmul(H, X)
 

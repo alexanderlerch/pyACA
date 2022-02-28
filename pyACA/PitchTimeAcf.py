@@ -15,6 +15,7 @@ computes the lag of the autocorrelation function
 
 import numpy as np
 import math
+from pyACA.ToolBlockAudio import ToolBlockAudio
 
 
 def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):
@@ -22,26 +23,22 @@ def PitchTimeAcf(x, iBlockLength, iHopLength, f_s):
     # initialize
     f_max = 2000
     fMinThresh = .35
-    iNumOfBlocks = math.ceil(x.size / iHopLength)
 
-    # compute time stamps
-    t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
+    # block audio data
+    x_b, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
+    iNumOfBlocks = x_b.shape[0]
 
     # allocate memory
     f_0 = np.zeros(iNumOfBlocks)
 
-    for n in range(0, iNumOfBlocks):
-        eta_min = int(round(f_s / f_max)) - 1
+    for n, block in enumerate(x_b):
+        eta_min = np.floor(f_s / f_max).astype(int)
 
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
-
-        # calculate the acf
-        if not x[np.arange(i_start, i_stop + 1)].sum():
+        # calculate the acf if non zero
+        if not block.sum():
             continue
         else:
-            x_tmp = x[np.arange(i_start, i_stop + 1)]
-            afCorr = np.correlate(x_tmp, x_tmp, "full") / np.dot(x_tmp, x_tmp)
+            afCorr = np.correlate(block, block, "full") / np.dot(block, block)
 
         afCorr = afCorr[np.arange(iBlockLength, afCorr.size)]
 

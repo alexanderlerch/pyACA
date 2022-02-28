@@ -6,7 +6,6 @@ computes the novelty measure per Spectral Flux
 
   Args:
       X: spectrogram (dimension FFTLength X Observations)
-      afAudioData: array with floating point audio data.
       f_s: sample rate
 
   Returns:
@@ -18,6 +17,7 @@ import numpy as np
 
 
 def NoveltyFlux(X, f_s):
+
     isSpectrum = X.ndim == 1
     if isSpectrum:
         X = np.expand_dims(X, axis=1)

@@ -16,33 +16,31 @@ computes the lag of the amdf function
 import numpy as np
 import math
 
+from pyACA.ToolBlockAudio import ToolBlockAudio
+
 
 def PitchTimeAmdf(x, iBlockLength, iHopLength, f_s):
     # initialize
     f_max = 2000
     f_min = 50
-    iNumOfBlocks = math.ceil(x.size / iHopLength)
 
-    # compute time stamps
-    t = (np.arange(0, iNumOfBlocks) * iHopLength + (iBlockLength / 2)) / f_s
+    # block audio data
+    x_b, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
+    iNumOfBlocks = x_b.shape[0]
 
     # allocate memory
     f_0 = np.zeros(iNumOfBlocks)
 
-    eta_min = int(round(f_s / f_max)) - 1
-    eta_max = int(round(f_s / f_min)) - 1
+    eta_min = np.floor(f_s / f_max).astype(int)
+    eta_max = np.floor(f_s / f_min).astype(int)
 
-    for n in range(0, iNumOfBlocks):
+    for n, block in enumerate(x_b):
 
-        i_start = n * iHopLength
-        i_stop = np.min([x.size - 1, i_start + iBlockLength - 1])
-
-        # calculate the amdf
-        if not x[np.arange(i_start, i_stop + 1)].sum():
+        # calculate the amdf if non zero
+        if not block.sum():
             continue
         else:
-            x_tmp = x[np.arange(i_start, i_stop + 1)]
-            afCorr = computeAmdf(x_tmp, eta_max)
+            afCorr = computeAmdf(block, eta_max)
 
         # find the coefficients specified in eta
         f_0[n] = np.argmin(afCorr[np.arange(eta_min + 1, afCorr.size)]) + 1

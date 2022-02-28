@@ -9,7 +9,7 @@ computes a spectrogram from the audio data
       afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
       iBlockLength: internal block length (default: 4096 samples)
       iHopLength: internal hop length (default: 2048 samples)
-      bNormalize: normalize input audio (default: True)
+      bNormalize: normalize input audio file before fft computation (default: True)
       bMagnitude: return magnitude instead of complex spectrum (default: True)
 
   Returns:
@@ -40,19 +40,19 @@ def computeSpectrogram(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048
     assert(afWindow.shape[0] == iBlockLength), "parameter error: invalid window dimension"
 
     # block audio data
-    xb, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
+    x_b, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
     
     # allocate memory
-    iSpecDim = np.int_([(xb.shape[1] / 2 + 1), xb.shape[0]])
+    iSpecDim = np.int_([(x_b.shape[1] / 2 + 1), x_b.shape[0]])
     X = np.zeros(iSpecDim)
     if not bMagnitude:
         X = X.astype(complex)
 
-    norm = 2 / xb.shape[1]
+    norm = 2 / x_b.shape[1]
 
-    for n in range(0, xb.shape[0]):
+    for n in range(0, x_b.shape[0]):
         # windowed fft
-        tmp = np.fft.fft(xb[n, :] * afWindow) * norm
+        tmp = np.fft.fft(x_b[n, :] * afWindow) * norm
 
         # remove redundant spectrum parts
         if bMagnitude:
@@ -60,9 +60,8 @@ def computeSpectrogram(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048
         else:
             X[:, n] = tmp[range(iSpecDim[0])]
 
-    if bNormalize:
-        # let's be pedantic about normalization
-        X[[0, iSpecDim[0]-1], :] = X[[0, iSpecDim[0]-1], :] / np.sqrt(2)
+    # let's be pedantic about normalization
+    X[[0, iSpecDim[0]-1], :] = X[[0, iSpecDim[0]-1], :] / np.sqrt(2)
 
     f = np.arange(0, iSpecDim[0]) * f_s / iBlockLength
 
