@@ -42,7 +42,6 @@ jobs:
       with:
         name: doc-files
         path: doc
-        retention-days: 1 
 
     # prepare the doc files
     - name: Commit changes
@@ -52,4 +51,4 @@ jobs:
         author_email: alexander.lerch@gatech.edu
         message: 'auto-update docs'
         branch: gh-pages
-        add: '["doc/html/*"]'
+        add: '["pyACA/doc/html/*"]'
