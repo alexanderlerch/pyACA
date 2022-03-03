@@ -1,0 +1,5 @@
+<map id="ToolResample" name="ToolResample">
+<area shape="rect" id="node1" title="helper function: downmixes an audio signal into one channel" alt="" coords="560,13,665,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#adf78752489b87c49783222fc8158718b" title="computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one f..." alt="" coords="283,5,512,47"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#a404e718945dc97106fc0f86981d8aeb0" title="main" alt="" coords="5,5,235,47"/>
+</map>

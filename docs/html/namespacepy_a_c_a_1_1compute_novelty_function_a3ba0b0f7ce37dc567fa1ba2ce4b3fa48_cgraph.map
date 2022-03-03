@@ -1,0 +1,11 @@
+<map id="computeNoveltyFunctionCl" name="computeNoveltyFunctionCl">
+<area shape="rect" id="node1" title="main" alt="" coords="5,107,184,134"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_novelty_function.html#abc710b5973be3d5cbd91a6ee6756d41d" title="computes the novelty function for onset detection supported novelty measures are: &#39;Flux&#39;,..." alt="" coords="239,78,406,105"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1_tool_read_audio.html#aeba8cc20ab88c4a08ba761e7e381435a" title="helper function: read audio from wav" alt="" coords="232,129,413,171"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="461,71,704,112"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="752,5,953,47"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="755,136,951,177"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="761,71,945,112"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="1001,114,1225,141"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="1021,165,1205,207"/>
+</map>

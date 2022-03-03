@@ -1,0 +1,21 @@
+<map id="ToolPreprocAudio" name="ToolPreprocAudio">
+<area shape="rect" id="node1" title="helper function: pre&#45;processes an audio signal" alt="" coords="1192,263,1317,290"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_beat_histo.html#ac34a1aedf0ef1183c3fcd60455e4d50f" title="computes a simple beat histogram" alt="" coords="298,369,525,411"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_chords.html#a7e7b925c338db7ccff08f15564598dee" title="recognizes the chords in an audio file" alt="" coords="307,5,516,47"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1compute_feature.html#af9ca22b04634f3004c29a566cfec0408" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="616,96,828,137"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#adf78752489b87c49783222fc8158718b" title="computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one f..." alt="" coords="607,161,837,203"/>
+<area shape="rect" id="node12" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a767aa7779b5a119c774f21b661924a70" title="computes a mel spectrogram from the audio data" alt="" coords="591,227,853,268"/>
+<area shape="rect" id="node14" href="$namespacepy_a_c_a_1_1compute_novelty_function.html#abc710b5973be3d5cbd91a6ee6756d41d" title="computes the novelty function for onset detection supported novelty measures are: &#39;Flux&#39;,..." alt="" coords="591,409,853,451"/>
+<area shape="rect" id="node16" href="$namespacepy_a_c_a_1_1compute_pitch.html#a149621c5b944b6abfd319b7a730fdb1a" title="computes the fundamental frequency of (monophonic) audio supported pitch trackers are: &#39;SpectralAcf&#39;,..." alt="" coords="623,527,821,568"/>
+<area shape="rect" id="node18" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="901,285,1144,327"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_beat_histo.html#a39174032d5dcd2807499e931e25f221c" title=" " alt="" coords="5,369,232,411"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1compute_chords.html#aa1e070cbc28d61f1d352ef2a5bf008af" title="main" alt="" coords="14,5,223,47"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1compute_feature.html#a516da232aa2dd130699e48300d9a1aec" title="main" alt="" coords="305,71,517,112"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1compute_key.html#ae17ec17426d91a5cf458247ce9ecd95a" title="computes the musical key of an input audio file" alt="" coords="305,137,517,163"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_key.html#a91b1083e24ab66c711a8bcc3b000b2aa" title="main" alt="" coords="23,129,214,171"/>
+<area shape="rect" id="node11" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#a404e718945dc97106fc0f86981d8aeb0" title="main" alt="" coords="297,188,526,229"/>
+<area shape="rect" id="node13" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a0ee12139338f630f38e8c30f67f66ee8" title="main" alt="" coords="280,253,543,295"/>
+<area shape="rect" id="node15" href="$namespacepy_a_c_a_1_1compute_novelty_function.html#a3ba0b0f7ce37dc567fa1ba2ce4b3fa48" title="main" alt="" coords="280,435,543,476"/>
+<area shape="rect" id="node17" href="$namespacepy_a_c_a_1_1compute_pitch.html#ae8336632c1302e2bde3e2baacdace5df" title="main" alt="" coords="312,527,511,568"/>
+<area shape="rect" id="node19" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#aff6b045235c5201273593b28235c9934" title="main" alt="" coords="601,344,843,385"/>
+</map>

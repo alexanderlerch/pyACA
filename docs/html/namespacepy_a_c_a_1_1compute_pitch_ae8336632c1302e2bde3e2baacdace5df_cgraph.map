@@ -1,0 +1,13 @@
+<map id="computePitchCl" name="computePitchCl">
+<area shape="rect" id="node1" title="main" alt="" coords="5,166,120,193"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_pitch.html#a149621c5b944b6abfd319b7a730fdb1a" title="computes the fundamental frequency of (monophonic) audio supported pitch trackers are: &#39;SpectralAcf&#39;,..." alt="" coords="207,137,310,163"/>
+<area shape="rect" id="node11" href="$namespacepy_a_c_a_1_1_tool_read_audio.html#aeba8cc20ab88c4a08ba761e7e381435a" title="helper function: read audio from wav" alt="" coords="168,188,349,229"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="397,71,640,112"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="688,5,889,47"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="691,136,887,177"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_pitch.html#ab7e5d4ca2d9831096dfc2d7ab3c19ede" title="helper functions" alt="" coords="479,187,559,214"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_pitch.html#a4a607354d3553049f90b76386c122505" title=" " alt="" coords="475,238,562,265"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="697,71,881,112"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="937,114,1161,141"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="957,165,1141,207"/>
+</map>

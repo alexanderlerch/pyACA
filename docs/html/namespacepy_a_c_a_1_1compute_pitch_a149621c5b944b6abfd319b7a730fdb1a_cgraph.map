@@ -1,0 +1,11 @@
+<map id="computePitch" name="computePitch">
+<area shape="rect" id="node1" title="computes the fundamental frequency of (monophonic) audio supported pitch trackers are: &#39;SpectralAcf&#39;,..." alt="" coords="5,137,108,163"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="156,71,399,112"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="447,5,648,47"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="449,136,645,177"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1compute_pitch.html#ab7e5d4ca2d9831096dfc2d7ab3c19ede" title="helper functions" alt="" coords="237,187,317,214"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_pitch.html#a4a607354d3553049f90b76386c122505" title=" " alt="" coords="234,238,321,265"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="455,71,639,112"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="696,114,920,141"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="716,165,900,207"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="isSpectral" name="isSpectral">
+<area shape="rect" id="node1" title="helper functions" alt="" coords="687,71,767,98"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_feature.html#af9ca22b04634f3004c29a566cfec0408" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="523,71,639,98"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_chords.html#a7e7b925c338db7ccff08f15564598dee" title="recognizes the chords in an audio file" alt="" coords="264,5,473,47"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1compute_feature.html#a516da232aa2dd130699e48300d9a1aec" title="main" alt="" coords="305,71,433,98"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1compute_key.html#ae17ec17426d91a5cf458247ce9ecd95a" title="computes the musical key of an input audio file" alt="" coords="263,122,475,149"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_chords.html#aa1e070cbc28d61f1d352ef2a5bf008af" title="main" alt="" coords="5,5,215,47"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1compute_key.html#a91b1083e24ab66c711a8bcc3b000b2aa" title="main" alt="" coords="15,115,205,156"/>
+</map>

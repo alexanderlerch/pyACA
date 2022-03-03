@@ -1,0 +1,6 @@
+<map id="computeNoveltyFunction" name="computeNoveltyFunction">
+<area shape="rect" id="node1" title="computes the novelty function for onset detection supported novelty measures are: &#39;Flux&#39;,..." alt="" coords="555,42,721,69"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_beat_histo.html#ac34a1aedf0ef1183c3fcd60455e4d50f" title="computes a simple beat histogram" alt="" coords="280,5,507,47"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_novelty_function.html#a3ba0b0f7ce37dc567fa1ba2ce4b3fa48" title="main" alt="" coords="304,71,483,98"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_beat_histo.html#a39174032d5dcd2807499e931e25f221c" title=" " alt="" coords="5,5,232,47"/>
+</map>

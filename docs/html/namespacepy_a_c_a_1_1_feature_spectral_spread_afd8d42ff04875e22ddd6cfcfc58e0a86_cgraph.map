@@ -1,0 +1,4 @@
+<map id="FeatureSpectralSpread" name="FeatureSpectralSpread">
+<area shape="rect" id="node1" title="computes the spectral spread from the magnitude spectrum" alt="" coords="5,13,160,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_centroid.html#a95d4dfd426e9e6c74f2f519ce62df438" title="computes the spectral centroid from the (squared) magnitude spectrum" alt="" coords="208,5,416,47"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="computeKeyCl" name="computeKeyCl">
+<area shape="rect" id="node1" title="main" alt="" coords="5,253,112,280"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_key.html#ae17ec17426d91a5cf458247ce9ecd95a" title="computes the musical key of an input audio file" alt="" coords="203,224,298,251"/>
+<area shape="rect" id="node12" href="$namespacepy_a_c_a_1_1_tool_read_audio.html#aeba8cc20ab88c4a08ba761e7e381435a" title="helper function: read audio from wav" alt="" coords="160,275,341,317"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_feature.html#af9ca22b04634f3004c29a566cfec0408" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="389,137,601,178"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="940,177,1141,218"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="649,107,892,149"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="943,46,1139,87"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_feature.html#a93fcf0173a1980fac29316709f7c6fbd" title="helper functions" alt="" coords="661,224,881,251"/>
+<area shape="rect" id="node11" href="$namespacepy_a_c_a_1_1compute_feature.html#ad8236bc255cf70fcbf283e73443222ef" title=" " alt="" coords="657,5,884,32"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="949,111,1133,153"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="1189,24,1413,51"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="1209,75,1393,117"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="FeatureSpectralSpread" name="FeatureSpectralSpread">
+<area shape="rect" id="node1" title="computes the spectral spread from the magnitude spectrum" alt="" coords="275,46,429,73"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_kurtosis.html#a0ff03a1fea8775103c8fba7f0e893ce3" title="computes the spectral kurtosis from the magnitude spectrum" alt="" coords="12,5,220,47"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_feature_spectral_skewness.html#a49f4735fc79cff5e2968c0a30967a42a" title="computes the spectral skewness from the magnitude spectrum" alt="" coords="5,71,227,112"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="computeKey" name="computeKey">
+<area shape="rect" id="node1" title="computes the musical key of an input audio file" alt="" coords="5,224,100,251"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_feature.html#af9ca22b04634f3004c29a566cfec0408" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="148,137,360,178"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="699,177,900,218"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="408,107,651,149"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="701,46,897,87"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_feature.html#a93fcf0173a1980fac29316709f7c6fbd" title="helper functions" alt="" coords="419,224,639,251"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_feature.html#ad8236bc255cf70fcbf283e73443222ef" title=" " alt="" coords="416,5,643,32"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="707,111,891,153"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="948,24,1172,51"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="968,75,1152,117"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="FeatureSpectralKurtosis" name="FeatureSpectralKurtosis">
+<area shape="rect" id="node1" title="computes the spectral kurtosis from the magnitude spectrum" alt="" coords="5,13,168,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_centroid.html#a95d4dfd426e9e6c74f2f519ce62df438" title="computes the spectral centroid from the (squared) magnitude spectrum" alt="" coords="465,5,673,47"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_feature_spectral_spread.html#afd8d42ff04875e22ddd6cfcfc58e0a86" title="computes the spectral spread from the magnitude spectrum" alt="" coords="216,35,417,76"/>
+</map>

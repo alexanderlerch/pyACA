@@ -1,0 +1,12 @@
+<map id="computeFingerprint" name="computeFingerprint">
+<area shape="rect" id="node1" title="computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one f..." alt="" coords="5,142,139,169"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a4d2ac9b644b3e036069af2021f266c58" title="computes a spectrogram from the audio data" alt="" coords="187,73,429,115"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ae11781ec85cf006982d335710e102341" title=" " alt="" coords="488,5,689,47"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#a0e04ac8ee50792cb315b70f9ab9fb987" title="helper function: pre&#45;processes an audio signal" alt="" coords="491,136,687,177"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#a39846ac2e8ddf7e23232edf677cc45d9" title=" " alt="" coords="248,193,368,219"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1_tool_resample.html#ab757821ccee4ef6d3af25c96e17bebd0" title="helper function: downmixes an audio signal into one channel" alt="" coords="191,243,425,270"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a9770fab2e5e433006ce9d91d555e39bc" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="497,71,681,112"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_downmix.html#a96d0fd24ce46706554084dc47b7c4ea7" title="helper function: downmixes an audio signal into one channel" alt="" coords="748,114,972,141"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#af8bbef863aafb9145123f56dd3e647f2" title="helper function: normalizes audio signal" alt="" coords="768,165,952,207"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1_tool_freq2_bin.html#a1caab349eee0d6655e738c40198ecb4f" title=" " alt="" coords="477,202,700,229"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ToolGammatoneFb" name="ToolGammatoneFb">
+<area shape="rect" id="node1" title="helper function: splits the audio signal into multiple bands via a Gammatone filterbank see function ..." alt="" coords="228,13,361,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_pitch_time_auditory.html#a8923c0b6c4cd8b09a31e8e086cd04e18" title="computes f0 via the &quot;auditory&quot; approach" alt="" coords="5,5,180,47"/>
+</map>
