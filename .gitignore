@@ -1,0 +1,8 @@
+/.spyproject
+/TestResults
+/__pycache__
+/build/lib/pyACA
+/doc/html
+/doc/latex
+/pyACA.egg-info
+/tests/__pycache__
