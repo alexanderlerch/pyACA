@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: convert bin to Hz
-
-  Args:
-    fBin: FFT bin index (cam be float)
-    iFftLength: length of the Fft (time domain block size)
-    f_s: sample rate
-
-  Returns:
-    bin
-"""
 
 import numpy as np
 
 
+## helper function: convert FFT bin to Hz
+#
+#    @param fBin: FFT bin index (can be float)
+#    @param iFftLength: length of the Fft (time domain block size)
+#    @param f_s: sample rate of audio data
+#
+#    @return f: bin frequency (in Hz)
 def ToolBin2Freq(fBin, iFftLength, f_s):
     def acaBin2Freq_scalar_I(fBin, iFftLength, f_s):
         return fBin * f_s / float(iFftLength)

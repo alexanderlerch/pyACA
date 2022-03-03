@@ -1,16 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: compute very bad quality resampling
-
-  Args:
-    x: input signal (1D)
-    fs_out: output sample rate
-    fs_in: input sample rate
-
-  Returns:
-    x_out: resampled audio signal
-    t_out: corresponding time vector
-"""
 
 import numpy as np
 from scipy.signal import butter
@@ -18,6 +6,14 @@ from scipy.signal import filtfilt
 from scipy.interpolate import interp1d
 
 
+## helper function: downmixes an audio signal into one channel
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param fs_out: target sample rate of audio data
+#    @param fs_in: input sample rate of audio data
+#
+#    @return x_out: resampled audio signal
+#    @return t_out: corresponding time vector
 def ToolResample(x, fs_out, fs_in):
 
     if fs_out > fs_in:

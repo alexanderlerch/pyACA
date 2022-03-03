@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: compute periodic von-Hann window
-
-  Args:
-    fInHz: The frequency to be converted, can be scalar or vector
-    fA4InHz: The reference tuning frequency (default: 440Hz)
-
-  Returns:
-    Midi values of the input dimension (floating point)
-"""
 
 import numpy as np
 
 
+## helper function: convert MIDI to Hz
+#
+#    @param pInMidi: MIDI pitch
+#    @param fA4InHz: The reference tuning frequency (default: 440Hz)
+#
+#    @return fInHz: frequency in Hz
 def ToolMidi2Freq(pInMidi, fA4InHz=440):
     def convert_midi2freq_scalar(p, fA4InHz):
  

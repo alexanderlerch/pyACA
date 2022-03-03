@@ -1,40 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeFeature
-
-computes a feature from the audio data
-supported features are:
-    'SpectralCentroid',
-    'SpectralCrestFactor',
-    'SpectralDecrease',
-    'SpectralFlatness',
-    'SpectralFlux',
-    'SpectralKurtosis',
-    'SpectralMfccs',
-    'SpectralPitchChroma',
-    'SpectralRolloff',
-    'SpectralSkewness',
-    'SpectralSlope',
-    'SpectralSpread',
-    'SpectralTonalPowerRatio',
-    'TimeAcfCoeff',
-    'TimeMaxAcf',
-    'TimePeakEnvelope',
-    'TimeRms',
-    'TimeStd',
-    'TimeZeroCrossingRate',
-  Args:
-      cFeatureName: feature to compute, e.g. 'SpectralSkewness'
-      x: array with floating point audio data  (dimension samples x channels)
-      f_s: sample rate
-      afWindow: FFT window of length iBlockLength (default: hann)
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
-
-  Returns:
-      v: feature value
-      t: time stamp
-"""
 
 import matplotlib.pyplot as plt
 
@@ -45,6 +9,37 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
+## computes a feature from the audio data
+# supported features are:
+#    'SpectralCentroid',
+#    'SpectralCrestFactor',
+#    'SpectralDecrease',
+#    'SpectralFlatness',
+#    'SpectralFlux',
+#    'SpectralKurtosis',
+#    'SpectralMfccs',
+#    'SpectralPitchChroma',
+#    'SpectralRolloff',
+#    'SpectralSkewness',
+#    'SpectralSlope',
+#    'SpectralSpread',
+#    'SpectralTonalPowerRatio',
+#    'TimeAcfCoeff',
+#    'TimeMaxAcf',
+#    'TimePeakEnvelope',
+#    'TimeRms',
+#    'TimeStd',
+#    'TimeZeroCrossingRate',
+#
+#    @param cFeatureName: feature to compute, e.g. 'SpectralSkewness'
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param afWindow: FFT window of length iBlockLength (default: hann)
+#    @param iBlockLength: internal block length (default: 4096 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#
+#    @return v: feature value
+#    @return t: time stamps
 def computeFeature(cFeatureName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
  
     # mypackage = __import__(".Feature" + cFeatureName, package="pyACA")
@@ -115,7 +110,7 @@ if __name__ == "__main__":
     import argparse
 
     # add command line args and parse them
-    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser = argparse.ArgumentParser(description='Compute feature from wav file')
     parser.add_argument('--infile', metavar='path', required=False,
                         help='path to input audio file')
     parser.add_argument('--featurename', metavar='string', required=False,

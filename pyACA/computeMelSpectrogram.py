@@ -1,23 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeMelSpectrogram
-
-computes a mel spectrogram from the audio data
-  Args:
-      x: time domain sample data, dimension channels X samples
-      f_s: sample rate of audio data
-      bLogarithmic: levels (true) or magnitudes (false)
-      afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
-      iNumMelBands: number of mel bands (default: 128 bands)
-      fMaxInHz: maximum frequency (default: None)
-
-  Returns:
-      M: Mel spectrum
-      f_c: Center frequencies of mel bands
-      t: Timestamps
-"""
 
 import numpy as np
 
@@ -28,6 +9,20 @@ from pyACA.ToolFreq2Mel import ToolFreq2Mel
 from pyACA.ToolMel2Freq import ToolMel2Freq
 
 
+## computes a mel spectrogram from the audio data
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param bLogarithmic: levels (true) or magnitudes (false)
+#    @param afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
+#    @param iBlockLength: internal block length (default: 4096 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#    @param iNumMelBands: number of mel bands (default: 128 bands)
+#    @param fMaxInHz: maximum frequency (default: None)
+#
+#    @return M: Mel spectrum
+#    @return f_c: Center frequencies of mel bands
+#    @return t: time stamps
 def computeMelSpectrogram(x, f_s, afWindow=None, bLogarithmic=True, iBlockLength=4096, iHopLength=2048, iNumMelBands=128, fMaxInHz=None):
 
     if not fMaxInHz:

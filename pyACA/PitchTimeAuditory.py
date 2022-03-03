@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computes f_0 through "auditory" approach
-
-  Args:
-    x: audio signal
-    iBlockLength: block length in samples
-    iHopLength: hop length in samples
-    f_s: sample rate of audio data (unused)
-
-  Returns:
-      f_0 frequency
-      t time stamp for the frequency value
-"""
 
 import numpy as np
 import math
@@ -21,6 +8,15 @@ from scipy.signal import find_peaks
 from .ToolGammatoneFb import ToolGammatoneFb
 
 
+## computes f0 via the "auditory" approach
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: internal block length 
+#    @param iHopLength: internal hop length 
+#    @param f_s: sample rate of audio data
+#
+#    @return f_0: fundamental frequency (in Hz)
+#    @return t: time stamp
 def PitchTimeAuditory(x, iBlockLength, iHopLength, f_s):
 
     # initialize

@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral decrease from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vsk spectral decrease
-"""
 
 import numpy as np
 
 
+## computes the spectral decrease from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vsd: spectral decrease
 def FeatureSpectralDecrease(X, f_s):
 
     # compute index vector
@@ -24,6 +20,6 @@ def FeatureSpectralDecrease(X, f_s):
     norm[norm == 0] = 1
 
     # compute slope
-    vsc = np.dot(kinv, X - X[0]) / norm
+    vsd = np.dot(kinv, X - X[0]) / norm
 
-    return np.squeeze(vsc, axis=0)
+    return np.squeeze(vsd, axis=0)

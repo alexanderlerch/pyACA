@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-computes the maximum of the spectral autocorrelation function
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    f_0 acf maximum location (in Hz)
-"""
 
 import numpy as np
 from scipy.signal import find_peaks
 
 
+## computes f0 via the maximum of the spectral autocorrelation function
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return f_0: fundamental frequency (in Hz)
 def PitchSpectralAcf(X, f_s):
 
     # initialize

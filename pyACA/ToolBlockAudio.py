@@ -1,21 +1,17 @@
-"""
-helper function: Creates blocks from given array. This method creates a block only if there is enough input data to
-fill the block. This means if there isn't enough data to fill the last block then that lst chunk of input data will
-be discarded. To avoid losing data, you should pad the input with zeros of at least iBlockLength length.
-
-  Args:
-    afAudioData: 1D np.array
-    iBlockLength: block length
-    iHopLength: hop length
-    f_s: sample rate
-
-  Returns:
-    A 2D np.array containing the blocked data of shape (iNumOfBlocks, iBlockLength).
-"""
+# -*- coding: utf-8 -*-
 
 import numpy as np
 
 
+## helper function: blocks an audio signal into overlapping blocks
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: internal block length 
+#    @param iHopLength: internal hop length 
+#    @param f_s: sample rate of audio data
+#
+#    @return x_b: 2D np.array containing the blocked data of shape (iNumOfBlocks x iBlockLength)
+#    @return t: time stamp
 def ToolBlockAudio(afAudioData, iBlockLength, iHopLength, f_s):
 
     iNumBlocks = np.ceil(afAudioData.shape[0] / iHopLength).astype(int)

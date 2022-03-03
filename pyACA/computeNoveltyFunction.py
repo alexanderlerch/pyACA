@@ -1,26 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeNoveltyFunction
-
-computes the novelty function for onset detection
- supported novelty measures are:
-  'Flux',
-  'Laroche',
-  'Hainsworth'
-
-  Args:
-      cNoveltyName: name of the novelty measure
-      x: array with floating point audio data  (dimension samples x channels)
-      f_s: sample rate
-      afWindow: FFT window of length iBlockLength (default: hann)
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 512 samples)
-
-  Returns:
-      d: novelty function
-      t: time stamps
-      iPeaks: indices of picked onset times
-"""
 
 import math
 import numpy as np
@@ -35,6 +13,22 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
+## computes the novelty function for onset detection
+# supported novelty measures are:
+# 'Flux', 
+# 'Laroche',
+# 'Hainsworth'
+#
+#    @param cNoveltyName: name of the novelty measure
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
+#    @param iBlockLength: internal block length (default: 4096 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#
+#    @return d: novelty function
+#    @return t: time stamps
+#    @return iPeaks: indices of picked onset times
 def computeNoveltyFunction(cNoveltyName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=512):
 
     # compute window function for FFT

@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral slope from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vssl spectral slope
-"""
 
 import numpy as np
 
 
+## computes the spectral slope from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vssl: spectral slope
 def FeatureSpectralSlope(X, f_s):
 
     # compute mean

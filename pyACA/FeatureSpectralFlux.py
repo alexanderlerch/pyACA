@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral flux from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vsf spectral flux
-"""
 
 import numpy as np
 
 
+## computes the spectral flux from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vsf: spectral flux
 def FeatureSpectralFlux(X, f_s):
 
     isSpectrum = X.ndim == 1

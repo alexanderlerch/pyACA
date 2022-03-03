@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral kurtosis from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vsk spectral kurtosis
-"""
 
 import numpy as np
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralSpread import FeatureSpectralSpread
 
 
+## computes the spectral kurtosis from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vsk: spectral kurtosis
 def FeatureSpectralKurtosis(X, f_s):
 
     isSpectrum = X.ndim == 1

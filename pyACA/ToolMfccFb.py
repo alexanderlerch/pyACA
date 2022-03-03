@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
 
 import numpy as np
 
 
-# see function mfcc.m from Slaneys Auditory Toolbox
+## helper function: computes transfer functions of MFCC filter bands 
+# see function from Slaneys Auditory Toolbox (Matlab)
+#
+#    @param iFftLength: length of FFT
+#    @param f_s: sample rate of audio data
+#
+#    @return H: matrix with transfer functions
 def ToolMfccFb(iFftLength, f_s):
 
     # initialization

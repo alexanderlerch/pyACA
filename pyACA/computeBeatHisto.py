@@ -1,19 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeBeatHisto
-
-computes a simple beat histogram
-  Args:
-      x: array with floating point audio data.
-      f_s: sample rate
-      cMethod:  method of beat histogram computation ('Corr' or 'FFT'(default))
-      afWindow: FFT window of length iBlockLength (Hann will be used if 'None')
-      iBlockLength: internal block length (default: 1024 samples)
-      iHopLength: internal hop length (default: 8 samples)
-
-  Returns:
-      beat histogram, BPM axis ticks
-"""
 
 import numpy as np
 
@@ -24,6 +9,17 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
+## computes a simple beat histogram
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param cMethod:  method of beat histogram computation ('Corr' or 'FFT'(default))
+#    @param afWindow: FFT window of length iBlockLength (Hann will be used if 'None')
+#    @param iBlockLength: internal block length (default: 1024 samples)
+#    @param iHopLength: internal hop length (default: 8 samples)
+#
+#    @return T: beat histogram
+#    @return Bpm: BPM axis ticks
 def computeBeatHisto(x, f_s, cMethod='FFT', afWindow=None, iBlockLength=1024, iHopLength=8):
     # compute window function for FFT
     if afWindow is None:

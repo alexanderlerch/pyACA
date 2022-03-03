@@ -1,20 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeChords
-
-recognizes the chords in an audio file
-  Args:
-      x: array with floating point audio data
-      f_s: sample rate
-      iBlockLength: internal block length (default: 8192 samples)
-      iHopLength: internal hop length (default: 2048 samples)
-
-  Returns:
-      cChordLabel: detected chords as strings
-      aiChordIdx: detected chords as indices (2 x iNumObservations)
-      t: time stamps
-      P_E: full matrix of chord probabilities (iNumChords x iNumObservations)
-"""
 
 import numpy as np
 
@@ -23,6 +7,17 @@ from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolViterbi import ToolViterbi
 
 
+## recognizes the chords in an audio file
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param iBlockLength: internal block length (default: 8192 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#
+#    @return cChordLabel: detected chords as strings
+#    @return aiChordIdx: detected chords as indices (2 x iNumObservations)
+#    @return t: time stamps
+#    @return P_E: full matrix of chord probabilities (iNumChords x iNumObservations)
 def computeChords(x, f_s, iBlockLength=8192, iHopLength=2048):
 
     # chord names
@@ -131,7 +126,7 @@ if __name__ == "__main__":
     import argparse
 
     # add command line args and parse them
-    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser = argparse.ArgumentParser(description='Compute chords from wav file')
     parser.add_argument('--infile', metavar='path', required=False,
                         help='path to input audio file')
 

@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-NoveltyFlux
-
-computes the novelty measure per Spectral Flux
-
-  Args:
-      X: spectrogram (dimension FFTLength X Observations)
-      f_s: sample rate
-
-  Returns:
-      d_flux novelty measure
-
-"""
 
 import numpy as np
 
 
+## computes the novelty measure per Spectral Flux
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return d_flux: novelty measure
 def NoveltyFlux(X, f_s):
 
     isSpectrum = X.ndim == 1

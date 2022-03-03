@@ -11,7 +11,7 @@ supported pitch trackers are:
     'TimeAuditory',
     'TimeZeroCrossings',
   Args:
-      cPitchTrackName: feature to compute, e.g. 'SpectralHps'
+      
       x: array with floating point audio data
       f_s: sample rate
       afWindow: FFT window of length iBlockLength (default: hann)
@@ -32,6 +32,24 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolReadAudio import ToolReadAudio
 
 
+## computes the fundamental frequency of (monophonic) audio
+# supported pitch trackers are:
+#    'SpectralAcf',
+#    'SpectralHps',
+#    'TimeAcf',
+#    'TimeAmdf',
+#    'TimeAuditory',
+#    'TimeZeroCrossings',
+#
+#    @param cPitchTrackName: feature to compute, e.g. 'SpectralHps'
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
+#    @param iBlockLength: internal block length (default: 4096 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#
+#    @return f_0: frequency
+#    @return t: time stamps
 def computePitch(cPitchTrackName, x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
     
     # mypackage = __import__(".Pitch" + cPitchTrackName, package="pyACA")
@@ -51,12 +69,12 @@ def computePitch(cPitchTrackName, x, f_s, afWindow=None, iBlockLength=4096, iHop
         [X, f, t] = computeSpectrogram(x, f_s, None, iBlockLength, iHopLength)
 
         # compute instantaneous pitch chroma
-        f = hPitchFunc(X, f_s)
+        f_0 = hPitchFunc(X, f_s)
 
     if isTemporal(cPitchTrackName):
-        [f, t] = hPitchFunc(x, iBlockLength, iHopLength, f_s)
+        [f_0, t] = hPitchFunc(x, iBlockLength, iHopLength, f_s)
 
-    return f, t
+    return f_0, t
 
 
 #######################################################

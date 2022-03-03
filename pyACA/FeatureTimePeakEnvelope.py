@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-computes two peak envelope measures for a time domain signal
-
-  Args:
-    x: audio signal
-    iBlockLength: block length in samples
-    iHopLength: hop length in samples
-    f_s: sample rate of audio data (unused)
-
-  Returns:
-    vppm peak envelope (1: max, 2: PPM)
-    t time stamp
-
-"""
 
 import numpy as np
 import pyACA
 
 
+## computes the peak envelope of a time domain signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: block length in samples
+#    @param iHopLength: hop length in samples
+#    @param f_s: sample rate of audio data
+#
+#    @return vppm: peak envelope (1: max, 2: PPM)
+#    @return t: time stamp
 def FeatureTimePeakEnvelope(x, iBlockLength, iHopLength, f_s):
 
     # create blocks

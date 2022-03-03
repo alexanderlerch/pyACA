@@ -1,18 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: gaussian mixture model
-
-  Args:
-    V: features for all train observations (dimension iNumFeatures x iNumObservations)
-    K: number of gaussians
-    numMaxIter: maximum number of iterations (stop if not converged before, default: 1000)
-    prevState: internal state that can be stored to continue clustering later
-
-  Returns:
-    mu means (iNumFeatures x K)
-    sigma standard deviations (K x iNumFeatures X iNumFeatures)
-    state result containing internal state (if needed)
-"""
 
 import numpy as np
 
@@ -24,6 +10,16 @@ class CGmmState:
         self.prior = prior
 
 
+## helper function: gaussian mixture model
+#
+#    @param V: features for all train observations (dimension iNumFeatures x iNumObservations)
+#    @param K: number of gaussians
+#    @param numMaxIter: maximum number of iterations (stop if not converged before, default: 1000)
+#    @param prevState: internal state that can be stored to continue clustering later
+#
+#    @return mu: means (iNumFeatures x K)
+#    @return sigma: standard deviations (K x iNumFeatures X iNumFeatures)
+#    @return state: result containing internal state (if needed)
 def ToolGmm(V, K, numMaxIter=1000, prevState=None):
 
     # init

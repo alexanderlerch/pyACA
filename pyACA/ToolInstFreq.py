@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: compute instantaneous frequency for two neighboring blocks of complex spectra
-
-  Args:
-    X_complex: audio file data
-    iHopLength: processing hop size
-    f_s: sample rate
-
-  Returns:
-    f_I (array): instantaneous frequency
-"""
 
 import numpy as np
 
 
+## computes instantaneous frequency utilizing phase of neighboring blocks of complex spectra
+#
+#    @param X_complex: complex spectrogram (dimension FFTLength X Observations)
+#    @param iHopLength: hop length of spectrogram computation
+#    @param f_s: sample rate of audio data
+#
+#    @return f_I: instantaneous frequency (in Hz)
 def ToolInstFreq(X_complex, iHopLength, f_s):
 
     # get phase

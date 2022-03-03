@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: convert Hz to Mel scale
-
-  Args:
-    fInHz: The frequency to be converted, can be scalar or vector
-    cModel: The name of the model ('Fant' [default], 'Shaughnessy', 'Umesh')
-
-  Returns:
-    Mel values of the input dimension 
-"""
 
 import numpy as np
 import math
 
 
+## helper function: convert Hz to Mel scale
+#
+#    @param fInHz: frequency to be converted, can be scalar or vector
+#    @param cModel: name of the model ('Fant' [default], 'Shaughnessy', 'Umesh')
+#
+#    @return fMel: Mel values
 def ToolFreq2Mel(fInHz, cModel='Fant'):
     # Fant
     def acaFant_scalar(f):

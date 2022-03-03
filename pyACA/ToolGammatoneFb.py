@@ -1,10 +1,19 @@
+# -*- coding: utf-8 -*-
 
 import numpy as np
 from scipy.signal import lfilter
 
 
-# see function mfcc.m from Slaneys Auditory Toolbox (Matlab)
-def ToolGammatoneFb(afAudioData, f_s, iNumBands=20, f_low=100):
+## helper function: splits the audio signal into multiple bands via a Gammatone filterbank
+# see function from Slaneys Auditory Toolbox (Matlab)
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param iNumBands: number of filter bands (default: 20)
+#    @param f_low: minimum frequency (default: 100Hz)
+#
+#    @return X: multi-band signal
+def ToolGammatoneFb(x, f_s, iNumBands=20, f_low=100):
 
     # initialization
     fEarQ = 9.26449
@@ -13,7 +22,7 @@ def ToolGammatoneFb(afAudioData, f_s, iNumBands=20, f_low=100):
     T = 1 / f_s
 
     # allocate output memory
-    X = np.zeros([iNumBands, afAudioData.shape[0]])
+    X = np.zeros([iNumBands, x.shape[0]])
 
     # compute the mid frequencies
     f_c = getMidFrequencies(f_low, f_s / 2, iNumBands, fEarQ, fBW)
@@ -23,7 +32,7 @@ def ToolGammatoneFb(afAudioData, f_s, iNumBands=20, f_low=100):
 
     # do the (cascaded) filter process
     for k in range(0, iNumBands):
-        X[k, :] = afAudioData
+        X[k, :] = x
         for j in range(0, 4):
             X[k, :] = lfilter(afCoeffB[j, :, k], afCoeffA[j, :, k], X[k, :])
 

@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: normalizes audio signal
-
-  Args:
-    x: audio file data (samples x channels)
-
-  Returns:
-    x (array): normalized samples
-"""
 
 import numpy as np
 
 
+## helper function: normalizes audio signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#
+#    @return x_normx: normalized signal
 def ToolNormalizeAudio(x):
     fNorm = np.max(np.abs(x))
     if fNorm == 0:

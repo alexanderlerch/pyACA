@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the maximum of the Harmonic Product Spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    f_0 HPS maximum location (in Hz)
-"""
 
 import numpy as np
 
 
+## computes f0 via the maximum of the Harmonic Product Spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return f_0: fundamental frequency (in Hz)
 def PitchSpectralHps(X, f_s):
 
     # initialize

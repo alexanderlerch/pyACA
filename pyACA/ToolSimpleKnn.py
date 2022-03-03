@@ -1,38 +1,35 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: k nearest neighbor classifier
 
-  Args:
-    TestFeatureVector: features for test observation (length iNumFeatures)
-    TrainFeatureMatrix: features for all train observations (dimension iNumFeatures x iNumObservations)
-    TrainClassIndices: class labels (length observations)
-    k: number of points taken into account (default = 3)
-
-  Returns:
-    class index/indices of the resulting class
-"""
 import numpy as np
 
 
-def ToolSimpleKnn(TestFeatureVector, TrainFeatureMatrix, TrainClassIndices, k=1):
+## helper function: k nearest neighbor classifier
+#
+#    @param v_test: test feature vector
+#    @param V_train: features for all train observations (dimension iNumFeatures x iNumObservations)
+#    @param ClassIdx_train: class labels (length observations)
+#    @param K: number of neighbors taken into account (default = 3)
+#
+#    @return est_class: index of estimated class
+def ToolSimpleKnn(v_test, V_train, ClassIdx_train, K=1):
 
     # sanity checks
-    if TestFeatureVector.shape[0] != TrainFeatureMatrix.shape[0]:
+    if v_test.shape[0] != V_train.shape[0]:
         return -1
 
     # get dimensions
     # num_features = TestFeatureVector.shape[0]
-    classes = getClasses_I(TrainClassIndices)
+    classes = getClasses_I(ClassIdx_train)
 
     # init result
-    est_class = -1*np.ones(TestFeatureVector.shape[1])
+    est_class = -1*np.ones(v_test.shape[1])
 
     # compute pairwise distances between all test data and all train data points
-    d = computePairwiseDistance_I(TestFeatureVector, TrainFeatureMatrix)
+    d = computePairwiseDistance_I(v_test, V_train)
 
     # sort distances
     ind = np.argsort(d, axis=1).astype(int)
-    ind = ind[:, range(k)]
+    ind = ind[:, range(K)]
 
     # extension for distance based weighting: convert distance to closeness (easier later with the histogram)
     ma = np.amax(d)
@@ -42,7 +39,7 @@ def ToolSimpleKnn(TestFeatureVector, TrainFeatureMatrix, TrainClassIndices, k=1)
 
     # infer which class
     for obs, index in enumerate(ind):
-        est_class[obs] = inferClass_I(TrainClassIndices[index], classes, d[obs, index])
+        est_class[obs] = inferClass_I(ClassIdx_train[index], classes, d[obs, index])
 
     return np.squeeze(est_class.astype(int))
 

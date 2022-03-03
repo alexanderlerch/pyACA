@@ -1,30 +1,26 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: nmf implementation inspired by https://github.com/cwu307/NmfDrumToolbox/blob/master/src/PfNmf.m
-
-  Args:
-    X: non-negative matrix to factorize (usually ifreq x iObservations)
-    iRank: nmf rank
-    iMaxIteration: maximum number of iterations (default: 300)
-    fSparsity: sparsity weight (default: 0)
-
-  Returns:
-    W dictionary matrix
-    H activation matrix
-    err loss function result
-"""
 
 import numpy as np
 
 
-def ToolSimpleNmf(X, iRank, iMaxIteration=300, fSparsity=0):
+## helper function: non-negative matrix factorization
+#
+#    @param X: non-negative matrix to factorize (dimension FFTLength X Observations)
+#    @param iRank: nmf rank
+#    @param numMaxIter: maximum number of iterations (stop if not converged before, default: 300)
+#    @param fSparsity: sparsity weight (default: 0)
+#
+#    @return W: dictionary matrix
+#    @return H: activation matrix
+#    @return err: loss function result
+def ToolSimpleNmf(X, iRank, numMaxIter=300, fSparsity=0):
 
     # avoid zero input
     X = X + 1e-30
 
     # initialization
     [iFreq, iFrames] = X.shape
-    err = np.zeros(iMaxIteration)
+    err = np.zeros(numMaxIter)
     bUpdateW = True
     bUpdateH = True
 
@@ -39,7 +35,7 @@ def ToolSimpleNmf(X, iRank, iMaxIteration=300, fSparsity=0):
     rep = np.ones([iFreq, iFrames])
 
     # iteration
-    for count in range(iMaxIteration):
+    for count in range(numMaxIter):
     
         # current estimate
         X_hat = np.matmul(W, H)

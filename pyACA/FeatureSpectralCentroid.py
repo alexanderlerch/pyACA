@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral centroid from the (squared) magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vsc spectral centroid (in Hz)
-"""
 
 import numpy as np
 
 
+## computes the spectral centroid from the (squared) magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vsc: spectral centroid (in Hz)
 def FeatureSpectralCentroid(X, f_s):
 
     isSpectrum = X.ndim == 1

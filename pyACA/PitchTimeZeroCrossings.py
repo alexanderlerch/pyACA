@@ -1,32 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
-computes f_0 through zero crossing distances
-
-  Args:
-    x: audio signal
-    iBlockLength: block length in samples
-    iHopLength: hop length in samples
-    f_s: sample rate of audio data (unused)
-
-  Returns:
-      f_0 fundamental frequency estimate
-      t time stamp for the frequency value
-"""
 
 import numpy as np
-import math
 
 from pyACA.ToolBlockAudio import ToolBlockAudio
 
 
+## computes f0 via zero crossing distances
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: internal block length 
+#    @param iHopLength: internal hop length 
+#    @param f_s: sample rate of audio data
+#
+#    @return f_0: fundamental frequency (in Hz)
+#    @return t: time stamp
 def PitchTimeZeroCrossings(x, iBlockLength, iHopLength, f_s):
-
-    # initialize
-    f_0 = np.zeros(iNumOfBlocks)
 
     # block audio data
     x_b, t = ToolBlockAudio(x, iBlockLength, iHopLength, f_s)
     iNumOfBlocks = x_b.shape[0]
+
+    # initialize
+    f_0 = np.zeros(iNumOfBlocks)
 
     for n, block in enumerate(x_b):
 

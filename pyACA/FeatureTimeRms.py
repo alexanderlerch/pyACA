@@ -18,6 +18,15 @@ import numpy as np
 import pyACA
 
 
+## computes the RMS of a time domain signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: block length in samples
+#    @param iHopLength: hop length in samples
+#    @param f_s: sample rate of audio data
+#
+#    @return vrms:rms value (row 1: block-based rms, row 2: single pole approx)
+#    @return t: time stamp
 def FeatureTimeRms(x, iBlockLength, iHopLength, f_s):
 
     T_i = .3 

@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: sequential feature forward selection
 
-  Args:
-    V: feature matrix (dimension iNumFeatures x iNumObservations)
-    ClassIdx: vector with class indices (length iNumObservations)
-    iNumFeatures2Select: target number of features (optional)
-
-  Returns:
-    selFeatureIdx vector with ordered feature indices (length: iNumFeatures2Select)
-    AccPerSubset accuracy for each subset
-"""
 import numpy as np
 
 from pyACA import ToolLooCrossVal
 
 
+## helper function: sequential forward feature selection
+#
+#    @param V: feature matrix with all observations (dimension iNumFeatures x iNumObservations)
+#    @param ClassIdx: class labels (length: iNumObservations)
+#    @param iNumFeatures2Select: target number of features (default: all)
+#
+#    @return selFeatureIdx: vector with ordered feature indices (length: iNumFeatures2Select)
+#    @return AccPerSubset: accuracy for each subset
 def ToolSeqFeatureSel(V, ClassIdx, iNumFeatures2Select=-1):
 
     iNumFeatures = V.shape[0]

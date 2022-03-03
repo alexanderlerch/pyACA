@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-NoveltyHainsworth
-
-computes the novelty measure used by Hainsworth
-
-  Args:
-      X: spectrogram (dimension FFTLength X Observations)
-      f_s: sample rate
-
-  Returns:
-      d_hai novelty measure
-
-"""
 
 import numpy as np
 
 
+## computes the novelty measure introduced by Hainsworth
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return d_hai: novelty measure
 def NoveltyHainsworth(X, f_s):
 
     epsilon = 1e-5

@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: computes path through a probability matrix with Viterbi
 
-  Args:
-    P_E: emmission probability matrix (states X observations)
-    P_T: transition probability matrix (states X states)
-    p_s: start probability vector (states X 1)
-    bUseLogLikelihood: flag (default: false)
-
-  Returns:
-    p path vector with matrix row indices (N)
-    P_res probability matrix
-"""
 import numpy as np
 
 
+## helper function: viterbi algorithm
+#
+#    @param  P_E: emmission probability matrix (states X observations)
+#    @param P_T: transition probability matrix (states X states)
+#    @param p_s: start probability vector (states X 1)
+#    @param bUseLogLikelihood: flag (default: false)
+#
+#    @return p: path with matrix row indices (length: observations)
+#    @return P_res probability matrix
 def ToolViterbi(P_E, P_T, p_s, bUseLogLikelihood=False):
 
     if not bUseLogLikelihood:

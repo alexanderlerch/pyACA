@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral skewness from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vssk spectral skewness
-"""
 
 import numpy as np
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 from .FeatureSpectralSpread import FeatureSpectralSpread
 
 
+## computes the spectral skewness from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vssk: spectral skewness
 def FeatureSpectralSkewness(X, f_s, UseBookDefinition=False):
 
     isSpectrum = X.ndim == 1

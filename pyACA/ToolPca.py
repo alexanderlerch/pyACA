@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: principal component analysis (pca)
 
-  Args:
-    V: feature matrix (dimension iNumFeatures x iNumObservations)
-
-  Returns:
-    U_pc transformed features 'score' (dimension see V)
-    T transformation matrix 'loading' (dimension iNumFeatures x iNumFeatures )
-    eigenvalues 'latent' (length iNumFeatures)
-"""
 import numpy as np
 
 
+## helper function: principal component analysis (pca)
+#
+#    @param V: features for all train observations (dimension iNumFeatures x iNumObservations)
+#
+#    @return U_pc: transformed features 'score' (dimension see V)
+#    @return T: transformation matrix 'loading' (dimension iNumFeatures x iNumFeatures )
+#    @return eigenvalues: 'latent' (length iNumFeatures)
 def ToolPca(V):
 
     # covariance

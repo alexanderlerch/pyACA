@@ -1,28 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: leave one out cross validation wrapping a kNN classifier
 
-  Args:
-    FeatureMatrix: features for all observations (dimension iNumFeatures x iNumObservations)
-    ClassIndices: class labels (length observations)
-
-  Returns:
-    class index/indices of the resulting class
-"""
 import numpy as np
 
 from pyACA.ToolSimpleKnn import ToolSimpleKnn
 
 
-def ToolLooCrossVal(FeatureMatrix, ClassIndices):
+## helper function: leave one out cross validation
+#
+#    @param V: feature matrix with all observations (dimension iNumFeatures x iNumObservations)
+#    @param ClassIdx: class labels (length: iNumObservations)
+#
+#    @return avg_accuracy: overall accuracy
+#    @return fold_accuracies: accuracies per fold
+#    @return conf_mat: confusion matrix
+def ToolLooCrossVal(V, ClassIdx):
 
-    if FeatureMatrix.ndim == 1:
-        FeatureMatrix = FeatureMatrix[None, :]
+    if V.ndim == 1:
+        V = V[None, :]
 
-    iNumObservations = FeatureMatrix.shape[1]
+    iNumObservations = V.shape[1]
     kNearestNeighbor = 3
 
-    return crossvalidate_I(FeatureMatrix, ClassIndices, iNumObservations, kNearestNeighbor)
+    return crossvalidate_I(V, ClassIdx, iNumObservations, kNearestNeighbor)
 
 
 def crossvalidate_I(data, labels, num_folds=10, k=3):

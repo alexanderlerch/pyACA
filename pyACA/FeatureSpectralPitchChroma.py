@@ -7,13 +7,19 @@ computes the pitch chroma from the magnitude spectrum
     f_s: sample rate of audio data
 
   Returns:
-    v_pc pitch chroma
+    v_pc: pitch chroma
 """
 
 import numpy as np
 import math
 
 
+## computes the pitch chroma from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return v_pc: pitch chroma
 def FeatureSpectralPitchChroma(X, f_s):
 
     isSpectrum = X.ndim == 1

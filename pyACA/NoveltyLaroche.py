@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-NoveltyLaroche
-computes the novelty measure used by laroche
-
-  Args:
-      X: spectrogram (dimension FFTLength X Observations)
-      f_s: sample rate
-
-  Returns:
-      d_lar novelty measure
-
-"""
 
 import numpy as np
 
 
+## computes the novelty measure intnroduced by Laroche
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return d_lar: novelty measure
 def NoveltyLaroche(X, f_s):
 
     # difference spectrum (set first diff to zero)

@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-computes the zero crossing rate of a time domain signal
-
-  Args:
-    x: audio signal
-    iBlockLength: block length in samples
-    iHopLength: hop length in samples
-    f_s: sample rate of audio data (unused)
-
-  Returns:
-    vzc zero crossing rate
-    t time stamp
-
-"""
 
 import numpy as np
 import pyACA
 
 
+## computes the zero crossing rate of a time domain signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: block length in samples
+#    @param iHopLength: hop length in samples
+#    @param f_s: sample rate of audio data
+#
+#    @return vzc: zero crossing rate
+#    @return t: time stamp
 def FeatureTimeZeroCrossingRate(x, iBlockLength, iHopLength, f_s):
 
     # create blocks

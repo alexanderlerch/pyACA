@@ -1,14 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: preprocesses audio signal
-
-  Args:
-    x: audio file data (samples x channels)
-    bNormalize: flag to switch off normalization (optional)
-
-  Returns:
-    afAudioData (array): processed samples
-"""
 
 import numpy as np
 
@@ -16,15 +6,21 @@ from pyACA.ToolDownmix import ToolDownmix
 from pyACA.ToolNormalizeAudio import ToolNormalizeAudio
 
 
+## helper function: pre-processes an audio signal 
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param bNormalize: flag to switch off normalization (default: True)
+#
+#    @return x_pp: pre-processed signal
 def ToolPreprocAudio(x, bNormalize=True):
 
     # pre-processing: downmixing
-    x = ToolDownmix(x)
+    x_pp = ToolDownmix(x)
     
     # pre-processing: normalization
     if bNormalize:
-        x = ToolNormalizeAudio(x)
+        x_pp = ToolNormalizeAudio(x_pp)
  
     # additional preprocessing step might include sample rate conversion and filtering
     
-    return x
+    return x_pp

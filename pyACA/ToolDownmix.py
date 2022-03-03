@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: downmixes audio signal
-
-  Args:
-    x: audio file data (samples x channels)
-
-  Returns:
-    x_downmix (array): processed samples
-"""
 
 import numpy as np
 
 
+## helper function: downmixes an audio signal into one channel
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#
+#    @return x_downmix: one-channel signal
 def ToolDownmix(x):
     
     if x.ndim > 1:

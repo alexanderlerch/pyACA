@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-computes the tonal power ratio from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-    G_T: energy threshold
-
-  Returns:
-    vtpr tonal power ratio
-"""
 
 import numpy as np
 from scipy.signal import find_peaks
 
 
+## computes the tonal power ratio from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#    @param G_T: energy threshold
+#
+#    @return vtpr: tonal power ratio
 def FeatureSpectralTonalPowerRatio(X, f_s, G_T=5e-4):
 
     isSpectrum = X.ndim == 1

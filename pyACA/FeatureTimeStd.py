@@ -18,6 +18,15 @@ import numpy as np
 import pyACA
 
 
+## computes the standard deviation of a time domain signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: block length in samples
+#    @param iHopLength: hop length in samples
+#    @param f_s: sample rate of audio data
+#
+#    @return vstd: standard deviation
+#    @return t: time stamp
 def FeatureTimeStd(x, iBlockLength, iHopLength, f_s):
 
     # create blocks

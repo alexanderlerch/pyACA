@@ -20,3 +20,7 @@
 /pyACA.sln
 /pyACA/pyACA.pyproj
 /tests/tests.pyproj
+/doc/html
+/doc/latex
+/pyACA/doc/html
+/pyACA/doc/latex

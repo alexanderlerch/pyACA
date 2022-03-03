@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral spread from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vss spectral spread (in Hz)
-"""
 
 import numpy as np
 from .FeatureSpectralCentroid import FeatureSpectralCentroid
 
 
+## computes the spectral spread from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vss: spectral spread
 def FeatureSpectralSpread(X, f_s):
 
     isSpectrum = X.ndim == 1

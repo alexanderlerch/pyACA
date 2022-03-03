@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
-"""
-computes the ACF coefficients of a time domain signal
-
-  Args:
-    x: audio signal
-    iBlockLength: block length in samples
-    iHopLength: hop length in samples
-    f_s: sample rate of audio data (unused)
-    eta: index (or vector of indices) of coeff result
-
-  Returns:
-    vacf autocorrelation coefficient
-    t time stamp
-"""
 
 import numpy as np
 import pyACA
 
 
+## computes the ACF coefficients of a time domain signal
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param iBlockLength: block length in samples
+#    @param iHopLength: hop length in samples
+#    @param f_s: sample rate of audio data
+#    @param eta: index (or vector of indices) of coeff result
+#
+#    @return vacf: autocorrelation coefficient
+#    @return t: time stamp
 def FeatureTimeAcfCoeff(x, iBlockLength, iHopLength, f_s, eta=19):
 
     # create blocks

@@ -1,22 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeSpectrogram
-
-computes a spectrogram from the audio data
-  Args:
-      x: time domain sample data, dimension channels X samples
-      f_s: sample rate of audio data
-      afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
-      bNormalize: normalize input audio file before fft computation (default: True)
-      bMagnitude: return magnitude instead of complex spectrum (default: True)
-
-  Returns:
-      X: spectrum
-      f: frequencies of bins
-      t: timestamps
-"""
 
 import numpy as np
 
@@ -25,6 +7,19 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.ToolBlockAudio import ToolBlockAudio
 
 
+## computes a spectrogram from the audio data
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param afWindow: FFT window of length iBlockLength (default: hann), can be [] empty
+#    @param iBlockLength: internal block length (default: 4096 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#    @param bNormalize: normalize input audio file before fft computation (default: True)
+#    @param bMagnitude: return magnitude instead of complex spectrum (default: True)
+#
+#    @return X: spectrum
+#    @return f: frequencies of bins
+#    @return t: time stamps
 def computeSpectrogram(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048, bNormalize=True, bMagnitude=True):
 
     iBlockLength = np.int_(iBlockLength)

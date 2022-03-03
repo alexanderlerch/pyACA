@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: convert Midi pitch (floating point) from frequency
-
-  Args:
-    fInHz: The frequency to be converted, can be scalar or vector
-    fA4InHz: The reference tuning frequency (default: 440Hz)
-
-  Returns:
-    Midi values of the input dimension (floating point)
-"""
 
 import numpy as np
 
 
+## helper function: convert Hz to MIDI pitch (floating point)
+#
+#    @param fInHz: frequency to be converted, can be scalar or vector
+#    @param fA4InHz: The reference tuning frequency (default: 440Hz)
+#
+#    @return midi: MIDI values (floating point)
 def ToolFreq2Midi(fInHz, fA4InHz=440):
     def convert_freq2midi_scalar(f, fA4InHz):
  

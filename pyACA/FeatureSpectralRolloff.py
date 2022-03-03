@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral rolloff from the magnitude spectrum
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-    kappa: cutoff ratio
-
-  Returns:
-    vsr spectral rolloff (in Hz)
-"""
 
 import numpy as np
 
 
+## computes the spectral rolloff from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#    @param kappa: cutoff ratio (default: 0.85)
+#
+#    @return vsr: spectral rolloff (in Hz)
 def FeatureSpectralRolloff(X, f_s, kappa=0.85):
 
     norm = X.sum(axis=0, keepdims=True)

@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: kmeans clustering
-
-  Args:
-    V: features for all train observations (dimension iNumFeatures x iNumObservations)
-    K: number of clusters
-    numMaxIter: maximum number of iterations (stop if not converged before, default: 1000)
-    prevState: internal state that can be stored to continue clustering later
-
-  Returns:
-    clusterIdx cluster index of each observation (iNumObservations)
-    state result containing internal state (if needed)
-"""
 
 import numpy as np
 
@@ -21,6 +8,15 @@ class CKMeansState:
         self.mu = mean
 
 
+## helper function: kmeans clustering
+#
+#    @param V: features for all train observations (dimension iNumFeatures x iNumObservations)
+#    @param K: number of clusters
+#    @param numMaxIter: maximum number of iterations (stop if not converged before, default: 1000)
+#    @param prevState: internal state that can be stored to continue clustering later
+#
+#    @return clusterIdx: cluster index of each observation (iNumObservations)
+#    @return state: result containing internal state (if needed)
 def ToolSimpleKmeans(V, K, numMaxIter=1000, prevState=None):
 
     # init

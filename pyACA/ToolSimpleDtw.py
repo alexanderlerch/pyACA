@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-helper function: computes path through a distance matrix with simple Dynamic Time Warping
 
-  Args:
-    D: non-negative distance matrix
-
-  Returns:
-    p: path with matrix indices
-    C: cost matrix
-"""
 import numpy as np
 
 
+## helper function: dynamic time warping
+#
+#    @param D: distance matrix
+#
+#    @return p: path with matrix indices
+#    @return C: accumulated cost matrix
 def ToolSimpleDtw(D):
 
     # init directions for back-tracking [diag, vert, hori]

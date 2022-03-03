@@ -1,18 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeKey
-
-computes the musical key of an input audio file
-  Args:
-      x: array with floating point audio data  (dimension samples x channels)
-      f_s: sample rate
-      afWindow: FFT window of length iBlockLength (default: hann)
-      iBlockLength: internal block length (default: 4096 samples)
-      iHopLength: internal hop length (default: 2048 samples)
-
-  Returns:
-      cKey: key string
-"""
 
 import numpy as np
 
@@ -21,6 +7,15 @@ from pyACA.ToolComputeHann import ToolComputeHann
 from pyACA.computeFeature import computeFeature
 
 
+## computes the musical key of an input audio file
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#    @param afWindow: FFT window of length iBlockLength (default: hann)
+#    @param iBlockLength: internal block length (default: 8192 samples)
+#    @param iHopLength: internal hop length (default: 2048 samples)
+#
+#    @return cKey: key string
 def computeKey(x, f_s, afWindow=None, iBlockLength=4096, iHopLength=2048):
 
     # compute window function for FFT

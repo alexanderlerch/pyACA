@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-computes the spectral flatness from the magnitude spectrum
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    vtf spectral flatness
-"""
 
 import numpy as np
 
 
+## computes the spectral flatness from the magnitude spectrum
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return vtf: spectral flatness
 def FeatureSpectralFlatness(X, f_s):
 
     norm = X.mean(axis=0, keepdims=True)

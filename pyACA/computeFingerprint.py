@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-computeFingerprint
-
-computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one fingerprint
-  Args:
-      x: array with floating point audio data  (dimension samples x channels)
-      x: array with floating point audio data  (dimension samples x channels)
-      f_s: sample rate
-
-  Returns:
-      F: series of subfingerprints
-      t: time stamps
-"""
 
 import numpy as np
 
@@ -22,6 +9,13 @@ from pyACA.ToolPreprocAudio import ToolPreprocAudio
 from pyACA.ToolResample import ToolResample
 
 
+## computes subfingerprints from audio (derived from Haitsma et al.), 256 subfingerprints comprise one fingerprint
+#
+#    @param x: array with floating point audio data (dimension samples x channels)
+#    @param f_s: sample rate of audio data
+#
+#    @return F: series of subfingerprints
+#    @return t: time stamps
 def computeFingerprint(x, f_s):
 
     # set default parameters
@@ -102,7 +96,7 @@ if __name__ == "__main__":
     import argparse
 
     # add command line args and parse them
-    parser = argparse.ArgumentParser(description='Compute key of wav file')
+    parser = argparse.ArgumentParser(description='Extract fingerprint from wav file')
     parser.add_argument('--infile', metavar='path', required=False,
                         help='path to input audio file')
 

@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-computes the MFCCs from the magnitude spectrum (see Slaney)
+
 
   Args:
     X: spectrogram (dimension FFTLength X Observations)
     f_s: sample rate of audio data
 
   Returns:
-    v_mfcc mel frequency cepstral coefficients
+    v_mfcc: mel frequency cepstral coefficients
 """
 
 import numpy as np
 from .ToolMfccFb import ToolMfccFb
 
 
+## computes the MFCCs from the magnitude spectrum (see Slaney)
+#
+#    @param X: spectrogram (dimension FFTLength X Observations)
+#    @param f_s: sample rate of audio data
+#
+#    @return v_mfcc: mel frequency cepstral coefficients
 def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
 
     isSpectrum = X.ndim == 1
