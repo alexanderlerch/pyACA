@@ -33,7 +33,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-        with:
+      with:
         ref: gh-pages
 
     # prepare the doc files
@@ -44,7 +44,6 @@ jobs:
         path: doc
         retention-days: 1 
 
-
     # prepare the doc files
     - name: Commit changes
       uses: EndBug/add-and-commit@v8
@@ -54,58 +53,3 @@ jobs:
         message: 'auto-update docs'
         branch: gh-pages
         add: '["doc/html/*"]'
-        retention-days: 1 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run unit tests
-      run: >-
-        python -m
-        unittest
-        tests/test_shape.py
-        tests/test_features.py
-        tests/test_tools.py
-
-    - name: Install pypa/build
-      run: >-
-        python -m
-        pip install
-        build
-        --user
-
-    - name: Build a binary wheel and a source tarball
-      run: >-
-        python -m
-        build
-        --sdist
-        --wheel
-        --outdir dist/
-        .
-
-    - name: Publish distribution 📦 to PyPI
-      if: startsWith(github.ref, 'refs/tags')   # Checks if commit is tagged
-      uses: pypa/gh-action-pypi-publish@master
-      with:                                     
-        password: ${{ secrets.pypi_distribution_token }}
-        repository_url: https://upload.pypi.org/legacy/
-
-    - name: Create Release
-      if: startsWith(github.ref, 'refs/tags')
-      uses: ncipollo/release-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
