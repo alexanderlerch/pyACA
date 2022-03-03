@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['name',['../namespacepy_a_c_a.html#a8ccf841cb59e451791bcb2e1ac4f1edc',1,'pyACA']]]
+  ['install_5frequires_0',['install_requires',['../namespacesetup.html#a047d4e9f7b152e767f7bd459218fe1fd',1,'setup']]]
 ];

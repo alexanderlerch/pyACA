@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['readme_0',['README',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['readme_2emd_1',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['reinitstate_5fi_2',['reinitState_I',['../namespacepy_a_c_a_1_1_tool_simple_kmeans.html#ad673ad8279d5b4f5d76e3c4ecdfbc8f5',1,'pyACA::ToolSimpleKmeans']]],
-  ['required_3',['required',['../namespacepy_a_c_a_1_1compute_beat_histo.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeBeatHisto.required()'],['../namespacepy_a_c_a_1_1compute_chords.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeChords.required()'],['../namespacepy_a_c_a_1_1compute_feature.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeFeature.required()'],['../namespacepy_a_c_a_1_1compute_fingerprint.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeFingerprint.required()'],['../namespacepy_a_c_a_1_1compute_key.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeKey.required()'],['../namespacepy_a_c_a_1_1compute_mel_spectrogram.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeMelSpectrogram.required()'],['../namespacepy_a_c_a_1_1compute_novelty_function.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeNoveltyFunction.required()'],['../namespacepy_a_c_a_1_1compute_pitch.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computePitch.required()'],['../namespacepy_a_c_a_1_1compute_spectrogram.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeSpectrogram.required()']]]
+  ['name_0',['name',['../namespacepy_a_c_a.html#a8ccf841cb59e451791bcb2e1ac4f1edc',1,'pyACA.name()'],['../namespacesetup.html#ab74e6bf80237ddc4109968cedc58c151',1,'setup.name()']]],
+  ['noveltyflux_1',['NoveltyFlux',['../namespacepy_a_c_a_1_1_novelty_flux.html#a8b831890bc3ecd67955694c5178f8efc',1,'pyACA::NoveltyFlux']]],
+  ['noveltyflux_2epy_2',['NoveltyFlux.py',['../_novelty_flux_8py.html',1,'']]],
+  ['noveltyhainsworth_3',['NoveltyHainsworth',['../namespacepy_a_c_a_1_1_novelty_hainsworth.html#a9c2c963c4c8b67745b2cff942885aa16',1,'pyACA::NoveltyHainsworth']]],
+  ['noveltyhainsworth_2epy_4',['NoveltyHainsworth.py',['../_novelty_hainsworth_8py.html',1,'']]],
+  ['noveltylaroche_5',['NoveltyLaroche',['../namespacepy_a_c_a_1_1_novelty_laroche.html#af055c256164714daf1d693e0b2329c51',1,'pyACA::NoveltyLaroche']]],
+  ['noveltylaroche_2epy_6',['NoveltyLaroche.py',['../_novelty_laroche_8py.html',1,'']]]
 ];

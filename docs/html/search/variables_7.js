@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['required_0',['required',['../namespacepy_a_c_a_1_1compute_beat_histo.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeBeatHisto.required()'],['../namespacepy_a_c_a_1_1compute_chords.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeChords.required()'],['../namespacepy_a_c_a_1_1compute_feature.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeFeature.required()'],['../namespacepy_a_c_a_1_1compute_fingerprint.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeFingerprint.required()'],['../namespacepy_a_c_a_1_1compute_key.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeKey.required()'],['../namespacepy_a_c_a_1_1compute_mel_spectrogram.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeMelSpectrogram.required()'],['../namespacepy_a_c_a_1_1compute_novelty_function.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeNoveltyFunction.required()'],['../namespacepy_a_c_a_1_1compute_pitch.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computePitch.required()'],['../namespacepy_a_c_a_1_1compute_spectrogram.html#ae81948490ddf54e80a22593640178350',1,'pyACA.computeSpectrogram.required()']]]
+  ['license_0',['license',['../namespacesetup.html#a4e659be027e258b72df12349200a263e',1,'setup']]],
+  ['long_5fdescription_1',['long_description',['../namespacesetup.html#a9ebe7fd07c3a4ff67a954bcd8838c42f',1,'setup']]],
+  ['long_5fdescription_5fcontent_5ftype_2',['long_description_content_type',['../namespacesetup.html#a30b92824ab27aa5758a56bf8f20a35aa',1,'setup']]]
 ];
