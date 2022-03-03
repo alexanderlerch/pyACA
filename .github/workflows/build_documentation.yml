@@ -50,5 +50,4 @@ jobs:
         author_name: Alexander Lerch
         author_email: alexander.lerch@gatech.edu
         message: 'auto-update docs'
-        branch: gh-pages
-        add: '["pyACA/doc/html/*"]'
+        add: '["./pyACA/doc/html/*"]'
