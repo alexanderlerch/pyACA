@@ -11,7 +11,7 @@ import pyACA
 #    @param iHopLength: hop length in samples
 #    @param f_s: sample rate of audio data
 #    @param f_max: maximum frequency to look at (default: 2000)
-#    @param fMinTresh: minimum threshold for avoidance of main lobe (default: 0.35)
+#    @param fMinThresh: minimum threshold for avoidance of main lobe (default: 0.35)
 #
 #    @return vta: autocorrelation maximum
 #    @return t: time stamp

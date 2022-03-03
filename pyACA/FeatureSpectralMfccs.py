@@ -1,14 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-
-
-  Args:
-    X: spectrogram (dimension FFTLength X Observations)
-    f_s: sample rate of audio data
-
-  Returns:
-    v_mfcc: mel frequency cepstral coefficients
-"""
 
 import numpy as np
 from .ToolMfccFb import ToolMfccFb
@@ -18,6 +8,7 @@ from .ToolMfccFb import ToolMfccFb
 #
 #    @param X: spectrogram (dimension FFTLength X Observations)
 #    @param f_s: sample rate of audio data
+#    @param iNumCoeffs: number of coefficients to compute (default: 13)
 #
 #    @return v_mfcc: mel frequency cepstral coefficients
 def FeatureSpectralMfccs(X, f_s, iNumCoeffs=13):
