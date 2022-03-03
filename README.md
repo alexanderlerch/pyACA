@@ -7,7 +7,7 @@
 ![GitHub](https://img.shields.io/github/license/alexanderlerch/pyACA)
 
 # pyACA
-Python scripts accompanying the book []"An Introduction to Audio Content Analysis"](https://www.AudioContentAnalysis.org). The source code shows example implementations of basic approaches, features, and algorithms for music audio content analysis.
+Python scripts accompanying the book ["An Introduction to Audio Content Analysis"](https://www.AudioContentAnalysis.org). The source code shows example implementations of basic approaches, features, and algorithms for music audio content analysis.
 
 ## functionality
 The top-level functions are (alphabetical):
