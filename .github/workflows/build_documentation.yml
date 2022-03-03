@@ -41,7 +41,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: doc-files
-        path: doc
+        path: ./
 
     # prepare the doc files
     - name: Commit changes
@@ -50,4 +50,4 @@ jobs:
         author_name: Alexander Lerch
         author_email: alexander.lerch@gatech.edu
         message: 'auto-update docs'
-        add: '["./pyACA/doc/html/*"]'
+        add: '["./doc/html/*"]'
