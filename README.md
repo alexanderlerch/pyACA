@@ -7,8 +7,7 @@
 ![GitHub](https://img.shields.io/github/license/alexanderlerch/pyACA)
 
 # pyACA
-Python scripts accompanying the book "An Introduction to Audio Content 
-Analysis" (www.AudioContentAnalysis.org). The source code shows example implementations of basic approaches, features, and algorithms for music audio content analysis.
+Python scripts accompanying the book []"An Introduction to Audio Content Analysis"](https://www.AudioContentAnalysis.org). The source code shows example implementations of basic approaches, features, and algorithms for music audio content analysis.
 
 ## functionality
 The top-level functions are (alphabetical):
@@ -41,6 +40,8 @@ conventions:
 >   - [Non-Negative Matrix Factorization](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolSimpleNmf.py)
 >   - [Viterbi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolViterbi.py) algorithm
 
+## documentation
+The latest full documentation of this package can be found at [https://alexanderlerch.github.io/pyACA](https://alexanderlerch.github.io/pyACA).
 
 ## design principles
 Please note that the provided code examples are only _intended to showcase 
