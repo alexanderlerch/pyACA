@@ -20,7 +20,7 @@ jobs:
  
     # store the doc files
     - name: Upload Output Directory
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: doc-files
         path: doc
@@ -38,7 +38,7 @@ jobs:
 
     # prepare the doc files
     - name: Download Output Directory
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: doc-files
         path: ./
