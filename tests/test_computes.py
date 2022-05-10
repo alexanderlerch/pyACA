@@ -23,10 +23,15 @@ class TestComputes(unittest.TestCase):
         # frequency vector
         self.assertEqual(f[0], 0, "SP 2: frequency vector incorrect")
         npt.assert_almost_equal(f[1], fs / iBlockLength, decimal=7, err_msg="SP 3: frequency vector incorrect")
+        npt.assert_almost_equal(f[iBlockLength // 2], fs / 2, decimal=7, err_msg="SP 4: frequency vector incorrect")
+
+        # time vector
+        self.assertEqual(t[0], iBlockLength / (2 * fs), "SP 2: time vector incorrect")
+        npt.assert_almost_equal(t[1], t[0] + iHopLength / fs, decimal=7, err_msg="SP 3: time vector incorrect")
 
         # content
-        npt.assert_almost_equal(X[10][10] / X[20][10], 4154.15, decimal=2, err_msg="SP 4: magnitude spectrum incorrect")
-        npt.assert_almost_equal(X[115][10] / X[116][10], 1.029, decimal=2, err_msg="SP 5: magnitude spectrum incorrect")
+        npt.assert_almost_equal(X[10][10] / X[20][10], 4154.15, decimal=2, err_msg="SP 5: magnitude spectrum incorrect")
+        npt.assert_almost_equal(X[115][10] / X[116][10], 1.029, decimal=2, err_msg="SP 6: magnitude spectrum incorrect")
         
         # non-windowed content (freq on bin)
         f0 = 4
@@ -39,12 +44,12 @@ class TestComputes(unittest.TestCase):
 
         [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=False)
 
-        npt.assert_almost_equal(X[np.int_(f0)][0], A, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
-        npt.assert_almost_equal(np.sum(X), A, decimal=7, err_msg="SP 7: magnitude spectrum incorrect")
+        npt.assert_almost_equal(X[np.int_(f0)][0], A, decimal=7, err_msg="SP 7: magnitude spectrum incorrect")
+        npt.assert_almost_equal(np.sum(X), A, decimal=7, err_msg="SP 8: magnitude spectrum incorrect")
 
         [X, f, t] = pyACA.computeSpectrogram(x, fs, np.ones(iBlockLength), iBlockLength, iHopLength, bNormalize=True)
 
-        npt.assert_almost_equal(X[np.int_(f0)][0], 1, decimal=7, err_msg="SP 6: magnitude spectrum incorrect")
+        npt.assert_almost_equal(X[np.int_(f0)][0], 1, decimal=7, err_msg="SP 9: magnitude spectrum incorrect")
 
     def test_melspecgram(self):
         f = 400
