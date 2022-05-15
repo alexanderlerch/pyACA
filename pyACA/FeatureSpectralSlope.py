@@ -12,13 +12,13 @@ import numpy as np
 def FeatureSpectralSlope(X, f_s):
 
     # compute mean
-    mu_x = X.mean(axis=0, keepdims=True)
+    vsc = FeatureSpectralCentroid(X, f_s) * 2 / f_s * (X.shape[0] - 1)
 
     # compute index vector
-    kmu = np.arange(0, X.shape[0]) - X.shape[0] / 2
+    kmu = np.arange(0, X.shape[0]) - (X.shape[0]+1) / 2
 
     # compute slope
-    X = X - mu_x
+    X = X - vsc
     vssl = np.dot(kmu, X) / np.dot(kmu, kmu)
 
     return vssl

@@ -29,6 +29,6 @@ def FeatureSpectralKurtosis(X, f_s):
     # compute kurtosis
     vsk = np.zeros(X.shape[1])
     for n in range(0, X.shape[1]):
-        vsk[n] = np.dot((k - vsc[n])**4, X[:, n]) / (vss[n]**4 * norm[n] * X.shape[0])
+        vsk[n] = np.dot((k - vsc[n])**4, X[:, n]) / (vss[n]**4 * norm[n])
 
     return np.squeeze(vsk - 3) if isSpectrum else (vsk - 3)
