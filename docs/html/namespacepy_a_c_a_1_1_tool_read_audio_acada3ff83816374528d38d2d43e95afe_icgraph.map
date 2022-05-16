@@ -1,0 +1,12 @@
+<map id="ToolReadAudio" name="ToolReadAudio">
+<area shape="rect" id="node1" title="helper function: read audio from wav" alt="" coords="316,274,427,301"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_beat_histo.html#ab7dcc93c1e8aad1eccc07a1ac0fd035d" title=" " alt="" coords="23,5,250,47"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_chords.html#a48caeb282f9c21f12677dacb8a07eae7" title="main" alt="" coords="32,71,241,112"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_feature.html#ab1677c7181cc22e92e9b56fcc0076347" title="main" alt="" coords="31,136,243,177"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1compute_fingerprint.html#aff5e3559363914a45816483cc73b9983" title="main" alt="" coords="22,201,251,243"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1compute_key.html#a0705fc22a47dab00b5868564d0b8f093" title="main" alt="" coords="41,267,232,308"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a3a7390580e4f7ea92e5cec0e0934384b" title="main" alt="" coords="5,332,268,373"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1compute_novelty_function.html#a77d68a992e9dcfbc764866954b5f3fdf" title="main" alt="" coords="5,397,268,439"/>
+<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_pitch.html#a2c6854e623e75762b593e5695aa3b4ce" title="main" alt="" coords="37,463,236,504"/>
+<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#a7931c2080c55e9dd0a38330a25ef6af8" title="main" alt="" coords="15,528,258,569"/>
+</map>

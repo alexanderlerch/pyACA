@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['inferclass_5fi_0',['inferClass_I',['../namespacepy_a_c_a_1_1_tool_simple_knn.html#a4c5c1456607c0de7169489d2858c2a30',1,'pyACA::ToolSimpleKnn']]],
-  ['initstate_5fi_1',['initState_I',['../namespacepy_a_c_a_1_1_tool_gmm.html#aa6ece6927c25e93a6f3590fb6062c1b6',1,'pyACA::ToolGmm']]],
-  ['isspectral_2',['isSpectral',['../namespacepy_a_c_a_1_1compute_feature.html#a93fcf0173a1980fac29316709f7c6fbd',1,'pyACA.computeFeature.isSpectral()'],['../namespacepy_a_c_a_1_1compute_pitch.html#ab7e5d4ca2d9831096dfc2d7ab3c19ede',1,'pyACA.computePitch.isSpectral()']]],
-  ['istemporal_3',['isTemporal',['../namespacepy_a_c_a_1_1compute_feature.html#ad8236bc255cf70fcbf283e73443222ef',1,'pyACA.computeFeature.isTemporal()'],['../namespacepy_a_c_a_1_1compute_pitch.html#a4a607354d3553049f90b76386c122505',1,'pyACA.computePitch.isTemporal()']]]
+  ['inferclass_5fi_0',['inferClass_I',['../namespacepy_a_c_a_1_1_tool_simple_knn.html#a64144ea378422d99b5678d817459f5dd',1,'pyACA::ToolSimpleKnn']]],
+  ['initstate_5fi_1',['initState_I',['../namespacepy_a_c_a_1_1_tool_gmm.html#a766a6635d5b65d7600327842c8db878b',1,'pyACA::ToolGmm']]],
+  ['isspectral_2',['isSpectral',['../namespacepy_a_c_a_1_1compute_feature.html#ab19765d439e0f01eae8f5cadac1dc673',1,'pyACA.computeFeature.isSpectral()'],['../namespacepy_a_c_a_1_1compute_pitch.html#ab19765d439e0f01eae8f5cadac1dc673',1,'pyACA.computePitch.isSpectral()']]],
+  ['istemporal_3',['isTemporal',['../namespacepy_a_c_a_1_1compute_feature.html#aef1b0aaad13a0404691565bc19c369c1',1,'pyACA.computeFeature.isTemporal()'],['../namespacepy_a_c_a_1_1compute_pitch.html#aef1b0aaad13a0404691565bc19c369c1',1,'pyACA.computePitch.isTemporal()']]]
 ];

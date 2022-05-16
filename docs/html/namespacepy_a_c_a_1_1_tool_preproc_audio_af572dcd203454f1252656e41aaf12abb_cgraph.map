@@ -1,0 +1,5 @@
+<map id="ToolPreprocAudio" name="ToolPreprocAudio">
+<area shape="rect" id="node1" title="helper function: pre&#45;processes an audio signal" alt="" coords="5,35,131,61"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_downmix.html#aec8221f46d8e95394fac388824662e3f" title="helper function: downmixes an audio signal into one channel" alt="" coords="179,5,403,32"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#a3a66e7df8d016e08fa90a901cc836256" title="helper function: normalizes audio signal" alt="" coords="199,57,383,98"/>
+</map>

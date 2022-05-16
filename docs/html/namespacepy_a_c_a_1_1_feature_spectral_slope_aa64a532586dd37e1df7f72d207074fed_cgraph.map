@@ -1,0 +1,4 @@
+<map id="FeatureSpectralSlope" name="FeatureSpectralSlope">
+<area shape="rect" id="node1" title="computes the spectral slope from the magnitude spectrum" alt="" coords="5,13,152,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_centroid.html#acea70ba4fcc30577068955f459427e0f" title="computes the spectral centroid from the (squared) magnitude spectrum" alt="" coords="200,5,408,47"/>
+</map>

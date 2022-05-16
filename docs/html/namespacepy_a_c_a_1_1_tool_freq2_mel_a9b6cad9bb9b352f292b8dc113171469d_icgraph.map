@@ -1,0 +1,6 @@
+<map id="ToolFreq2Mel" name="ToolFreq2Mel">
+<area shape="rect" id="node1" title="helper function: convert Hz to Mel scale" alt="" coords="937,13,1039,39"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a6127f762e2fc9612066c168e335ed039" title=" " alt="" coords="627,5,889,47"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#ade7803e01733d931bc36928a81e60325" title="computes a mel spectrogram from the audio data" alt="" coords="316,5,579,47"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a3a7390580e4f7ea92e5cec0e0934384b" title="main" alt="" coords="5,5,268,47"/>
+</map>

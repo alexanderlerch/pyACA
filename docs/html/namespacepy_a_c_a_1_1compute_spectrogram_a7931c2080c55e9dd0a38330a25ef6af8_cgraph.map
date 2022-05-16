@@ -1,0 +1,10 @@
+<map id="computeSpectrogramCl" name="computeSpectrogramCl">
+<area shape="rect" id="node1" title="main" alt="" coords="5,107,164,134"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#ad794746ec63601763eec76e438d0e378" title="computes a spectrogram from the audio data" alt="" coords="229,78,376,105"/>
+<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_read_audio.html#acada3ff83816374528d38d2d43e95afe" title="helper function: read audio from wav" alt="" coords="212,129,393,171"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a69b059dab71b3e1160d52834e064138f" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="450,5,634,47"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ac1efdf1e68c72f9018c14ffa125ad71b" title=" " alt="" coords="441,71,643,112"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#af572dcd203454f1252656e41aaf12abb" title="helper function: pre&#45;processes an audio signal" alt="" coords="444,136,640,177"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_downmix.html#aec8221f46d8e95394fac388824662e3f" title="helper function: downmixes an audio signal into one channel" alt="" coords="691,114,915,141"/>
+<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#a3a66e7df8d016e08fa90a901cc836256" title="helper function: normalizes audio signal" alt="" coords="711,165,895,207"/>
+</map>

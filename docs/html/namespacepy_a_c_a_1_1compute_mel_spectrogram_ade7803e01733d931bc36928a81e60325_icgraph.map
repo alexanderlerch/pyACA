@@ -1,0 +1,4 @@
+<map id="computeMelSpectrogram" name="computeMelSpectrogram">
+<area shape="rect" id="node1" title="computes a mel spectrogram from the audio data" alt="" coords="232,5,399,32"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a3a7390580e4f7ea92e5cec0e0934384b" title="main" alt="" coords="5,5,184,32"/>
+</map>
