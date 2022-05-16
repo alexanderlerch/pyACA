@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+from .FeatureSpectralCentroid import FeatureSpectralCentroid
 
 
 ## computes the spectral slope from the magnitude spectrum
