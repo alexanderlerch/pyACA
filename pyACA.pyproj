@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1111da02-1e45-4ce9-93db-4462a09cc049}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>tests\test_tools.py</StartupFile>
+    <StartupFile>tests\test_computes.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
