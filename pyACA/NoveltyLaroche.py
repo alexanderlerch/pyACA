@@ -12,11 +12,14 @@ import numpy as np
 def NoveltyLaroche(X, f_s):
 
     # difference spectrum (set first diff to zero)
-    X = np.c_[X[:, 0], np.sqrt(X)]
+    X = np.c_[np.sqrt(X[:, 0]), np.sqrt(X)]
 
-    afDiff = np.diff(X, 1, axis=1)
+    afDeltaX = np.diff(X, 1, axis=1)
+
+    # half-wave rectification
+    afDeltaX[afDeltaX < 0] = 0
 
     # flux
-    d_lar = np.sum(afDiff, axis=0) / X.shape[0]
+    d_lar = np.sum(afDeltaX, axis=0) / X.shape[0]
 
     return d_lar
