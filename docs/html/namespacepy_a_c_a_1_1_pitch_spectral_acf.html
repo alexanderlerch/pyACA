@@ -125,7 +125,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   18</span> </div>
 <div class="line"><span class="lineno">   19</span>    <span class="comment"># use spectral symmetry for robustness</span></div>
 <div class="line"><span class="lineno">   20</span>    X[0, :] = np.max(X)</div>
-<div class="line"><span class="lineno">   21</span>    X = np.concatenate((np.flipud(X), X), axis=0)</div>
+<div class="line"><span class="lineno">   21</span>    X = np.concatenate((np.flipud(X[1:,:]), X[:-1,:]), axis=0)</div>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>    <span class="comment"># compute the ACF</span></div>
 <div class="line"><span class="lineno">   24</span>    <span class="keywordflow">for</span> n <span class="keywordflow">in</span> range(0, X.shape[1]):</div>
