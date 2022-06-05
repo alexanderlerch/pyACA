@@ -18,7 +18,7 @@ def PitchSpectralAcf(X, f_s):
 
     # use spectral symmetry for robustness
     X[0, :] = np.max(X)
-    X = np.concatenate((np.flipud(X), X), axis=0)
+    X = np.concatenate((np.flipud(X[1:,:]), X[:-1,:]), axis=0)
 
     # compute the ACF
     for n in range(0, X.shape[1]):
