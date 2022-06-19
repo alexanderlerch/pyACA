@@ -46,7 +46,7 @@ conventions:
 >   - [Viterbi](https://github.com/alexanderlerch/pyACA/blob/master/pyACA/ToolViterbi.py) algorithm
 
 ## documentation
-The latest full documentation of this package can be found at [https://alexanderlerch.github.io/pyACA](https://alexanderlerch.github.io/pyACA).
+The latest full documentation of this package can be found at [https://alexanderlerch.github.io/pyACA](https://alexanderlerch.github.io/pyACA). 
 
 ## design principles
 Please note that the provided code examples are only _intended to showcase 
@@ -67,7 +67,7 @@ The readability of the source code will sometimes come at the cost of lower perf
 All code is matched exactly with [Matlab implementations](https://www.github.com/alexanderlerch/ACA-Code) and the equations in the book. This also means that the python code might **violate typical python style conventions** in order to be consistent.
 
 ## related repositories and links
-The python source code in this repository is matched with corresponding source code in the [Matlab repository](https://www.github.com/alexanderlerch/ACA-Code).
+The python source code in this repository is matched with corresponding source code in the [Matlab repository](https://www.github.com/alexanderlerch/ACA-Code). A C++ implementation with identical functionality can be found in the [C++ repository](https://www.github.com/alexanderlerch/libACA). 
 
 Other, _related repositories_ are
 * [ACA-Slides](https://www.github.com/alexanderlerch/ACA-Slides): slide decks for teaching and learning audio content analysis
