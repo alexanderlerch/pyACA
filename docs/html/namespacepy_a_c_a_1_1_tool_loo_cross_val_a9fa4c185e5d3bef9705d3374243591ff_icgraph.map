@@ -1,6 +1,5 @@
 <map id="splitData_I" name="splitData_I">
-<area shape="rect" id="node1" title=" " alt="" coords="561,13,645,39"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a8aa77210c77e76982aa1d9caafdafd8d" title=" " alt="" coords="403,13,513,39"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a7552f24695e1c74ee38466bb25d4f58f" title="helper function: leave one out cross validation" alt="" coords="232,13,355,39"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_seq_feature_sel.html#ab2d7db7059f1b446708403f58ae2844e" title="helper function: sequential forward feature selection" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="335,5,419,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a8aa77210c77e76982aa1d9caafdafd8d" title=" " alt="" coords="176,5,287,31"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a7552f24695e1c74ee38466bb25d4f58f" title="helper function: leave one out cross validation" alt="" coords="5,5,128,31"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="ToolGammatoneFb" name="ToolGammatoneFb">
-<area shape="rect" id="node1" title="helper function: splits the audio signal into multiple bands via a Gammatone filterbank see function ..." alt="" coords="5,31,139,57"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a08ed84d4959ee60926eab2307bac0f92" title=" " alt="" coords="214,5,291,32"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a7998d7e23daeae4a9ae987d1023f7465" title=" " alt="" coords="187,56,319,83"/>
+<area shape="rect" id="node1" title="helper function: splits the audio signal into multiple bands via a Gammatone filterbank see function ..." alt="" coords="5,31,139,56"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a08ed84d4959ee60926eab2307bac0f92" title=" " alt="" coords="214,5,291,31"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a7998d7e23daeae4a9ae987d1023f7465" title=" " alt="" coords="187,55,319,80"/>
 </map>

@@ -1,12 +1,4 @@
 <map id="computeMelSpectrogram" name="computeMelSpectrogram">
-<area shape="rect" id="node1" title="computes a mel spectrogram from the audio data" alt="" coords="5,113,172,139"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#ad794746ec63601763eec76e438d0e378" title="computes a spectrogram from the audio data" alt="" coords="220,73,463,115"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ac1efdf1e68c72f9018c14ffa125ad71b" title=" " alt="" coords="523,5,725,47"/>
-<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#af572dcd203454f1252656e41aaf12abb" title="helper function: pre&#45;processes an audio signal" alt="" coords="526,136,722,177"/>
-<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a6127f762e2fc9612066c168e335ed039" title=" " alt="" coords="282,202,401,229"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a69b059dab71b3e1160d52834e064138f" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="532,71,716,112"/>
-<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_downmix.html#aec8221f46d8e95394fac388824662e3f" title="helper function: downmixes an audio signal into one channel" alt="" coords="785,114,1009,141"/>
-<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#a3a66e7df8d016e08fa90a901cc836256" title="helper function: normalizes audio signal" alt="" coords="805,165,989,207"/>
-<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1_tool_freq2_mel.html#a9b6cad9bb9b352f292b8dc113171469d" title="helper function: convert Hz to Mel scale" alt="" coords="511,253,737,279"/>
-<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1_tool_mel2_freq.html#a0867f10c505d4feaa4d3199ab24e05eb" title="helper function: convert Mel to Hz" alt="" coords="511,202,737,229"/>
+<area shape="rect" id="node1" title="computes a mel spectrogram from the audio data" alt="" coords="5,5,172,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_mel_spectrogram.html#a6127f762e2fc9612066c168e335ed039" title=" " alt="" coords="220,5,339,31"/>
 </map>

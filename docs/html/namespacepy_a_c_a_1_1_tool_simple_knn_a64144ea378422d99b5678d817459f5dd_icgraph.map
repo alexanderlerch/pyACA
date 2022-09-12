@@ -1,7 +1,4 @@
 <map id="inferClass_I" name="inferClass_I">
-<area shape="rect" id="node1" title=" " alt="" coords="936,13,1027,39"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a52287c7e45edab1658ff59438cfb869d" title="helper function: k nearest neighbor classifier" alt="" coords="777,13,888,39"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a8aa77210c77e76982aa1d9caafdafd8d" title=" " alt="" coords="473,13,729,39"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a7552f24695e1c74ee38466bb25d4f58f" title="helper function: leave one out cross validation" alt="" coords="232,5,425,47"/>
-<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_seq_feature_sel.html#ab2d7db7059f1b446708403f58ae2844e" title="helper function: sequential forward feature selection" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="164,5,255,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a52287c7e45edab1658ff59438cfb869d" title="helper function: k nearest neighbor classifier" alt="" coords="5,5,116,31"/>
 </map>

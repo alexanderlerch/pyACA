@@ -1,15 +1,5 @@
 <map id="computeChords" name="computeChords">
-<area shape="rect" id="node1" title="recognizes the chords in an audio file" alt="" coords="5,325,119,352"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_feature.html#a71b707e455aaf83704d7810f6bc2cea7" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="167,137,379,178"/>
-<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_preproc_audio.html#af572dcd203454f1252656e41aaf12abb" title="helper function: pre&#45;processes an audio signal" alt="" coords="720,177,916,218"/>
-<area shape="rect" id="node11" href="$namespacepy_a_c_a_1_1compute_chords.html#a296f327434294c5fae4dcdb11a49d35b" title=" " alt="" coords="187,325,359,352"/>
-<area shape="rect" id="node12" href="$namespacepy_a_c_a_1_1compute_chords.html#a7517ddc454c5c283f06238e1941d96de" title=" " alt="" coords="200,376,345,403"/>
-<area shape="rect" id="node13" href="$namespacepy_a_c_a_1_1_tool_viterbi.html#afd81a5cd8ebe77a3eb89eb2fbf2a58dd" title="helper function: viterbi algorithm" alt="" coords="177,427,369,453"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_spectrogram.html#ad794746ec63601763eec76e438d0e378" title="computes a spectrogram from the audio data" alt="" coords="427,107,669,149"/>
-<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_compute_hann.html#ac1efdf1e68c72f9018c14ffa125ad71b" title=" " alt="" coords="717,46,919,87"/>
-<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1compute_feature.html#ab19765d439e0f01eae8f5cadac1dc673" title="helper functions" alt="" coords="438,224,658,251"/>
-<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1compute_feature.html#aef1b0aaad13a0404691565bc19c369c1" title=" " alt="" coords="435,5,661,32"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_block_audio.html#a69b059dab71b3e1160d52834e064138f" title="helper function: blocks an audio signal into overlapping blocks" alt="" coords="726,111,910,153"/>
-<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_downmix.html#aec8221f46d8e95394fac388824662e3f" title="helper function: downmixes an audio signal into one channel" alt="" coords="967,155,1191,181"/>
-<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_normalize_audio.html#a3a66e7df8d016e08fa90a901cc836256" title="helper function: normalizes audio signal" alt="" coords="987,206,1171,247"/>
+<area shape="rect" id="node1" title="recognizes the chords in an audio file" alt="" coords="5,31,119,56"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_chords.html#a296f327434294c5fae4dcdb11a49d35b" title=" " alt="" coords="167,5,339,31"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_chords.html#a7517ddc454c5c283f06238e1941d96de" title=" " alt="" coords="180,55,325,80"/>
 </map>

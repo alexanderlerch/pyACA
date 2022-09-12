@@ -1,9 +1,4 @@
 <map id="isTemporal" name="isTemporal">
-<area shape="rect" id="node1" title=" " alt="" coords="687,71,773,98"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_feature.html#a71b707e455aaf83704d7810f6bc2cea7" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="523,71,639,98"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1compute_chords.html#aeee0fbb8a090c6fa15af9ac0ce490572" title="recognizes the chords in an audio file" alt="" coords="264,5,473,47"/>
-<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1compute_feature.html#ab1677c7181cc22e92e9b56fcc0076347" title="main" alt="" coords="305,71,433,98"/>
-<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1compute_key.html#a459157770875e3c12b046761709faa08" title="computes the musical key of an input audio file" alt="" coords="263,122,475,149"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1compute_chords.html#a48caeb282f9c21f12677dacb8a07eae7" title="main" alt="" coords="5,5,215,47"/>
-<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1compute_key.html#a0705fc22a47dab00b5868564d0b8f093" title="main" alt="" coords="15,115,205,156"/>
+<area shape="rect" id="node1" title=" " alt="" coords="169,5,256,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1compute_feature.html#a71b707e455aaf83704d7810f6bc2cea7" title="computes a feature from the audio data supported features are: &#39;SpectralCentroid&#39;,..." alt="" coords="5,5,121,31"/>
 </map>

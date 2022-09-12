@@ -1,13 +1,8 @@
 <map id="ToolLooCrossVal" name="ToolLooCrossVal">
-<area shape="rect" id="node1" title="helper function: leave one out cross validation" alt="" coords="5,81,128,108"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a8aa77210c77e76982aa1d9caafdafd8d" title=" " alt="" coords="176,81,287,108"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a3c0f969343e7d3a40f9e4fad5f746703" title=" " alt="" coords="384,5,467,32"/>
-<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#aa6d0e5cc0f741beb99c36e96a291e925" title=" " alt="" coords="376,56,475,83"/>
-<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a9fa4c185e5d3bef9705d3374243591ff" title=" " alt="" coords="383,107,467,133"/>
-<area shape="rect" id="node7" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a52287c7e45edab1658ff59438cfb869d" title="helper function: k nearest neighbor classifier" alt="" coords="335,158,516,199"/>
-<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a2dc77290f977981bbb1c12e80ac22523" title=" " alt="" coords="614,5,746,32"/>
-<area shape="rect" id="node8" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a962c718715ff71a4be5699f8709da13e" title=" " alt="" coords="577,99,783,141"/>
-<area shape="rect" id="node10" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#aa6d0e5cc0f741beb99c36e96a291e925" title=" " alt="" coords="564,165,796,192"/>
-<area shape="rect" id="node11" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a64144ea378422d99b5678d817459f5dd" title=" " alt="" coords="589,217,771,258"/>
-<area shape="rect" id="node9" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#adad1bad02b7562a2247a963a0b2c87d8" title=" " alt="" coords="844,99,1051,141"/>
+<area shape="rect" id="node1" title="helper function: leave one out cross validation" alt="" coords="5,55,128,80"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a8aa77210c77e76982aa1d9caafdafd8d" title=" " alt="" coords="176,55,287,80"/>
+<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a3c0f969343e7d3a40f9e4fad5f746703" title=" " alt="" coords="343,5,425,31"/>
+<area shape="rect" id="node5" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#aa6d0e5cc0f741beb99c36e96a291e925" title=" " alt="" coords="335,55,433,80"/>
+<area shape="rect" id="node6" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a9fa4c185e5d3bef9705d3374243591ff" title=" " alt="" coords="342,104,426,129"/>
+<area shape="rect" id="node4" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a2dc77290f977981bbb1c12e80ac22523" title=" " alt="" coords="481,5,613,31"/>
 </map>

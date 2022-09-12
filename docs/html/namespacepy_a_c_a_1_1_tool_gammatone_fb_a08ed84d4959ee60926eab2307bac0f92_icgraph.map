@@ -1,5 +1,4 @@
 <map id="getCoeffs" name="getCoeffs">
-<area shape="rect" id="node1" title=" " alt="" coords="409,13,487,39"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a23fb3c68088df504c94b7858e9bafdae" title="helper function: splits the audio signal into multiple bands via a Gammatone filterbank see function ..." alt="" coords="228,13,361,39"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_pitch_time_auditory.html#a14462a4a3e07e2af0672550426b930f1" title="computes f0 via the &quot;auditory&quot; approach" alt="" coords="5,5,180,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="187,5,264,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_tool_gammatone_fb.html#a23fb3c68088df504c94b7858e9bafdae" title="helper function: splits the audio signal into multiple bands via a Gammatone filterbank see function ..." alt="" coords="5,5,139,31"/>
 </map>

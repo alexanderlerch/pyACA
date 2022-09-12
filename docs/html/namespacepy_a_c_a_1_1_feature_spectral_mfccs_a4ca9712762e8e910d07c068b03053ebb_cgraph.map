@@ -1,5 +1,4 @@
 <map id="FeatureSpectralMfccs" name="FeatureSpectralMfccs">
-<area shape="rect" id="node1" title="computes the MFCCs from the magnitude spectrum (see Slaney)" alt="" coords="5,31,156,57"/>
-<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_mfccs.html#af57311c98e5f006a51354bf65325a879" title=" " alt="" coords="244,5,371,32"/>
-<area shape="rect" id="node3" href="$namespacepy_a_c_a_1_1_tool_mfcc_fb.html#a2fe795c3d27577ee39118c4ee721e8cf" title="helper function: computes transfer functions of MFCC filter bands see function from Slaneys Auditory ..." alt="" coords="204,56,411,83"/>
+<area shape="rect" id="node1" title="computes the MFCCs from the magnitude spectrum (see Slaney)" alt="" coords="5,5,156,31"/>
+<area shape="rect" id="node2" href="$namespacepy_a_c_a_1_1_feature_spectral_mfccs.html#af57311c98e5f006a51354bf65325a879" title=" " alt="" coords="204,5,331,31"/>
 </map>
