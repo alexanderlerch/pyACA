@@ -46,6 +46,6 @@ def FeatureTimeMaxAcf(x, iBlockLength, iHopLength, f_s, f_max=2000, fMinThresh=0
         eta_min = np.max([eta_min, eta_tmp])
 
         # find the coefficients specified in eta
-        vacf[n] = np.max(afCorr[np.arange(eta_min + 1, afCorr.size)])
+        vacf[n] = np.max(np.abs(afCorr[np.arange(eta_min + 1, afCorr.size)]))
 
     return vacf, t
