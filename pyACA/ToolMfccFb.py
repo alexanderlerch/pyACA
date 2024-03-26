@@ -28,7 +28,7 @@ def ToolMfccFb(iFftLength, f_s):
     f[np.arange(iNumLinFilters, iNumFilters + 2)] = f[iNumLinFilters - 1] * logSpacing**np.arange(1, iNumLogFilters + 3)
 
     # sanity check
-    if f[iNumLinFilters - 1] >= f_s / 2:
+    if f[iNumFilters - 1] >= f_s / 2:
         f = f[f < f_s / 2]
         iNumFilters = f.shape[0] - 2
 
