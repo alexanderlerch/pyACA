@@ -12,10 +12,10 @@ jobs:
       with:                                 # This will checkout the current branch instead of master.
         ref: ${{ github.ref }}
 
-    - name: Set up Python 3.6
-      uses: actions/setup-python@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v5 
       with:
-        python-version: 3.6
+        python-version: '3.9' 
 
     - name: Install dependencies
       run: |
