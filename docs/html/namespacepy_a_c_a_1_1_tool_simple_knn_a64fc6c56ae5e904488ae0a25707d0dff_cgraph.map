@@ -1,0 +1,11 @@
+<map id="ToolSimpleKnn" name="ToolSimpleKnn">
+<area shape="rect" id="Node000001" title="helper function: k nearest neighbor classifier" alt="" coords="5,55,115,80"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#a8496386385723946219847f23d78d878" title=" " alt="" coords="163,5,346,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,51,185,33,187,38,114,57"/>
+<area shape="rect" id="Node000004" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#aa1c08c4f490e51bfa6cdae8f83921591" title=" " alt="" coords="206,55,303,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="115,65,190,65,190,70,115,70"/>
+<area shape="rect" id="Node000005" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#acde8fbba2e3176bc31532bdf968897aa" title=" " alt="" coords="209,104,300,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="114,78,195,99,194,104,113,84"/>
+<area shape="rect" id="Node000003" href="$namespacepy_a_c_a_1_1_tool_simple_knn.html#ae13fff527391f70b421329c2478be4cb" title=" " alt="" coords="394,5,521,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,16,379,16,379,21,347,21"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="ToolSimpleKmeans" name="ToolSimpleKmeans">
+<area shape="rect" id="Node000001" title="helper function: kmeans clustering" alt="" coords="5,55,140,80"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_tool_simple_kmeans.html#afd2b84b9ba49e7952be86a6458b5583a" title=" " alt="" coords="194,5,344,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,51,199,33,201,38,127,57"/>
+<area shape="rect" id="Node000003" href="$namespacepy_a_c_a_1_1_tool_simple_kmeans.html#a9fc28eca35e6df03a130b41c624b671f" title=" " alt="" coords="188,55,350,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,65,172,65,172,70,140,70"/>
+<area shape="rect" id="Node000004" href="$namespacepy_a_c_a_1_1_tool_simple_kmeans.html#a9482033c8dbf7154424e0d055ae3bf69" title=" " alt="" coords="223,104,315,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="127,78,208,99,207,104,126,84"/>
+</map>

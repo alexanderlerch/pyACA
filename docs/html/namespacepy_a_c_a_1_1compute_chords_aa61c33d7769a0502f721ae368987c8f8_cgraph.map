@@ -1,0 +1,7 @@
+<map id="computeChords" name="computeChords">
+<area shape="rect" id="Node000001" title="recognizes the chords in an audio file" alt="" coords="5,31,118,56"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1compute_chords.html#adb2b2e26c9caa1ec4f62bab13e7d7a0f" title=" " alt="" coords="166,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,33,150,29,150,34,118,39"/>
+<area shape="rect" id="Node000003" href="$namespacepy_a_c_a_1_1compute_chords.html#a5adfa4db4255b2d409b2df8bfbbc9a1c" title=" " alt="" coords="179,55,324,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,48,164,54,163,59,118,53"/>
+</map>

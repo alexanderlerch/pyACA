@@ -1,0 +1,5 @@
+<map id="FeatureSpectralMfccs" name="FeatureSpectralMfccs">
+<area shape="rect" id="Node000001" title="computes the MFCCs from the magnitude spectrum (see Slaney)" alt="" coords="5,5,155,31"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_feature_spectral_mfccs.html#a97dccb84c9b2e9343839f975edd7bcc2" title=" " alt="" coords="203,5,329,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,16,187,16,187,21,155,21"/>
+</map>

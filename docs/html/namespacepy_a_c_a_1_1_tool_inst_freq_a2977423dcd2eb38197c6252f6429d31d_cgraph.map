@@ -1,0 +1,5 @@
+<map id="ToolInstFreq" name="ToolInstFreq">
+<area shape="rect" id="Node000001" title="computes instantaneous frequency utilizing phase of neighboring blocks of complex spectra" alt="" coords="5,5,100,31"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_tool_inst_freq.html#a314fed10ad72b3039643c66dab541884" title=" " alt="" coords="148,5,226,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,16,132,16,132,21,100,21"/>
+</map>

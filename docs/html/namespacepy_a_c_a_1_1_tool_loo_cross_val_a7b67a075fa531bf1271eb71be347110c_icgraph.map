@@ -1,0 +1,9 @@
+<map id="computeConfMat_I" name="computeConfMat_I">
+<area shape="rect" id="Node000001" title=" " alt="" coords="461,5,593,31"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a6f582709e8a4f9914483547cabf2d184" title=" " alt="" coords="332,5,413,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="446,21,414,21,414,16,446,16"/>
+<area shape="rect" id="Node000003" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#af43db972c9abdc2a1e06d4d76a13c609" title=" " alt="" coords="175,5,284,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,21,284,21,284,16,316,16"/>
+<area shape="rect" id="Node000004" href="$namespacepy_a_c_a_1_1_tool_loo_cross_val.html#a866fd33c47649d0baa742145c5a8867c" title="helper function: leave one out cross validation" alt="" coords="5,5,127,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="159,21,127,21,127,16,159,16"/>
+</map>

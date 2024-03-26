@@ -1,0 +1,5 @@
+<map id="FeatureSpectralPitchChroma" name="FeatureSpectralPitchChroma">
+<area shape="rect" id="Node000001" title="computes the pitch chroma from the magnitude spectrum" alt="" coords="5,5,194,31"/>
+<area shape="rect" id="Node000002" href="$namespacepy_a_c_a_1_1_feature_spectral_pitch_chroma.html#adc19cd76c18e77e78a7f068e34b94ad8" title=" " alt="" coords="242,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,16,226,16,226,21,194,21"/>
+</map>
